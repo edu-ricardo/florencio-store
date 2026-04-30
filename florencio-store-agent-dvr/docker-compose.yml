@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app_proxy:
-    image: getumbrel/app-proxy:v0.1.1
+    image: getumbrel/app-proxy:v0.2.0
     environment:
       APP_HOST: server
       APP_PORT: 8090
