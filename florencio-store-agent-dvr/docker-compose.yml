@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    image: getumbrel/app-proxy:v0.1.1
+    environment:
+      APP_HOST: florencio-store-agent-dvr_server_1
+      APP_PORT: 8090
+
+  server:
+    image: mekayelanik/ispyagentdvr:latest
+    restart: on-failure
+    stop_grace_period: 1m
+    environment:
+      - PUID=${APP_UID}
+      - PGID=${APP_GID}
+      - TZ=${TIMEZONE}
+      - AGENTDVR_WEBUI_PORT=8090
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/AgentDVR/Media/XML
+      - ${APP_DATA_DIR}/data/media:/AgentDVR/Media/Video/
+      - ${APP_DATA_DIR}/data/commands:/AgentDVR/Commands
+    ports:
+      - 3478:3478/udp
+      - 50000-50010:50000-50010/udp
