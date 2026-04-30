@@ -10,6 +10,8 @@ description: >-
   provides a sleek, browser-based UI for monitoring your home or business.
 developer: iSpyConnect
 website: https://www.ispyconnect.com
+submitter: edu-ricardo
+submissionTermAcceptance: true
 dependencies: []
 repo: https://github.com/ispysoftware/agentdvr-docker
 support: https://www.ispyconnect.com/contact.aspx

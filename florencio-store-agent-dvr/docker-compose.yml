@@ -4,7 +4,7 @@ services:
   app_proxy:
     image: getumbrel/app-proxy:v0.1.1
     environment:
-      APP_HOST: florencio-store-agent-dvr_server_1
+      APP_HOST: server
       APP_PORT: 8090
 
   server:
