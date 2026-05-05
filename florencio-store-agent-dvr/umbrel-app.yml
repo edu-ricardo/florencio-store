@@ -5,8 +5,8 @@ name: Agent DVR
 version: "5.3.8.0"
 tagline: Advanced video surveillance platform
 description: >-
-  Agent DVR is a professional-grade video surveillance software with motion detection, 
-  AI object recognition, and remote access. It supports unlimited cameras and 
+  Agent DVR is a professional-grade video surveillance software with motion detection,
+  AI object recognition, and remote access. It supports unlimited cameras and
   provides a sleek, browser-based UI for monitoring your home or business.
 developer: iSpyConnect
 website: https://www.ispyconnect.com
