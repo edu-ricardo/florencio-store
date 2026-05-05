@@ -4,7 +4,7 @@ services:
     restart: on-failure
     environment:
       APP_HOST: server
-      APP_PORT: 8095
+      APP_PORT: 8090
     networks:
       default:
 
@@ -16,8 +16,8 @@ services:
       - PUID=${APP_UID}
       - PGID=${APP_GID}
       - TZ=${TIMEZONE}
-      - AGENTDVR_WEBUI_PORT=8095
-      - WEBUI_PORT=8095
+      - AGENTDVR_WEBUI_PORT=8090
+      - WEBUI_PORT=8090
     volumes:
       - ${APP_DATA_DIR}/data/config:/AgentDVR/Media/XML
       - ${APP_DATA_DIR}/data/media:/AgentDVR/Media/WebServerRoot/Media/
