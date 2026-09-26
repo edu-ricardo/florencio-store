@@ -28,7 +28,7 @@ submitter: edu-ricardo
 submission: https://github.com/edu-ricardo/florencio-store
 repo: https://github.com/bookorbit/bookorbit
 support: https://github.com/bookorbit/bookorbit/issues
-port: 8745
+port: 8746
 gallery:
   - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-bookorbit/1.png
 releaseNotes: ""

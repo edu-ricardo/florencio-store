@@ -15,7 +15,7 @@ submitter: edu-ricardo
 submission: https://github.com/edu-ricardo/florencio-store
 repo: https://github.com/ispysoftware/agentdvr-docker
 support: https://www.ispyconnect.com/contact.aspx
-port: 8190
+port: 8747
 gallery: []
 releaseNotes: ""
 dependencies: []

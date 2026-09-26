@@ -1,0 +1,41 @@
+manifestVersion: 1
+id: florencio-store-chaptarr
+category: media
+name: Chaptarr
+version: "0.9.958"
+tagline: Readarr successor for audiobooks and ebooks in one instance
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-chaptarr/icon.png
+description: >-
+  Chaptarr is a Readarr fork built to manage audiobook and ebook libraries in a
+  single instance, with its own working metadata pipeline. It is narrator
+  aware, supports multiple editions of the same book, handles M4B, MP3 chapters
+  and multi-file audiobooks, and can optionally convert MP3 audiobooks to M4B.
+
+
+  In Prowlarr add it as a "Readarr" application
+  (URL: http://florencio-store-chaptarr_server_1:8789).
+
+
+  Setup tips on Umbrel:
+
+  - Add root folders /downloads/books/audiobooks and /downloads/books/ebooks.
+  Both are inside the BookOrbit library.
+
+  - Add Transmission (host: transmission_server_1, port 9091) or qBittorrent
+  (host: qbittorrent_server_1, port 8080) as the download client.
+
+
+  Chaptarr is beta software: keep backups of your library.
+developer: Chaptarr
+website: https://github.com/Chaptarr/chaptarr
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Chaptarr/chaptarr
+support: https://github.com/Chaptarr/chaptarr/issues
+port: 8791
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
