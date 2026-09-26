@@ -1,0 +1,39 @@
+manifestVersion: 1
+id: florencio-store-listenarr
+category: media
+name: Listenarr
+version: "1.3.4-canary"
+tagline: Automated audiobook collection manager, like Sonarr for audiobooks
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-listenarr/icon.png
+description: >-
+  Listenarr automates audiobook collection management, similar to Sonarr or
+  Radarr. It searches, downloads and organizes your audiobook library using
+  metadata from Audible and other sources.
+
+
+  Setup tips on Umbrel:
+
+  - Go to Settings > Root Folders and add /downloads/books/audiobooks.
+  That folder is also inside the BookOrbit library, so new audiobooks show up there.
+
+  - Add Transmission (host: transmission_server_1, port 9091) or qBittorrent
+  (host: qbittorrent_server_1, port 8080) as the download client.
+
+
+  Note: Listenarr only publishes "canary" (pre-release) builds so far.
+developer: Listenarrs
+website: https://getlistenarr.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Listenarrs/Listenarr
+support: https://github.com/Listenarrs/Listenarr/issues
+port: 4545
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-listenarr/1.png
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-listenarr/2.png
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-listenarr/3.png
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

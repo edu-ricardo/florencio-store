@@ -15,6 +15,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Agent DVR** | 8190 | Vigilância por vídeo. Usa também 3478 (TCP/UDP) e 50000-50010/UDP para WebRTC. |
 | **BookOrbit** | 8745 | Biblioteca de ebooks/audiobooks/quadrinhos. Os livros ficam em `Downloads/books` no app Files. No primeiro acesso, use a senha exibida pelo Umbrel como *Setup token*. |
 | **Prometheus** | 9095 | Fonte de dados para o Grafana. Já coleta métricas do host (node-exporter, porta 9100) e de cada app (cAdvisor). No Grafana use a URL `http://florencio-store-prometheus_server_1:9090`. |
+| **Listenarr** | 4545 | Gerenciador automático de audiobooks (estilo Sonarr). Use `/downloads/books/audiobooks` como Root Folder para aparecerem no BookOrbit. |
 
 ## Regras para adicionar novos apps
 
