@@ -1,0 +1,36 @@
+manifestVersion: 1
+id: florencio-store-prometheus
+category: networking
+name: Prometheus
+version: "3.15.0"
+tagline: Metrics database and data source for Grafana
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-prometheus/icon.png
+description: >-
+  Prometheus collects and stores metrics as time series. This package already
+  monitors your Umbrel out of the box:
+
+
+  - Node Exporter: host CPU, memory, disks, network and temperature
+
+  - cAdvisor: CPU, memory and network usage of every Umbrel app container
+
+
+  To use it in Grafana (Umbrel App Store), add a Prometheus data source with
+  the URL http://florencio-store-prometheus_server_1:9090 (no authentication).
+
+
+  Data is kept for 30 days (max 10 GB). Scrape targets can be edited in
+  app-data/florencio-store-prometheus/config/prometheus.yml.
+developer: Prometheus Authors
+website: https://prometheus.io
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/prometheus/prometheus
+support: https://github.com/prometheus/prometheus/issues
+port: 9095
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
