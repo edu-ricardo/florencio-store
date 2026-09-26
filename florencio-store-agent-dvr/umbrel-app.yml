@@ -2,8 +2,9 @@ manifestVersion: 1
 id: florencio-store-agent-dvr
 category: media
 name: Agent DVR
-version: "5.3.8.0"
+version: "8.0.8.0"
 tagline: Advanced video surveillance platform
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-agent-dvr/icon.png
 description: >-
   Agent DVR is a professional-grade video surveillance software with motion detection,
   AI object recognition, and remote access. It supports unlimited cameras and
@@ -11,8 +12,13 @@ description: >-
 developer: iSpyConnect
 website: https://www.ispyconnect.com
 submitter: edu-ricardo
-submissionTermAcceptance: true
-dependencies: []
+submission: https://github.com/edu-ricardo/florencio-store
 repo: https://github.com/ispysoftware/agentdvr-docker
 support: https://www.ispyconnect.com/contact.aspx
-port: 8090
+port: 8190
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
