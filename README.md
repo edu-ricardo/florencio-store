@@ -18,6 +18,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Listenarr** | 4545 | Gerenciador automático de audiobooks (estilo Sonarr). Use `/downloads/books/audiobooks` como Root Folder para aparecerem no BookOrbit. |
 | **Bookshelf** | 8790 | Substituto do Readarr (fork com metadados do Hardcover) para ebooks. Root Folder sugerido: `/downloads/books/ebooks`. |
 | **Chaptarr** | 8791 | Sucessor do Readarr (beta) com audiobooks e ebooks na mesma instância. |
+| **openGym** | 8792 | Treinos e peso corporal. Login por passkey exige HTTPS (Tailscale/Cloudflare); pela rede local use "Continuar sem conta". Configuração em `app-data/florencio-store-opengym/data/opengym.env`. |
 
 ## Regras para adicionar novos apps
 

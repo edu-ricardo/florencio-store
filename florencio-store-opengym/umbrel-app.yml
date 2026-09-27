@@ -1,0 +1,40 @@
+manifestVersion: 1
+id: florencio-store-opengym
+category: files
+name: openGym
+version: "1.3.8"
+tagline: Self-hosted gym and body-weight tracker
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-opengym/icon.png
+description: >-
+  openGym is a self-hosted gym and body-weight tracker. Plan your week over a
+  library of 1,300+ exercises with animated demos, run guided workouts
+  (supersets, warm-ups and cardio included), log every set, see which muscles
+  are trained or fatigued, and chart your body weight over time. Imports from
+  FitNotes, Strong and Hevy. Installable on your phone as a home-screen app.
+
+
+  Important: openGym signs in with passkeys, and browsers only allow passkeys
+  over HTTPS. On http://umbrel.local you can use "Continue without account"
+  (data stays in that browser). To create profiles and sync between devices,
+  expose it over HTTPS (Tailscale or Cloudflare Tunnel) and set RP_ID and
+  ORIGIN in app-data/florencio-store-opengym/data/opengym.env.
+
+
+  The first start downloads ~140 MB of exercise images and animations.
+developer: Duarte Santos
+website: https://github.com/DuarteSantos8/openGym
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/DuarteSantos8/openGym
+support: https://github.com/DuarteSantos8/openGym/issues
+port: 8792
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-opengym/home.png
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-opengym/workout.png
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-opengym/plan.png
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-opengym/stats.png
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
