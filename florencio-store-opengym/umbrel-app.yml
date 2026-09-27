@@ -20,6 +20,11 @@ description: >-
   ORIGIN in app-data/florencio-store-opengym/data/opengym.env.
 
 
+  AI Coach: this build includes the Claude Agent SDK and Codex CLI runtimes.
+  Enable it in Settings > Admin > AI Coach, pick "Claude (Anthropic)" and paste
+  a token from `claude setup-token` (or use an API key from any provider).
+
+
   The first start downloads ~140 MB of exercise images and animations.
 developer: Duarte Santos
 website: https://github.com/DuarteSantos8/openGym

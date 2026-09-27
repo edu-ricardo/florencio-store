@@ -29,7 +29,9 @@ services:
         fi
 
   api:
-    image: ghcr.io/duartesantos8/opengym-api:1.3.8@sha256:0d949d05897f3d01c5a087fc2c1888230ff55d5551095550d83f84806766991b
+    # Alvo "coach" (Claude Agent SDK + Codex CLI), compilado do c�digo oficial pelo
+    # workflow .github/workflows/opengym-coach-image.yml deste reposit�rio
+    image: ghcr.io/edu-ricardo/opengym-api-coach:1.3.8@sha256:918990106519347716fa640ef584b07c26efef2a0e79a8cf8794da12ab70b6fd
     restart: on-failure
     # RP_ID / ORIGIN e opções ficam neste arquivo (editável pelo usuário)
     env_file:
