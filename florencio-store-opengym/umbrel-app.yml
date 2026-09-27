@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-opengym
 category: files
 name: openGym
-version: "1.3.8"
+version: "1.3.8-coach"
 tagline: Self-hosted gym and body-weight tracker
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-opengym/icon.png
 description: >-
