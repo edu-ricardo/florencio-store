@@ -19,6 +19,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Bookshelf** | 8790 | Substituto do Readarr (fork com metadados do Hardcover) para ebooks. Root Folder sugerido: `/downloads/books/ebooks`. |
 | **Chaptarr** | 8791 | Sucessor do Readarr (beta) com audiobooks e ebooks na mesma instância. |
 | **openGym** | 8792 | Treinos e peso corporal. Login por passkey exige HTTPS (Tailscale/Cloudflare); pela rede local use "Continuar sem conta". Configuração em `app-data/florencio-store-opengym/data/opengym.env`. |
+| **Libreseerr** | 8794 | Pedidos de livros/audiobooks (estilo Seerr) integrado ao Bookshelf e Chaptarr. Login inicial `admin`/`admin`. Só x86 (não roda em Raspberry Pi). |
 
 ## Regras para adicionar novos apps
 

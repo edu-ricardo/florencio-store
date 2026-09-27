@@ -1,0 +1,45 @@
+manifestVersion: 1
+id: florencio-store-libreseerr
+category: media
+name: Libreseerr
+version: "0.9.1"
+tagline: Book and audiobook requests, like Seerr for books
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-libreseerr/icon.png
+description: >-
+  Libreseerr is a book request manager. Users search for books and request
+  ebook or audiobook downloads from a simple web interface, and Libreseerr sends
+  the request to Readarr, Readarr forks like Bookshelf, or LazyLibrarian - the
+  same way Seerr works with Sonarr and Radarr. Supports multiple users, LDAP
+  and OIDC sign-in.
+
+
+  Setup on Umbrel (Settings page):
+
+  - Ebook server: Bookshelf, URL http://florencio-store-bookshelf_server_1:8787
+
+  - Audiobook server: Chaptarr (choose "Readarr"), URL
+  http://florencio-store-chaptarr_server_1:8789
+
+  The API key of each one is in its Settings > General page.
+
+
+  Sign in with admin / admin and change the password right away on the Users page.
+
+
+  Only available for x86 (amd64) devices, such as Umbrel Home. It does not run
+  on Raspberry Pi.
+developer: zamnzim
+website: https://github.com/zamnzim/Libreseerr
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/zamnzim/Libreseerr
+support: https://github.com/zamnzim/Libreseerr/issues
+port: 8794
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-libreseerr/discover.png
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-libreseerr/requests.png
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: "admin"
+defaultPassword: "admin"
