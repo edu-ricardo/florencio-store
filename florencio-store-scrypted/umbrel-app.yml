@@ -1,8 +1,8 @@
-manifestVersion: 1
+manifestVersion: 1.1
 id: florencio-store-scrypted
 category: automation
 name: Scrypted
-version: "0.147.0"
+version: "0.147.0-nvidia"
 tagline: Camera hub for HomeKit, Google Home and Alexa with smart detection
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-scrypted/icon.png
 description: >-
@@ -16,6 +16,10 @@ description: >-
   On first access you will be asked to create the admin account.
 
 
+  GPU: this build uses the NVIDIA (CUDA) image. umbrelOS passes the GPU to the
+  container automatically; object detection and video decoding run on it.
+
+
   Updates are delivered through the Umbrel App Store; the in-app updater is not used.
 developer: Koushik Dutta
 website: https://www.scrypted.app
@@ -23,6 +27,8 @@ submitter: edu-ricardo
 submission: https://github.com/edu-ricardo/florencio-store
 repo: https://github.com/koush/scrypted
 support: https://github.com/koush/scrypted/issues
+permissions:
+  - GPU
 port: 11080
 gallery: []
 releaseNotes: ""
