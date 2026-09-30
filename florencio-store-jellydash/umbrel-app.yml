@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: florencio-store-jellydash
+category: media
+name: Jellydash
+version: "1.13.1"
+tagline: Tautulli-style monitoring dashboard for Jellyfin
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-jellydash/icon.png
+description: >-
+  Jellydash is a monitoring dashboard for Jellyfin. If you know Tautulli from
+  the Plex world, this is that idea built for Jellyfin. See who is watching
+  right now and whether it is transcoding, keep a full play history, explore
+  statistics, follow downloads and get notifications through Web Push,
+  Telegram, Pushover, Discord, ntfy or Gotify. Installable on your phone as an app.
+
+
+  Setup: create an API key in Jellyfin (Dashboard > API Keys) and paste it in
+  app-data/florencio-store-jellydash/data/jellydash.env (JELLYFIN_API_TOKEN),
+  then restart the app. The default URL already points to the Umbrel Jellyfin app.
+developer: themartz90
+website: https://jellydash.madebymartz.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/themartz90/jellydash
+support: https://github.com/themartz90/jellydash/issues
+port: 8795
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

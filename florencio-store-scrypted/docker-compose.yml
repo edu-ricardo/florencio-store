@@ -1,0 +1,19 @@
+version: "3.7"
+
+# Rede do host: necessária para HomeKit, descoberta de câmeras (mDNS/ONVIF) e
+# streaming. Por isso não há app_proxy: o painel é servido direto na porta 11080.
+services:
+  server:
+    image: ghcr.io/koush/scrypted:v0.147.0-noble-full@sha256:e78b4fcecdd6c61acaaf22b50ccef303c738da58cc0be57afdb116521df52296
+    restart: on-failure
+    network_mode: host
+    environment:
+      SCRYPTED_INSECURE_PORT: 11080
+      # 10443 (padrão) já é usada pelo app Stalwart do Umbrel
+      SCRYPTED_SECURE_PORT: 10453
+      TZ: America/Sao_Paulo
+    volumes:
+      - ${APP_DATA_DIR}/data:/server/volume
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8

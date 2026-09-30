@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: florencio-store-lan-orangutan
+category: networking
+name: LAN Orangutan
+version: "3.3.8"
+tagline: Lightweight network discovery for your homelab
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lan-orangutan/icon.svg
+description: >-
+  LAN Orangutan scans your networks, discovers every device and lets you label
+  and track them from a clean web dashboard. Each device gets a type and an
+  icon (phone, printer, TV, router, server), with MAC addresses and
+  manufacturer names, plus Tailscale support. A minimal alternative to heavier
+  tools like NetBox, Fing or ntopng, focused purely on visibility.
+
+
+  On first access you will be asked to create the dashboard password.
+developer: 291 Group
+website: https://github.com/291-Group/LAN-Orangutan
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/291-Group/LAN-Orangutan
+support: https://github.com/291-Group/LAN-Orangutan/issues
+port: 291
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lan-orangutan/1.jpg
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lan-orangutan/2.jpg
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

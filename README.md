@@ -20,6 +20,9 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Chaptarr** | 8791 | Sucessor do Readarr (beta) com audiobooks e ebooks na mesma instância. |
 | **openGym** | 8792 | Treinos e peso corporal. Login por passkey exige HTTPS (Tailscale/Cloudflare); pela rede local use "Continuar sem conta". Configuração em `app-data/florencio-store-opengym/data/opengym.env`. |
 | **Libreseerr** | 8794 | Pedidos de livros/audiobooks (estilo Seerr) integrado ao Bookshelf e Chaptarr. Login inicial `admin`/`admin`. Só x86 (não roda em Raspberry Pi). |
+| **LAN Orangutan** | 291 | Descoberta de aparelhos na rede. Usa a rede do host; senha criada no primeiro acesso. |
+| **Jellydash** | 8795 | Painel estilo Tautulli para o Jellyfin. Coloque a chave de API em `app-data/florencio-store-jellydash/data/jellydash.env`. |
+| **Scrypted** | 11080 | Câmeras no HomeKit/Google Home/Alexa. Usa a rede do host (HTTPS na 10453). |
 
 ## Regras para adicionar novos apps
 
