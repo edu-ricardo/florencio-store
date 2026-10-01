@@ -1,0 +1,45 @@
+manifestVersion: 1
+id: florencio-store-obsidian-livesync
+category: files
+name: Obsidian LiveSync
+version: "3.5.2"
+tagline: Self-hosted sync server (CouchDB) for the Obsidian LiveSync plugin
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-obsidian-livesync/icon.svg
+description: >-
+  A CouchDB server preconfigured for Self-hosted LiveSync, the community plugin
+  that syncs your Obsidian vaults between all your devices in real time, with
+  optional end-to-end encryption, on your own server instead of a paid service.
+
+
+  Setup in Obsidian: install the "Self-hosted LiveSync" community plugin, open
+  its setup wizard, choose CouchDB and use:
+
+  - URI: http://umbrel.local:5984
+
+  - Username: admin, password: the one shown by Umbrel
+
+  - Database name: anything, e.g. obsidiannotes (the plugin creates it)
+
+  Turn on end-to-end encryption in the wizard.
+
+
+  Phones and tablets: Obsidian mobile only connects over HTTPS. Expose port
+  5984 with Tailscale (tailscale serve) or a Cloudflare Tunnel and use that
+  https:// address on every device.
+
+
+  Opening the app in Umbrel shows the CouchDB admin page (Fauxton).
+developer: vrtmrz / Apache CouchDB
+website: https://github.com/vrtmrz/obsidian-livesync
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/vrtmrz/obsidian-livesync
+support: https://github.com/vrtmrz/obsidian-livesync/issues
+port: 5984
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: "/_utils/"
+defaultUsername: "admin"
+defaultPassword: "$APP_PASSWORD"
+deterministicPassword: true

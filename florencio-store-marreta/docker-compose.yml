@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-marreta_web_1
+      APP_PORT: 8080
+
+  # A imagem roda como www-data (uid 33); ajusta o dono da pasta de dados antes de subir
+  permissions:
+    image: busybox:1.37.0@sha256:bdf57e528e45e4433820e045b29b4597825a1c9e38353532d90a01445013f82e
+    restart: "no"
+    command: ["chown", "-R", "33:33", "/storage"]
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/storage
+
+  web:
+    image: ghcr.io/manualdousuario/marreta:3.0.4@sha256:9bb6484bb8d84ad091f94472d26550e31cdcf6a8d57bd6a3ee77e51e8d65d0ea
+    restart: on-failure
+    depends_on:
+      permissions:
+        condition: service_completed_successfully
+      browser:
+        condition: service_started
+    environment:
+      APP_NAME: Marreta
+      # Vazio: a chave é gerada no primeiro boot e guardada em storage/app/app.key
+      APP_KEY: ""
+      APP_DEBUG: "false"
+      APP_URL: http://${DEVICE_DOMAIN_NAME}:8796
+      APP_LOCALE: pt-br
+      APP_DESCRIPTION: Chapéu de paywall é marreta!
+      BROWSER_WS_ENDPOINT: ws://florencio-store-marreta_browser_1:9222
+      DISABLE_CACHE: "false"
+      ADMIN_EMAIL: admin@marreta.local
+      # Senha mostrada pelo Umbrel ao abrir o app (painel /admin)
+      ADMIN_PASSWORD: ${APP_PASSWORD}
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/var/www/html/storage/app
+
+  # Navegador headless usado para abrir as páginas
+  browser:
+    image: lightpanda/browser:nightly@sha256:33fb3a42366a2e8aa11211e9c412e71d1779a223865d3a53eae937fb4e9e4537
+    restart: on-failure

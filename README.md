@@ -23,6 +23,8 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **LAN Orangutan** | 291 | Descoberta de aparelhos na rede. Usa a rede do host; senha criada no primeiro acesso. |
 | **Jellydash** | 8795 | Painel estilo Tautulli para o Jellyfin. Coloque a chave de API em `app-data/florencio-store-jellydash/data/jellydash.env`. |
 | **Scrypted** | 11080 | Câmeras no HomeKit/Google Home/Alexa. Usa a rede do host (HTTPS na 10453). |
+| **Obsidian LiveSync** | 5984 | Servidor CouchDB para o plugin Self-hosted LiveSync. No celular o Obsidian exige HTTPS (Tailscale/Cloudflare). |
+| **Marreta** | 8796 | Remove paywall de notícias. Painel `/admin` com `admin@marreta.local` e a senha do Umbrel. |
 
 ## Regras para adicionar novos apps
 

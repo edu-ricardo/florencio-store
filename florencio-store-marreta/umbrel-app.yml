@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: florencio-store-marreta
+category: social
+name: Marreta
+version: "3.0.4"
+tagline: Remove paywalls and clutter from news articles
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-marreta/icon.svg
+description: >-
+  Marreta ("chapéu de paywall é marreta!") opens news articles without paywalls,
+  pop-ups, trackers and clutter. Paste a link and read the clean page. It uses
+  per-site rules, a headless browser (Lightpanda) and a cache, and includes a
+  bookmarklet and share targets for phones.
+
+
+  The /admin panel manages domain rules and blocked sites. Sign in with
+  admin@marreta.local and the password shown by Umbrel.
+developer: Manual do Usuário
+website: https://marreta.link
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/manualdousuario/marreta
+support: https://github.com/manualdousuario/marreta/issues
+port: 8796
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-marreta/1.jpg
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: "admin@marreta.local"
+defaultPassword: "$APP_PASSWORD"
+deterministicPassword: true
