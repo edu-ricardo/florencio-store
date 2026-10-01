@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-shelfmark_server_1
+      APP_PORT: 8084
+
+  server:
+    # Imagem completa (com navegador interno para sites protegidos). Precisa de ~2 GB de RAM.
+    image: ghcr.io/calibrain/shelfmark:v1.4.0@sha256:4ef757349c3c7a7d90ba95b1e2a46ce4dd460a4776efbcf2aa1b1c476e7d5de5
+    restart: on-failure
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Sao_Paulo
+      FLASK_PORT: 8084
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      # Destino dos livros baixados: Downloads/books/shelfmark no app Files
+      # (fica dentro da biblioteca do BookOrbit)
+      - ${UMBREL_ROOT}/data/storage/downloads/books/shelfmark:/books
+      # Mesmo caminho /downloads usado pelo Transmission/qBittorrent do Umbrel,
+      # exigido para downloads por torrent/usenet
+      - ${UMBREL_ROOT}/data/storage/downloads:/downloads

@@ -25,6 +25,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Scrypted** | 11080 | Câmeras no HomeKit/Google Home/Alexa. Usa a rede do host (HTTPS na 10453). |
 | **Obsidian LiveSync** | 5984 | Servidor CouchDB para o plugin Self-hosted LiveSync. No celular o Obsidian exige HTTPS (Tailscale/Cloudflare). |
 | **Marreta** | 8796 | Remove paywall de notícias. Painel `/admin` com `admin@marreta.local` e a senha do Umbrel. |
+| **Shelfmark** | 8797 | Busca unificada de livros/audiobooks (web, torrent, usenet, IRC). Salva em `Downloads/books/shelfmark` (dentro do BookOrbit). Precisa de ~2 GB de RAM. |
 
 ## Regras para adicionar novos apps
 

@@ -1,0 +1,39 @@
+manifestVersion: 1
+id: florencio-store-shelfmark
+category: media
+name: Shelfmark
+version: "1.4.0"
+tagline: Search and download books and audiobooks from many sources at once
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-shelfmark/icon.png
+description: >-
+  Shelfmark is a unified search for books and audiobooks. It queries web
+  catalogs, torrent indexers, Usenet and IRC book channels at the same time and
+  sends what you pick straight to your library (a folder, Calibre-Web,
+  Audiobookshelf and others). Multi-user, with a request system so other people
+  can browse and ask for books.
+
+
+  On Umbrel, downloaded books go to Downloads/books/shelfmark in the Files app,
+  which is inside the BookOrbit library. For torrent/Usenet sources, add
+  Transmission (transmission_server_1:9091) or qBittorrent
+  (qbittorrent_server_1:8080) in Settings; both see the same /downloads folder.
+
+
+  Needs about 2 GB of free RAM (it runs a headless browser internally).
+  Authentication is optional and can be enabled in Settings.
+developer: calibrain
+website: https://github.com/calibrain/shelfmark
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/calibrain/shelfmark
+support: https://github.com/calibrain/shelfmark/issues
+port: 8797
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-shelfmark/1.jpg
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-shelfmark/2.jpg
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-shelfmark/3.jpg
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
