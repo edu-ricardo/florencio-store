@@ -9,7 +9,7 @@ services:
       # Login do Umbrel fica ligado (padrão): a página descreve todos os seus apps
 
   web:
-    image: ghcr.io/edu-ricardo/umbrel-app-targets:1.0.0@sha256:fe55e7433f14ca09d0e79dcd548f5a3724f6af7034d47eca386644678addd1ff
+    image: ghcr.io/edu-ricardo/umbrel-app-targets:1.1.0@sha256:4211e77e02809ba065f441714a54168103a64045632661e0aaa96b5d1494d7b2
     restart: on-failure
     volumes:
       # Arquivos dos apps instalados, somente leitura
