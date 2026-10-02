@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-chaptarr
 category: media
 name: Chaptarr
-version: "0.9.958"
+version: "0.9.965"
 tagline: Readarr successor for audiobooks and ebooks in one instance
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-chaptarr/icon.png
 description: >-
