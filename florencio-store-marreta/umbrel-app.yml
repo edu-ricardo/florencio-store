@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-marreta
 category: social
 name: Marreta
-version: "3.0.4"
+version: "3.0.4-r1"
 tagline: Remove paywalls and clutter from news articles
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-marreta/icon.svg
 description: >-
@@ -23,7 +23,8 @@ support: https://github.com/manualdousuario/marreta/issues
 port: 8796
 gallery:
   - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-marreta/1.jpg
-releaseNotes: ""
+releaseNotes: >-
+  Fixes the HTTP 500 error on every page right after installing.
 dependencies: []
 path: ""
 defaultUsername: "admin@marreta.local"

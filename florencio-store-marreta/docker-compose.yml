@@ -25,8 +25,9 @@ services:
         condition: service_started
     environment:
       APP_NAME: Marreta
-      # Vazio: a chave é gerada no primeiro boot e guardada em storage/app/app.key
-      APP_KEY: ""
+      # APP_KEY fica de fora de propósito: o Marreta gera a chave no primeiro boot
+      # (storage/app/app.key). Definir APP_KEY vazio aqui faz o Laravel ignorar a
+      # chave gerada e todas as páginas darem erro 500.
       APP_DEBUG: "false"
       APP_URL: http://${DEVICE_DOMAIN_NAME}:8796
       APP_LOCALE: pt-br

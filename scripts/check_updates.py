@@ -167,7 +167,8 @@ def new_app_version(app):
         old_number = VERSION_NUMBER.search(u["old_tag"]).group(0)
         new_number = VERSION_NUMBER.search(u["new_tag"]).group(0)
         if old_number in version:
-            return version.replace(old_number, new_number, 1)
+            # "-rN" marca correções da loja sobre a mesma versão; some com a versão nova
+            return re.sub(r"-r\d+$", "", version.replace(old_number, new_number, 1))
     return None
 
 
