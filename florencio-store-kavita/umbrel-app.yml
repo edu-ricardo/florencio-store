@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: florencio-store-kavita
+category: media
+name: Kavita
+version: "0.9.1"
+tagline: Fast reading server for manga, comics and books
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-kavita/icon.svg
+description: >-
+  Kavita is a fast, feature-rich, cross-platform reading server. Built with a
+  focus on manga, it also supports comics (CBR, CBZ, CB7), ebooks (EPUB) and
+  PDFs, with a responsive web reader, reading lists, collections, metadata
+  from ComicInfo, multiple users with per-library access, OPDS for e-readers
+  and Send to Kindle.
+
+
+  First access: create the admin account. Then add libraries pointing to
+  folders under /downloads, which is the Downloads folder of the Umbrel Files
+  app (for example /downloads/manga or /downloads/books).
+developer: Kareadita
+website: https://www.kavitareader.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Kareadita/Kavita
+support: https://github.com/Kareadita/Kavita/issues
+port: 8798
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
