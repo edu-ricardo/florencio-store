@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-app-targets
 category: developer
 name: Destinos dos Apps
-version: "0.1.0-edge"
+version: "1.0.0"
 tagline: Internal address of every installed app, ready for Cloudflare Tunnel
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-app-targets/icon.svg
 description: >-

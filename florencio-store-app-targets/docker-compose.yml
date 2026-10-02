@@ -9,9 +9,7 @@ services:
       # Login do Umbrel fica ligado (padrão): a página descreve todos os seus apps
 
   web:
-    # Imagem "edge" (último commit da main de edu-ricardo/umbrel-app-targets).
-    # Trocar por uma tag de versão (ex.: 1.0.0) quando houver release.
-    image: ghcr.io/edu-ricardo/umbrel-app-targets:edge@sha256:68fcfeccc8e28daa2d59014f975c94c818c0561277505f7912e7a60e5daf90c1
+    image: ghcr.io/edu-ricardo/umbrel-app-targets:1.0.0@sha256:fe55e7433f14ca09d0e79dcd548f5a3724f6af7034d47eca386644678addd1ff
     restart: on-failure
     volumes:
       # Arquivos dos apps instalados, somente leitura
