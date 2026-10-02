@@ -28,6 +28,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Shelfmark** | 8797 | Busca unificada de livros/audiobooks (web, torrent, usenet, IRC). Salva em `Downloads/books/shelfmark` (dentro do BookOrbit). Precisa de ~2 GB de RAM. |
 | **Kavita** | 8798 | Servidor de leitura para mangá, HQs e livros, com OPDS. Bibliotecas em `/downloads/...` (pasta Downloads do Files). |
 | **DockFlare** | 8799 | Publica apps do Umbrel no seu domínio pelo Cloudflare Tunnel (sem abrir portas). Precisa de domínio na Cloudflare e token de API. |
+| **Destinos dos Apps** | 8800 | Tabela com o endereço interno (`container:porta`) de cada app instalado, para usar no Cloudflare Tunnel/DockFlare. |
 
 ## Regras para adicionar novos apps
 

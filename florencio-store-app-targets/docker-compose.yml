@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-app-targets_web_1
+      APP_PORT: 8080
+      # Login do Umbrel fica ligado (padrão): a página descreve todos os seus apps
+
+  web:
+    # Imagem "edge" (último commit da main de edu-ricardo/umbrel-app-targets).
+    # Trocar por uma tag de versão (ex.: 1.0.0) quando houver release.
+    image: ghcr.io/edu-ricardo/umbrel-app-targets:edge@sha256:68fcfeccc8e28daa2d59014f975c94c818c0561277505f7912e7a60e5daf90c1
+    restart: on-failure
+    volumes:
+      # Arquivos dos apps instalados, somente leitura
+      - ${UMBREL_ROOT}/app-data:/umbrel-app-data:ro
+      # SQLite com o domínio e os subdomínios editados na página
+      - ${APP_DATA_DIR}/data:/data
