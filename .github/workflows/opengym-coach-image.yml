@@ -10,10 +10,13 @@ on:
         description: "Versão do openGym (tag sem o v)"
         required: true
         default: "1.3.9"
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/opengym-coach-image.yml
+  # Chamado pela verificação de atualizações quando sai uma versão nova do openGym
+  workflow_call:
+    inputs:
+      version:
+        description: "Versão do openGym (tag sem o v)"
+        required: true
+        type: string
 
 env:
   DEFAULT_VERSION: "1.3.9"

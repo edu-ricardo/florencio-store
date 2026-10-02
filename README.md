@@ -33,3 +33,11 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 - No `docker-compose.yml`, o `app_proxy` **não** deve ter `image:`; o `APP_HOST` segue o formato `<app-id>_<serviço>_1`.
 - `port` no `umbrel-app.yml` é a porta externa e não pode repetir a de nenhum app oficial (confira em [getumbrel/umbrel-apps](https://github.com/getumbrel/umbrel-apps)); `APP_PORT` é a porta interna do container.
 - `icon` precisa ser uma URL pública (ex.: raw.githubusercontent.com).
+
+## Atualizações automáticas
+
+O workflow [`check-app-updates.yml`](.github/workflows/check-app-updates.yml) roda nos dias 1 e 15 de cada mês (e manualmente em **Actions → Verificar atualizações dos apps → Run workflow**). Ele usa [`scripts/check_updates.py`](scripts/check_updates.py) para procurar versões novas de cada imagem, com o mesmo formato de tag da atual, e abre (ou atualiza) um Pull Request no branch `auto/app-updates` com a imagem, o digest e a versão do app já trocados. O Umbrel só oferece a atualização depois do merge.
+
+- Tags sem número de versão (`nightly`, `pg18`) não são verificadas.
+- Quando sai uma versão nova do openGym, a imagem `coach` é compilada antes do PR.
+- Para o workflow conseguir abrir o PR, ative em **Settings → Actions → General → Workflow permissions** a opção **Allow GitHub Actions to create and approve pull requests**. Sem ela, ele abre uma issue com o link do branch.

@@ -1,0 +1,88 @@
+# Verifica a cada ~15 dias (dias 1 e 15, 06:00 de Brasília) se há versões novas das
+# imagens dos apps e abre/atualiza um Pull Request com tudo pronto para revisar.
+# O Umbrel só oferece a atualização depois do merge na main.
+name: Verificar atualizações dos apps
+
+on:
+  schedule:
+    - cron: "0 9 1,15 * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: check-app-updates
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      opengym: ${{ steps.plan.outputs.opengym }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: plan
+        run: |
+          python scripts/check_updates.py plan > plan.json
+          cat plan.json
+          # Versão nova do openGym: a imagem "coach" precisa ser compilada antes do PR
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          own = [u["new_tag"] for a in json.load(open("plan.json")) for u in a["updates"] if u["own_build"]]
+          print(f"opengym={own[0] if own else ''}")
+          PY
+
+  build-coach:
+    needs: check
+    if: needs.check.outputs.opengym != ''
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/opengym-coach-image.yml
+    with:
+      version: ${{ needs.check.outputs.opengym }}
+
+  pull-request:
+    needs: [check, build-coach]
+    if: ${{ !cancelled() && needs.check.result == 'success' && needs.build-coach.result != 'failure' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: auto/app-updates
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: apply
+        run: echo "result=$(python scripts/check_updates.py apply "$RUNNER_TEMP/pr-body.md")" >> "$GITHUB_OUTPUT"
+
+      - name: Abrir ou atualizar o Pull Request
+        if: steps.apply.outputs.result == 'changed'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git commit -am "Atualizar apps ($(date +%Y-%m-%d))"
+          git push --force origin "$BRANCH"
+
+          title="Atualizações de apps disponíveis"
+          if gh pr view "$BRANCH" --json state -q .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/pr-body.md"
+          elif ! gh pr create --head "$BRANCH" --base main --title "$title" --body-file "$RUNNER_TEMP/pr-body.md"; then
+            # Sem permissão para abrir PR (ver README): avisa por issue com o link do branch
+            {
+              cat "$RUNNER_TEMP/pr-body.md"
+              echo
+              echo "Não foi possível abrir o PR automaticamente. Abra-o a partir do branch:"
+              echo "${{ github.server_url }}/${{ github.repository }}/compare/main...$BRANCH"
+            } > "$RUNNER_TEMP/issue-body.md"
+            gh issue create --title "$title" --body-file "$RUNNER_TEMP/issue-body.md"
+          fi
+
+      - name: Nada novo
+        if: steps.apply.outputs.result != 'changed'
+        run: echo "Todos os apps já estão na versão mais recente."
