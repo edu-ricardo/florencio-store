@@ -1,0 +1,42 @@
+manifestVersion: 1
+id: florencio-store-whisparr-v3
+category: media
+name: Whisparr v3
+version: "3.1.0.2116"
+tagline: Whisparr v3 (Eros) - adult content collection manager
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-whisparr-v3/icon.png
+description: >-
+  Whisparr v3 (branch "Eros") is the *arr-style collection manager for adult
+  content. It monitors indexers for new releases from your favorite studios and
+  performers, then grabs, sorts and renames them. Version 3 is a full rewrite
+  of v2 with a new data model and its own metadata source, so libraries are not
+  interchangeable between the two.
+
+
+  In Prowlarr add it as a "Whisparr" application
+  (URL: http://florencio-store-whisparr-v3_server_1:6969).
+
+
+  Setup tips on Umbrel:
+
+  - Settings > Media Management > Root Folders: add a folder inside /downloads,
+  for example /downloads/whisparr.
+
+  - Add Transmission (host: transmission_server_1, port 9091) or qBittorrent
+  (host: qbittorrent_server_1, port 8080) as the download client.
+
+
+  Whisparr v3 is alpha software: keep backups of your library.
+developer: Whisparr
+website: https://whisparr.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Whisparr/Whisparr
+support: https://github.com/Whisparr/Whisparr/issues
+port: 8802
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

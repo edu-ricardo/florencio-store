@@ -30,6 +30,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **DockFlare** | 8799 | Publica apps do Umbrel no seu domínio pelo Cloudflare Tunnel (sem abrir portas). Precisa de domínio na Cloudflare e token de API. |
 | **Destinos dos Apps** | 8800 | Tabela com o endereço interno (`container:porta`) de cada app instalado, para usar no Cloudflare Tunnel/DockFlare. |
 | **Vamos Jogar** | 8801 | Organização de jogatinas de tabuleiro com os amigos (homologação, só x86). Depois de instalar, copie o .json da conta de serviço do Firebase para `app-data/florencio-store-vamos-jogar/data/firebase-service-account.json`, preencha `data/api.env` e reinicie o app. |
+| **Whisparr v3** | 8802 | Whisparr v3 (Eros, alpha) para conteúdo adulto, estilo Sonarr. Root Folder sugerido: `/downloads/whisparr`. No Prowlarr adicione como "Whisparr" (`http://florencio-store-whisparr-v3_server_1:6969`). Não aproveita a biblioteca do v2. |
 
 ## Regras para adicionar novos apps
 
