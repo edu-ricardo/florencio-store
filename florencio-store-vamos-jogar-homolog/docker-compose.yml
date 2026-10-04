@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-vamos-jogar-homolog_web_1
+      APP_PORT: 80
+      # O app tem login próprio; o acesso externo é protegido pelo Cloudflare Access
+      PROXY_AUTH_ADD: "false"
+
+  web:
+    # Imagens publicadas só para amd64 (x86)
+    image: ghcr.io/edu-ricardo/vamos-jogar-web:2.0.0-homolog.1
+    restart: on-failure
+    depends_on:
+      - api
+      - pocketbase
+    environment:
+      # Nomes completos: nomes curtos como "api" também existem em outros apps na rede do Umbrel
+      API_UPSTREAM: florencio-store-vamos-jogar-homolog_api_1:3001
+      PB_UPSTREAM: florencio-store-vamos-jogar-homolog_pocketbase_1:8090
+
+  api:
+    image: ghcr.io/edu-ricardo/vamos-jogar-api:2.0.0-homolog.1
+    restart: on-failure
+    depends_on:
+      - pocketbase
+    # Segredos ficam no Umbrel, fora da loja
+    env_file:
+      - ${APP_DATA_DIR}/data/api.env
+    environment:
+      PB_URL: http://florencio-store-vamos-jogar-homolog_pocketbase_1:8090
+    volumes:
+      # Backup do Firebase para a importação (somente leitura)
+      - ${APP_DATA_DIR}/data/backup:/backup:ro
+
+  pocketbase:
+    image: ghcr.io/edu-ricardo/vamos-jogar-pocketbase:2.0.0-homolog.1
+    restart: on-failure
+    env_file:
+      - ${APP_DATA_DIR}/data/pocketbase.env
+    volumes:
+      # Banco de dados do app: incluir no backup do Umbrel
+      - ${APP_DATA_DIR}/data/pb_data:/pb_data
