@@ -2,22 +2,25 @@ version: "3.7"
 
 services:
   app_proxy:
-    image: getumbrel/app-proxy:v0.2.0
-    restart: on-failure
     environment:
-      APP_HOST: web
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-vamos-jogar_web_1
       APP_PORT: 80
       # O app tem login próprio; com o login do Umbrel os amigos não conseguiriam entrar
       PROXY_AUTH_ADD: "false"
 
   web:
-    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.0-homolog
+    # Imagens publicadas só para amd64 (x86)
+    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.0-homolog@sha256:b9743cd723a54f899481f522fffe8b370009d0c5f81d1b7d0a5ae501dbfabba8
     restart: on-failure
     depends_on:
       - api
+    volumes:
+      # Aponta /api para o container desta app (o nome "api" é usado por outros apps na rede do Umbrel)
+      - ${APP_DATA_DIR}/nginx.conf:/etc/nginx/conf.d/default.conf:ro
 
   api:
-    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.0-homolog
+    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.0-homolog@sha256:acd24cadc503124b05036485c71cfb0eb4364cff6e300133708e06f0b0de6a73
     restart: on-failure
     # Segredos ficam no Umbrel, fora da loja: ~/umbrel/app-data/florencio-store-vamos-jogar/data/api.env
     env_file:

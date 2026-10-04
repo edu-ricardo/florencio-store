@@ -4,16 +4,28 @@ category: social
 name: Vamos Jogar
 version: "1.0.0-homolog"
 tagline: Organize as jogatinas de tabuleiro com os amigos
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
   Hub para marcar e organizar encontros de jogos de tabuleiro: grupos com convite,
   votação de data, local e jogos, e a ludoteca de cada participante com dados da
   Ludopedia e do BoardGameGeek. Nesta versão o login e o banco de dados ainda
   ficam no Firebase.
+
+
+  Depois de instalar, preencha
+  ~/umbrel/app-data/florencio-store-vamos-jogar/data/api.env e reinicie o app.
+  Imagens disponíveis só para x86 (amd64).
 developer: edu-ricardo
 website: https://github.com/edu-ricardo/vamos-jogar
 submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
 submissionTermAcceptance: true
-dependencies: []
 repo: https://github.com/edu-ricardo/vamos-jogar
 support: https://github.com/edu-ricardo/vamos-jogar/issues
-port: 3080
+port: 8801
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
