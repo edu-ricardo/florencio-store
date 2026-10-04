@@ -11,3 +11,5 @@ Esta é uma loja de comunidade para o Umbrel.
 ## Aplicativos Disponíveis
 
 - **Agent DVR**: Plataforma avançada de vigilância por vídeo.
+- **Vamos Jogar**: Organização de jogatinas de tabuleiro com os amigos (versão de homologação).
+  Depois de instalar, preencha `~/umbrel/app-data/florencio-store-vamos-jogar/data/api.env` e reinicie o app.
