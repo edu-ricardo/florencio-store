@@ -11,7 +11,7 @@ services:
 
   web:
     # Imagens publicadas só para amd64 (x86)
-    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.1-homolog
+    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.1-homolog@sha256:ee9cc33a4217376f2b003e17c576ba535a7351d83a89591ac00400f847a49d48
     restart: on-failure
     depends_on:
       - api
@@ -20,7 +20,7 @@ services:
       API_UPSTREAM: florencio-store-vamos-jogar_api_1:3001
 
   api:
-    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.1-homolog
+    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.1-homolog@sha256:75343968088b48674a36342eb048afdcd73ee8ce820aca9710f3e20df0aead6f
     restart: on-failure
     # Segredos ficam no Umbrel, fora da loja: ~/umbrel/app-data/florencio-store-vamos-jogar/data/
     env_file:
