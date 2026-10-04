@@ -11,36 +11,22 @@ services:
 
   web:
     # Imagens publicadas só para amd64 (x86)
-    image: ghcr.io/edu-ricardo/vamos-jogar-web:2.0.0@sha256:9f73dc11154d3c6a717d591b14d1ad89939328fcfdbb8fb7071c69312fa69b1a
+    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.1-homolog@sha256:ee9cc33a4217376f2b003e17c576ba535a7351d83a89591ac00400f847a49d48
     restart: on-failure
     depends_on:
       - api
-      - pocketbase
     environment:
-      # Nomes completos: nomes curtos como "api" também existem em outros apps na rede do Umbrel
+      # Nome completo do container: o nome curto "api" também é usado por outros apps na rede do Umbrel
       API_UPSTREAM: florencio-store-vamos-jogar_api_1:3001
-      PB_UPSTREAM: florencio-store-vamos-jogar_pocketbase_1:8090
 
   api:
-    image: ghcr.io/edu-ricardo/vamos-jogar-api:2.0.0@sha256:dfd75478ee25c8395a0e9f9fb8add1b91e8574fe7c63edbbe392d6c5499fe522
+    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.1-homolog@sha256:75343968088b48674a36342eb048afdcd73ee8ce820aca9710f3e20df0aead6f
     restart: on-failure
-    depends_on:
-      - pocketbase
     # Segredos ficam no Umbrel, fora da loja: ~/umbrel/app-data/florencio-store-vamos-jogar/data/
     env_file:
       - ${APP_DATA_DIR}/data/api.env
     environment:
-      PB_URL: http://florencio-store-vamos-jogar_pocketbase_1:8090
+      # Arquivo .json da conta de serviço do Firebase, copiado para a pasta data do app
+      GOOGLE_APPLICATION_CREDENTIALS: /data/firebase-service-account.json
     volumes:
-      # Backup do Firebase para a importação (somente leitura)
-      - ${APP_DATA_DIR}/data/backup:/backup:ro
-
-  pocketbase:
-    image: ghcr.io/edu-ricardo/vamos-jogar-pocketbase:2.0.0@sha256:96ab9363ee562f9919af22164a9de1b52e7a125afd4f64360a5b9717acb86b30
-    restart: on-failure
-    # Precisa existir antes da atualização (criado por SSH no roteiro da virada)
-    env_file:
-      - ${APP_DATA_DIR}/data/pocketbase.env
-    volumes:
-      # Banco de dados do app, com backups automáticos em pb_data/backups
-      - ${APP_DATA_DIR}/data/pb_data:/pb_data
+      - ${APP_DATA_DIR}/data:/data:ro
