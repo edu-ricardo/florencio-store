@@ -2,19 +2,18 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar
 category: social
 name: Vamos Jogar
-version: "1.0.1-homolog"
+version: "2.0.0"
 tagline: Organize as jogatinas de tabuleiro com os amigos
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
   Hub para marcar e organizar encontros de jogos de tabuleiro: grupos com convite,
   votação de data, local e jogos, e a ludoteca de cada participante com dados da
-  Ludopedia e do BoardGameGeek. Nesta versão o login e o banco de dados ainda
-  ficam no Firebase.
+  Ludopedia e do BoardGameGeek. Banco de dados e login (Google) no próprio servidor,
+  com PocketBase.
 
 
-  Depois de instalar, copie o .json da conta de serviço do Firebase para
-  ~/umbrel/app-data/florencio-store-vamos-jogar/data/firebase-service-account.json,
-  preencha data/api.env na mesma pasta e reinicie o app.
+  Antes de instalar ou atualizar, crie data/pocketbase.env e preencha data/api.env em
+  ~/umbrel/app-data/florencio-store-vamos-jogar/ (veja o roteiro da virada).
   Imagens disponíveis só para x86 (amd64).
 developer: edu-ricardo
 website: https://github.com/edu-ricardo/vamos-jogar
@@ -26,9 +25,9 @@ support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8801
 gallery: []
 releaseNotes: >-
-  Credencial do Firebase passa a ser um arquivo em data/firebase-service-account.json
-  (não é mais preciso colar o JSON no api.env). Corrige a busca de jogos indo para
-  o container de outro app e adiciona limite de tempo nas APIs da Ludopedia e do BGG.
+  Sai o Firebase: dados e login passam a ficar no próprio servidor (PocketBase), com
+  backup automático diário. Depois da atualização, cada pessoa entra de novo com a
+  mesma conta Google.
 dependencies: []
 path: ""
 defaultUsername: ""
