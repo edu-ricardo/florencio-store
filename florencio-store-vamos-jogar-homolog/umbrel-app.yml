@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar-homolog
 category: social
 name: Vamos Jogar (homologação)
-version: "2.0.0-homolog.1"
+version: "2.0.0"
 tagline: Ensaio da migração do Vamos Jogar para o PocketBase
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
@@ -24,7 +24,9 @@ support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8804
 gallery: []
 releaseNotes: >-
-  Primeira versão com PocketBase: dados e login no próprio servidor.
+  Mesmas imagens da 2.0.0 de produção: painel e API de administração do PocketBase fora da
+  internet, página de fim do login com Google, backup automático diário e sessão inválida
+  levando de volta ao login.
 dependencies: []
 path: ""
 defaultUsername: ""
