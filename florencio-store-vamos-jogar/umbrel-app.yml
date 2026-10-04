@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar
 category: social
 name: Vamos Jogar
-version: "1.0.0-homolog"
+version: "1.0.1-homolog"
 tagline: Organize as jogatinas de tabuleiro com os amigos
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
@@ -12,8 +12,9 @@ description: >-
   ficam no Firebase.
 
 
-  Depois de instalar, preencha
-  ~/umbrel/app-data/florencio-store-vamos-jogar/data/api.env e reinicie o app.
+  Depois de instalar, copie o .json da conta de serviço do Firebase para
+  ~/umbrel/app-data/florencio-store-vamos-jogar/data/firebase-service-account.json,
+  preencha data/api.env na mesma pasta e reinicie o app.
   Imagens disponíveis só para x86 (amd64).
 developer: edu-ricardo
 website: https://github.com/edu-ricardo/vamos-jogar
@@ -24,7 +25,10 @@ repo: https://github.com/edu-ricardo/vamos-jogar
 support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8801
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Credencial do Firebase passa a ser um arquivo em data/firebase-service-account.json
+  (não é mais preciso colar o JSON no api.env). Corrige a busca de jogos indo para
+  o container de outro app e adiciona limite de tempo nas APIs da Ludopedia e do BGG.
 dependencies: []
 path: ""
 defaultUsername: ""

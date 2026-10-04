@@ -29,7 +29,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Kavita** | 8798 | Servidor de leitura para mangá, HQs e livros, com OPDS. Bibliotecas em `/downloads/...` (pasta Downloads do Files). |
 | **DockFlare** | 8799 | Publica apps do Umbrel no seu domínio pelo Cloudflare Tunnel (sem abrir portas). Precisa de domínio na Cloudflare e token de API. |
 | **Destinos dos Apps** | 8800 | Tabela com o endereço interno (`container:porta`) de cada app instalado, para usar no Cloudflare Tunnel/DockFlare. |
-| **Vamos Jogar** | 8801 | Organização de jogatinas de tabuleiro com os amigos (homologação, só x86). Depois de instalar, preencha `app-data/florencio-store-vamos-jogar/data/api.env` e reinicie o app. |
+| **Vamos Jogar** | 8801 | Organização de jogatinas de tabuleiro com os amigos (homologação, só x86). Depois de instalar, copie o .json da conta de serviço do Firebase para `app-data/florencio-store-vamos-jogar/data/firebase-service-account.json`, preencha `data/api.env` e reinicie o app. |
 
 ## Regras para adicionar novos apps
 

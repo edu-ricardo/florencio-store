@@ -11,17 +11,22 @@ services:
 
   web:
     # Imagens publicadas só para amd64 (x86)
-    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.0-homolog@sha256:b9743cd723a54f899481f522fffe8b370009d0c5f81d1b7d0a5ae501dbfabba8
+    image: ghcr.io/edu-ricardo/vamos-jogar-web:1.0.1-homolog
     restart: on-failure
     depends_on:
       - api
-    volumes:
-      # Aponta /api para o container desta app (o nome "api" é usado por outros apps na rede do Umbrel)
-      - ${APP_DATA_DIR}/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      # Nome completo do container: o nome curto "api" também é usado por outros apps na rede do Umbrel
+      API_UPSTREAM: florencio-store-vamos-jogar_api_1:3001
 
   api:
-    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.0-homolog@sha256:acd24cadc503124b05036485c71cfb0eb4364cff6e300133708e06f0b0de6a73
+    image: ghcr.io/edu-ricardo/vamos-jogar-api:1.0.1-homolog
     restart: on-failure
-    # Segredos ficam no Umbrel, fora da loja: ~/umbrel/app-data/florencio-store-vamos-jogar/data/api.env
+    # Segredos ficam no Umbrel, fora da loja: ~/umbrel/app-data/florencio-store-vamos-jogar/data/
     env_file:
       - ${APP_DATA_DIR}/data/api.env
+    environment:
+      # Arquivo .json da conta de serviço do Firebase, copiado para a pasta data do app
+      GOOGLE_APPLICATION_CREDENTIALS: /data/firebase-service-account.json
+    volumes:
+      - ${APP_DATA_DIR}/data:/data:ro
