@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-filestash_server_1
+      APP_PORT: 8334
+
+  server:
+    # O projeto só publica a tag "latest" (sem versões); o digest fixa a build usada
+    image: machines/filestash:latest@sha256:b6514539c935ed63d240bbe26a7127fb76125850db5d41a53bbba84d465a15a3
+    restart: on-failure
+    environment:
+      # Usado nos links de compartilhamento
+      APPLICATION_URL: http://${DEVICE_DOMAIN_NAME}:8803
+    volumes:
+      - ${APP_DATA_DIR}/data/state:/app/data/state
+      # Arquivos do Umbrel (app Files) para o backend "Local": caminho /umbrel/...
+      - ${UMBREL_ROOT}/data/storage:/umbrel

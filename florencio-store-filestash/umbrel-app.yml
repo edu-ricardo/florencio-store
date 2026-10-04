@@ -1,0 +1,34 @@
+manifestVersion: 1
+id: florencio-store-filestash
+category: files
+name: Filestash
+version: "2026.10.04"
+tagline: File manager for your files and every storage you use
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-filestash/icon.png
+description: >-
+  Filestash is a web file manager that works on top of the storage you already
+  have: your Umbrel files, SFTP, FTP, WebDAV, SMB/Samba, S3 and S3-compatible
+  services, NFS, Git, Dropbox, Google Drive and more. Browse, upload, preview
+  photos and videos, edit text files and share links from one interface.
+
+
+  First access: open /admin to create the admin password. To browse the Umbrel
+  files (the Files app), connect with the "Local" backend using that admin
+  password and the path /umbrel.
+
+
+  The project publishes only a rolling "latest" image; this app pins the build
+  from the date in its version.
+developer: Mickael Kerjean
+website: https://www.filestash.app
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/mickael-kerjean/filestash
+support: https://github.com/mickael-kerjean/filestash/issues
+port: 8803
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
