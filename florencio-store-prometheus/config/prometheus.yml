@@ -1,0 +1,28 @@
+# Configuração do Prometheus.
+# No Umbrel este arquivo fica em:
+#   /home/umbrel/umbrel/app-data/florencio-store-prometheus/config/prometheus.yml
+# Depois de editar, reinicie o app (ou: curl -X POST http://umbrel.local:9095/-/reload).
+
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+
+scrape_configs:
+  # O próprio Prometheus
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Métricas do host Umbrel (CPU, memória, disco, rede, temperatura)
+  - job_name: node
+    static_configs:
+      - targets: ["host.docker.internal:9100"]
+        labels:
+          instance: umbrel
+
+  # Métricas por container (cada app do Umbrel)
+  - job_name: cadvisor
+    static_configs:
+      - targets: ["florencio-store-prometheus_cadvisor_1:8080"]
+        labels:
+          instance: umbrel

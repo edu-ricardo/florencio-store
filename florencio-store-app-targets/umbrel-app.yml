@@ -1,0 +1,32 @@
+manifestVersion: 1
+id: florencio-store-app-targets
+category: developer
+name: Destinos dos Apps
+version: "1.1.0"
+tagline: Internal address of every installed app, ready for Cloudflare Tunnel
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-app-targets/icon.svg
+description: >-
+  Lists the internal address (http://container:port) of every app installed on
+  your Umbrel - the value to use as the Service in Cloudflare Tunnel, DockFlare
+  or any container that needs to reach another app. It reads the app files in
+  Umbrel's app-data folder (read-only) and needs no access to Docker.
+
+
+  The page has search, sorting, one-click copy, row selection and CSV/Markdown
+  export. Enter your domain to get a suggested subdomain per app; the domain
+  and the subdomains you edit are saved, and apps with a subdomain get an Open
+  button. For host-network apps (Home Assistant, Scrypted) enter your Umbrel's
+  IP address.
+developer: edu-ricardo
+website: https://github.com/edu-ricardo/umbrel-app-targets
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/edu-ricardo/umbrel-app-targets
+support: https://github.com/edu-ricardo/umbrel-app-targets/issues
+port: 8800
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

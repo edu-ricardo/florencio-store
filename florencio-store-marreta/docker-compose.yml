@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-marreta_web_1
+      APP_PORT: 8080
+
+  # A imagem roda como www-data (uid 33); ajusta o dono da pasta de dados antes de subir
+  permissions:
+    image: busybox:1.38.0@sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e
+    restart: "no"
+    command: ["chown", "-R", "33:33", "/storage"]
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/storage
+
+  web:
+    image: ghcr.io/manualdousuario/marreta:3.0.4@sha256:9bb6484bb8d84ad091f94472d26550e31cdcf6a8d57bd6a3ee77e51e8d65d0ea
+    restart: on-failure
+    depends_on:
+      permissions:
+        condition: service_completed_successfully
+      browser:
+        condition: service_started
+    environment:
+      APP_NAME: Marreta
+      # APP_KEY fica de fora de propósito: o Marreta gera a chave no primeiro boot
+      # (storage/app/app.key). Definir APP_KEY vazio aqui faz o Laravel ignorar a
+      # chave gerada e todas as páginas darem erro 500.
+      APP_DEBUG: "false"
+      APP_URL: http://${DEVICE_DOMAIN_NAME}:8796
+      APP_LOCALE: pt-br
+      APP_DESCRIPTION: Chapéu de paywall é marreta!
+      BROWSER_WS_ENDPOINT: ws://florencio-store-marreta_browser_1:9222
+      DISABLE_CACHE: "false"
+      ADMIN_EMAIL: admin@marreta.local
+      # Senha mostrada pelo Umbrel ao abrir o app (painel /admin)
+      ADMIN_PASSWORD: ${APP_PASSWORD}
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/var/www/html/storage/app
+
+  # Navegador headless usado para abrir as páginas
+  browser:
+    image: lightpanda/browser:nightly@sha256:33fb3a42366a2e8aa11211e9c412e71d1779a223865d3a53eae937fb4e9e4537
+    restart: on-failure

@@ -1,0 +1,20 @@
+version: "3.7"
+
+# Rede do host: necessária para HomeKit, descoberta de câmeras (mDNS/ONVIF) e
+# streaming. Por isso não há app_proxy: o painel é servido direto na porta 11080.
+services:
+  server:
+    # Variante NVIDIA (CUDA). A GPU é injetada pelo umbrelOS (permissions: GPU)
+    image: ghcr.io/koush/scrypted:v0.147.0-noble-nvidia@sha256:9ce2dcce0b0fd33e9d8363dd2f290c99402d28be8c7f41d309be8c0be69ee37b
+    restart: on-failure
+    network_mode: host
+    environment:
+      SCRYPTED_INSECURE_PORT: 11080
+      # 10443 (padrão) já é usada pelo app Stalwart do Umbrel
+      SCRYPTED_SECURE_PORT: 10453
+      TZ: America/Sao_Paulo
+    volumes:
+      - ${APP_DATA_DIR}/data:/server/volume
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8

@@ -1,0 +1,39 @@
+manifestVersion: 1
+id: florencio-store-bookorbit
+category: media
+name: BookOrbit
+version: "3.2.0"
+tagline: Your self-hosted library and reading space
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-bookorbit/icon.png
+description: >-
+  BookOrbit is a self-hosted library and reading platform for ebooks, PDFs,
+  audiobooks and comics. Read in the browser, on iPhone, Apple Watch, Kobo or
+  KOReader and keep your progress, highlights and status in sync everywhere.
+
+
+  Features include 14 metadata providers, reading statistics and achievements,
+  OPDS and Send-to-Kindle delivery, multi-user accounts with OIDC/SSO, and
+  automatic sync to Hardcover, Readwise and StoryGraph.
+
+
+  First run: on the setup screen, create your admin account and paste the
+  password shown by Umbrel into the "Setup token" field.
+
+
+  Your library lives in the Umbrel Files app under Downloads/books
+  (mounted as /books inside BookOrbit).
+developer: BookOrbit
+website: https://bookorbit.app
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/bookorbit/bookorbit
+support: https://github.com/bookorbit/bookorbit/issues
+port: 8746
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-bookorbit/1.png
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: "$APP_PASSWORD"
+deterministicPassword: true

@@ -1,0 +1,19 @@
+version: "3.7"
+
+# Rede do host: é o único jeito de o scanner enxergar os aparelhos da sua rede
+# (numa rede Docker ele só veria outros containers). Por isso não há app_proxy:
+# o painel é servido direto na porta 291 do Umbrel.
+services:
+  server:
+    image: ghcr.io/291-group/lan-orangutan:3.3.8@sha256:86b55c80eeb13df264b44da866975083f80530966984d01de323849a1dbe8496
+    restart: on-failure
+    network_mode: host
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+      - NET_BIND_SERVICE
+    environment:
+      ORANGUTAN_PORT: 291
+      TZ: America/Sao_Paulo
+    volumes:
+      - ${APP_DATA_DIR}/data:/var/lib/lan-orangutan

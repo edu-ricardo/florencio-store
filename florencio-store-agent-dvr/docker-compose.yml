@@ -2,27 +2,26 @@ version: "3.7"
 
 services:
   app_proxy:
-    image: getumbrel/app-proxy:v0.2.0
-    restart: on-failure
     environment:
-      APP_HOST: server
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-agent-dvr_server_1
       APP_PORT: 8090
 
   server:
-    image: ispysoftware/agentdvr:latest
+    image: ispysoftware/agentdvr:8.0.8.0
     restart: on-failure
     stop_grace_period: 1m
     environment:
-      - PUID=${APP_UID}
-      - PGID=${APP_GID}
-      - TZ=${TIMEZONE}
-      - AGENTDVR_WEBUI_PORT=8090
-      - WEBUI_PORT=8090
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Sao_Paulo
+      AGENTDVR_WEBUI_PORT: 8090
     volumes:
       - ${APP_DATA_DIR}/data/config:/AgentDVR/Media/XML
-      - ${APP_DATA_DIR}/data/media:/AgentDVR/Media/WebServerRoot/Media/
+      - ${APP_DATA_DIR}/data/media:/AgentDVR/Media/WebServerRoot/Media
       - ${APP_DATA_DIR}/data/commands:/AgentDVR/Commands
     ports:
+      # TURN/WebRTC (streaming ao vivo)
       - 3478:3478/udp
       - 3478:3478/tcp
       - 50000-50010:50000-50010/udp

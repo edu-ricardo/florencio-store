@@ -1,0 +1,41 @@
+manifestVersion: 1
+id: florencio-store-dockflare
+category: networking
+name: DockFlare
+version: "3.1.6"
+tagline: Publish Umbrel apps on your domain through Cloudflare Tunnel
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-dockflare/icon.svg
+description: >-
+  DockFlare is a self-hosted control plane for Cloudflare Tunnel. It creates
+  and runs the cloudflared connector for you, keeps DNS records and ingress
+  rules in sync, and manages Cloudflare Access policies (login in front of an
+  app), all from a web UI, without opening ports on your router.
+
+
+  You need a domain on Cloudflare and an API token (Account ID, Zone ID and the
+  permissions listed in the DockFlare README). Complete the setup wizard on the
+  first access.
+
+
+  On Umbrel, add rules in the UI pointing to the app's container, for example
+  http://jellyfin_server_1:8096 or http://florencio-store-bookorbit_app_1:3000.
+  The cloudflared container is attached to Umbrel's app network, so every app
+  is reachable by its container name.
+
+
+  Note: DockFlare controls Docker through a restricted socket proxy. The
+  cloudflared container it creates is not removed when the app is uninstalled.
+developer: ChrispyBacon-dev
+website: https://dockflare.app
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/ChrispyBacon-dev/DockFlare
+support: https://github.com/ChrispyBacon-dev/DockFlare/issues
+port: 8799
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-dockflare/1.jpg
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

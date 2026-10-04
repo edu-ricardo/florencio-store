@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-libreseerr_web_1
+      APP_PORT: 5000
+      # O Libreseerr tem login próprio (usuários admin/comum)
+      PROXY_AUTH_ADD: "false"
+
+  web:
+    # Imagem publicada só para amd64 (x86)
+    image: ghcr.io/zamnzim/libreseerr:v0.9.1@sha256:3fdf028cd0c17b14fa0f85b1c60dd6e6afec841c4e4b48a4a4a8115ac4a17db0
+    restart: on-failure
+    environment:
+      TZ: America/Sao_Paulo
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/data

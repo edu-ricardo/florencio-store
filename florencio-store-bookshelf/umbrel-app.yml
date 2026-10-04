@@ -1,0 +1,41 @@
+manifestVersion: 1
+id: florencio-store-bookshelf
+category: media
+name: Bookshelf
+version: "0.4.21.182"
+tagline: Readarr revival - ebook collection manager with Hardcover metadata
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-bookshelf/icon.png
+description: >-
+  Bookshelf is a revival of Readarr, the ebook and audiobook collection manager
+  for Usenet and BitTorrent users. It monitors RSS feeds for new books from your
+  favorite authors and grabs, sorts and renames them. This build uses Hardcover
+  as its metadata provider, replacing Readarr's retired metadata server.
+
+
+  It keeps the Readarr interface and API, so in Prowlarr you add it as a
+  "Readarr" application (URL: http://florencio-store-bookshelf_server_1:8787).
+
+
+  Setup tips on Umbrel:
+
+  - Settings > Media Management > Root Folders: add /downloads/books/ebooks.
+  That folder is also inside the BookOrbit library.
+
+  - Add Transmission (host: transmission_server_1, port 9091) or qBittorrent
+  (host: qbittorrent_server_1, port 8080) as the download client.
+
+
+  Each instance handles one type of book: use it for ebooks and Listenarr for audiobooks.
+developer: pennydreadful
+website: https://github.com/pennydreadful/bookshelf
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/pennydreadful/bookshelf
+support: https://github.com/pennydreadful/bookshelf/issues
+port: 8790
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

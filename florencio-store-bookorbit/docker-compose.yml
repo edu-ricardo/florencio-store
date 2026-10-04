@@ -1,0 +1,71 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-bookorbit_app_1
+      APP_PORT: 3000
+      # O BookOrbit tem login próprio; o Umbrel não pede senha de novo
+      PROXY_AUTH_ADD: "false"
+
+  app:
+    image: ghcr.io/bookorbit/bookorbit:3.2.0@sha256:1020eef9f004be972ac60e79dd5f416129f0d3d91491b803aa8fa656acb2b6a6
+    restart: on-failure
+    init: true
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      POSTGRES_HOST: florencio-store-bookorbit_postgres_1
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: bookorbit
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+      POSTGRES_DB: bookorbit
+      JWT_SECRET: ${APP_SEED}
+      PODCAST_ENCRYPTION_KEY: ${APP_SEED}-podcast
+      # Token pedido na tela de criação da conta admin (mostrado como "senha" no Umbrel)
+      SETUP_BOOTSTRAP_TOKEN: ${APP_PASSWORD}
+      APP_URL: http://${DEVICE_DOMAIN_NAME}:8746
+      TZ: America/Sao_Paulo
+      PUID: 1000
+      PGID: 1000
+      NODE_MAX_OLD_SPACE_SIZE: auto
+      LIBRARY_BROWSE_ROOT: /books
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      # Biblioteca de livros: pasta "Downloads/books" do app Files do Umbrel
+      - ${UMBREL_ROOT}/data/storage/downloads/books:/books
+      - ${APP_DATA_DIR}/data/app:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
+
+  postgres:
+    image: pgvector/pgvector:pg18@sha256:2ba9ca5f2e7daa0f0e7723cba1ee9167bab54efd3640516a44ac1a928dd67e7a
+    restart: on-failure
+    environment:
+      POSTGRES_USER: bookorbit
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+      POSTGRES_DB: bookorbit
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bookorbit -d bookorbit"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
