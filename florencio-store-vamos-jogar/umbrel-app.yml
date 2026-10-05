@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar
 category: social
 name: Vamos Jogar
-version: "2.1.0"
+version: "2.2.0"
 tagline: Organize as jogatinas de tabuleiro com os amigos
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
@@ -25,9 +25,10 @@ support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8801
 gallery: []
 releaseNotes: >-
-  Lembretes de voto por notificação no celular e no computador (ative em Conta →
-  Notificações). Os lembretes passam a ser verificados pelo próprio servidor. Antes de
-  atualizar, acrescente VAPID_PUBLIC_KEY e VAPID_PRIVATE_KEY ao data/api.env.
+  Novo visual: versão para computador com menu lateral e páginas em colunas, tema
+  claro/escuro conforme o aparelho e navegação no rodapé no celular. Ludoteca com
+  filtros por jogadores, duração e nome; votação com contagem ao vivo e lista de quem
+  já votou. Sem mudanças no banco nem no data/*.env.
 dependencies: []
 path: ""
 defaultUsername: ""
