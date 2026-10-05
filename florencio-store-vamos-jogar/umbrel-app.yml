@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar
 category: social
 name: Vamos Jogar
-version: "2.2.0"
+version: "2.3.0"
 tagline: Organize as jogatinas de tabuleiro com os amigos
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
@@ -25,10 +25,9 @@ support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8801
 gallery: []
 releaseNotes: >-
-  Novo visual: versão para computador com menu lateral e páginas em colunas, tema
-  claro/escuro conforme o aparelho e navegação no rodapé no celular. Ludoteca com
-  filtros por jogadores, duração e nome; votação com contagem ao vivo e lista de quem
-  já votou. Sem mudanças no banco nem no data/*.env.
+  Painel de administração (menu Admin): usuários, senha temporária, admins de grupos e
+  registro das ações; e Conta → Trocar senha. Antes de atualizar, acrescente ao
+  data/api.env a linha APP_ADMIN_EMAILS=seu-email (admins fixos, separados por vírgula).
 dependencies: []
 path: ""
 defaultUsername: ""
