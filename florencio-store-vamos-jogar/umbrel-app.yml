@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar
 category: social
 name: Vamos Jogar
-version: "2.5.0"
+version: "2.6.0"
 tagline: Organize as jogatinas de tabuleiro com os amigos
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
@@ -25,9 +25,11 @@ support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8801
 gallery: []
 releaseNotes: >-
-  Sair do grupo pela própria página do grupo; filtros por jogadores e duração ao sugerir
-  jogos para um evento; e botão para adicionar o evento ao calendário (arquivo .ics).
-  Sem mudanças no banco nem no data/*.env.
+  Notificações de evento novo, data definida, jogatina confirmada e véspera, com preferências em
+  Conta; confirmação de presença (vou, talvez, não vou); votação com várias datas, líder e
+  empate; ranking de jogos; ludoteca com ordenação, cadastro manual e jogos do grupo; histórico
+  do grupo. O banco é atualizado sozinho ao iniciar (duas migrações). Opcional: APP_TIMEZONE no
+  data/api.env (padrão America/Sao_Paulo).
 dependencies: []
 path: ""
 defaultUsername: ""
