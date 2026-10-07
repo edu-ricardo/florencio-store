@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar
 category: social
 name: Vamos Jogar
-version: "2.4.0"
+version: "2.5.0"
 tagline: Organize as jogatinas de tabuleiro com os amigos
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
@@ -25,8 +25,9 @@ support: https://github.com/edu-ricardo/vamos-jogar/issues
 port: 8801
 gallery: []
 releaseNotes: >-
-  Painel de admin: nova aba Eventos mostra quem ainda não votou e permite cobrar o voto
-  por notificação. Sem mudanças no banco nem no data/*.env.
+  Sair do grupo pela própria página do grupo; filtros por jogadores e duração ao sugerir
+  jogos para um evento; e botão para adicionar o evento ao calendário (arquivo .ics).
+  Sem mudanças no banco nem no data/*.env.
 dependencies: []
 path: ""
 defaultUsername: ""
