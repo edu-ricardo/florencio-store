@@ -1,0 +1,117 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-postiz_web_1
+      APP_PORT: 5000
+      # O Postiz tem login próprio e recebe os retornos (OAuth) das redes sociais,
+      # que o login do Umbrel bloquearia
+      PROXY_AUTH_ADD: "false"
+
+  web:
+    image: ghcr.io/gitroomhq/postiz-app:v2.25.0@sha256:7eb4a553507ce3f200deff2ec0211ab3cf834ba19eb44dd68e83ccc236509feb
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      temporal:
+        condition: service_healthy
+    # Endereço público e chaves das redes sociais (editável pelo usuário)
+    env_file:
+      - ${APP_DATA_DIR}/data/postiz.env
+    environment:
+      # Nomes completos: nomes curtos como "redis" também existem em outros apps na rede do Umbrel
+      DATABASE_URL: postgresql://postiz:${APP_PASSWORD}@florencio-store-postiz_postgres_1:5432/postiz
+      REDIS_URL: redis://florencio-store-postiz_redis_1:6379
+      TEMPORAL_ADDRESS: florencio-store-postiz_temporal_1:7233
+      BACKEND_INTERNAL_URL: http://localhost:3000
+      JWT_SECRET: ${APP_SEED}
+      IS_GENERAL: "true"
+      RUN_CRON: "true"
+      STORAGE_PROVIDER: local
+      UPLOAD_DIRECTORY: /uploads
+      NEXT_PUBLIC_UPLOAD_DIRECTORY: /uploads
+      API_LIMIT: 30
+      NX_ADD_PLUGINS: "false"
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/uploads:/uploads
+
+  postgres:
+    # Tag só com a versão principal: o verificador de atualizações não a troca
+    # (Postgres 18 não abre o banco do 17 sem migração)
+    image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
+    restart: on-failure
+    environment:
+      POSTGRES_USER: postiz
+      # Senha mostrada pelo Umbrel (só vale na criação do banco)
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+      POSTGRES_DB: postiz
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postiz -d postiz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  redis:
+    image: redis:7.2.16@sha256:46f15cf64fdef63e483dcda99e74e3d51c017b1175547b6bb874152ee2391aad
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/data/redis:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep -q PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  # Temporal: agenda e executa as publicações. Usa o próprio Postgres para a
+  # visibilidade (sem o Elasticsearch do compose oficial, que pede ~1 GB de RAM)
+  temporal-postgres:
+    # Versão principal fixa, pelo mesmo motivo do banco do Postiz
+    image: postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d
+    restart: on-failure
+    environment:
+      POSTGRES_USER: temporal
+      POSTGRES_PASSWORD: ${APP_PASSWORD}
+    volumes:
+      - ${APP_DATA_DIR}/data/temporal-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U temporal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  temporal:
+    image: temporalio/auto-setup:1.28.4@sha256:d4cdc015d667ab5ccc3c6d1221a8792f4603c62378313db9391e47f0cb367305
+    restart: on-failure
+    depends_on:
+      temporal-postgres:
+        condition: service_healthy
+    environment:
+      DB: postgres12
+      DB_PORT: 5432
+      POSTGRES_USER: temporal
+      POSTGRES_PWD: ${APP_PASSWORD}
+      POSTGRES_SEEDS: florencio-store-postiz_temporal-postgres_1
+      DYNAMIC_CONFIG_FILE_PATH: config/dynamicconfig/development-sql.yaml
+      TEMPORAL_NAMESPACE: default
+      # Sem os atributos de exemplo: no Postgres só cabem 3 do tipo Text e o Postiz
+      # precisa de 2 (organizationId e postId)
+      SKIP_ADD_CUSTOM_SEARCH_ATTRIBUTES: "true"
+    volumes:
+      - ${APP_DATA_DIR}/data/temporal:/etc/temporal/config/dynamicconfig
+    healthcheck:
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "florencio-store-postiz_temporal_1:7233"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s

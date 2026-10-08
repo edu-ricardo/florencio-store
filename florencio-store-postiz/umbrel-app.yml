@@ -1,0 +1,44 @@
+manifestVersion: 1
+id: florencio-store-postiz
+category: social
+name: Postiz
+version: "2.25.0"
+tagline: Schedule posts on all your social networks in one place
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-postiz/icon.svg
+description: >-
+  Postiz is an open-source social media scheduler. Write a post once, preview
+  it for each network and schedule it for X, LinkedIn, Instagram, Facebook,
+  Threads, Bluesky, Mastodon, YouTube, TikTok, Pinterest, Reddit, Discord,
+  Telegram and many more. It has a calendar, teams, analytics, an AI writing
+  assistant, a design editor and a public API.
+
+
+  First access: create your account on the sign-up page (it is the admin of
+  this install). Afterwards set DISABLE_REGISTRATION=true in the settings file
+  so nobody else can sign up.
+
+
+  Settings file: app-data/florencio-store-postiz/data/postiz.env. Log in using
+  the exact address written there (default http://umbrel.local:8805); with an
+  IP address or another name the login does not stick. Connecting most social
+  networks requires a public HTTPS address (for example a Cloudflare Tunnel
+  with DockFlare pointing to florencio-store-postiz_web_1:5000) and a
+  developer app on each network, whose keys also go in that file. Restart the
+  app after editing it.
+
+
+  The scheduler (Temporal) runs inside the app; it needs about 1.5 GB of RAM in
+  total.
+developer: Gitroom
+website: https://postiz.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/gitroomhq/postiz-app
+support: https://github.com/gitroomhq/postiz-app/issues
+port: 8805
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
