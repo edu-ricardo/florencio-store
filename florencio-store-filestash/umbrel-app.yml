@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-filestash
 category: files
 name: Filestash
-version: "2026.10.04"
+version: "2026.10.08"
 tagline: File manager for your files and every storage you use
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-filestash/icon.png
 description: >-

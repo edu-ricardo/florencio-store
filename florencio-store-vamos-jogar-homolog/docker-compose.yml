@@ -11,7 +11,7 @@ services:
 
   web:
     # Imagens publicadas só para amd64 (x86)
-    image: ghcr.io/edu-ricardo/vamos-jogar-web:2.0.0@sha256:9f73dc11154d3c6a717d591b14d1ad89939328fcfdbb8fb7071c69312fa69b1a
+    image: ghcr.io/edu-ricardo/vamos-jogar-web:2.7.0@sha256:9a20a5cc9f90705c96be21a9cfcdc10f203eae9dca2f00904659e413401e70ae
     restart: on-failure
     depends_on:
       - api
@@ -22,7 +22,7 @@ services:
       PB_UPSTREAM: florencio-store-vamos-jogar-homolog_pocketbase_1:8090
 
   api:
-    image: ghcr.io/edu-ricardo/vamos-jogar-api:2.0.0@sha256:dfd75478ee25c8395a0e9f9fb8add1b91e8574fe7c63edbbe392d6c5499fe522
+    image: ghcr.io/edu-ricardo/vamos-jogar-api:2.7.0@sha256:6542c85e03ce4c624753caafc2befc7fb154a086a3ca2d0fdce8b68d89fbacd7
     restart: on-failure
     depends_on:
       - pocketbase
@@ -36,7 +36,7 @@ services:
       - ${APP_DATA_DIR}/data/backup:/backup:ro
 
   pocketbase:
-    image: ghcr.io/edu-ricardo/vamos-jogar-pocketbase:2.0.0@sha256:96ab9363ee562f9919af22164a9de1b52e7a125afd4f64360a5b9717acb86b30
+    image: ghcr.io/edu-ricardo/vamos-jogar-pocketbase:2.7.0@sha256:803d941ba8db673bd08624231d46e9ef283be97e2a714a1b34eec9fa2bb3e915
     restart: on-failure
     env_file:
       - ${APP_DATA_DIR}/data/pocketbase.env

@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-vamos-jogar-homolog
 category: social
 name: Vamos Jogar (homologação)
-version: "2.0.0"
+version: "2.7.0"
 tagline: Ensaio da migração do Vamos Jogar para o PocketBase
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-vamos-jogar/icon.png
 description: >-
