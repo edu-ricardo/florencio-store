@@ -1,6 +1,8 @@
 # Configuração do FileBrowser Quantum no Umbrel.
-# Arquivo: /home/umbrel/umbrel/app-data/florencio-store-filebrowser-quantum/config/config.yaml
-# Depois de editar, reinicie o app pelo Umbrel.
+# Este arquivo é gerado a partir de config.yaml.template a cada instalação e atualização
+# do app: edições feitas em app-data/florencio-store-filebrowser-quantum/config.yaml
+# são perdidas na próxima atualização. Para mudar algo de forma permanente, altere o
+# config.yaml.template no repositório da loja.
 # Documentação: https://filebrowserquantum.com/en/docs/
 http:
   port: 80

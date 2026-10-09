@@ -18,11 +18,12 @@ services:
       # Senha do admin = a senha que o Umbrel mostra ao abrir o app
       FILEBROWSER_ADMIN_PASSWORD: ${APP_PASSWORD}
       # A imagem procura o config.yaml dentro de /home/filebrowser/data; como essa pasta
-      # é montada vazia (banco), a configuração fica numa pasta separada
+      # é montada vazia (banco), a configuração é montada de fora. O config.yaml é
+      # gerado pelo umbrelOS a partir do config.yaml.template (atualizado junto com o app)
       FILEBROWSER_CONFIG: /config/config.yaml
       FILEBROWSER_DATABASE_PATH: /home/filebrowser/data/database.sqlite
     volumes:
-      - ${APP_DATA_DIR}/config:/config:ro
+      - ${APP_DATA_DIR}/config.yaml:/config/config.yaml:ro
       - ${APP_DATA_DIR}/data:/home/filebrowser/data
       # Arquivos do Umbrel (app Files)
       - ${UMBREL_ROOT}/data/storage:/srv
