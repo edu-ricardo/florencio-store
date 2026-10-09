@@ -1,0 +1,43 @@
+manifestVersion: 1
+id: florencio-store-lidarr
+category: media
+name: Lidarr (HD externo)
+version: "3.1.0"
+tagline: Music collection manager with the library on your external drive
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lidarr/icon.png
+description: >-
+  Lidarr monitors your favorite artists, finds new albums, and organizes your
+  music library. This build mounts the "musica" folder of your external drive
+  at /musica, so the library (/musica/biblioteca) and the Soulseek downloads
+  (/musica/slskd/downloads) live on the same volume and imports are moved
+  instead of copied.
+
+
+  This is a separate app from the official Lidarr in the Umbrel App Store: the
+  official one only sees Downloads on the system disk and cannot be pointed at
+  an external drive without editing its files (edits are lost on every update).
+  This one uses another port, so both can be installed at the same time, but
+  only one is needed.
+
+
+  After installing: Settings > Media Management > Root Folders > add
+  /musica/biblioteca. The external drive needs a "musica" folder at its root.
+
+
+  Security: this app skips the Umbrel login (Prowlarr and Soularr use the API),
+  and forces Lidarr's own login. On the first access create the username and
+  password (Settings > General > Security, if Lidarr does not ask for them) and
+  do that before exposing the app to the internet.
+developer: Lidarr
+website: https://lidarr.audio
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Lidarr/Lidarr
+support: https://github.com/Lidarr/Lidarr/issues
+port: 8809
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

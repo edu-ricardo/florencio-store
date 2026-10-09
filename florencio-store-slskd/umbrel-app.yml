@@ -1,0 +1,50 @@
+manifestVersion: 1
+id: florencio-store-slskd
+category: media
+name: slskd + Soularr
+version: "0.26.0"
+tagline: Soulseek client with Soularr, which fills your Lidarr wishlist automatically
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-slskd/icon.svg
+description: >-
+  slskd is a modern web client for the Soulseek network (search, download and
+  share music). Soularr runs in the same app and connects it to Lidarr: it
+  takes the albums Lidarr is missing, searches them on Soulseek through slskd,
+  and tells Lidarr to import what was downloaded.
+
+
+  Everything lives on your external drive in the "musica" folder: downloads in
+  musica/slskd/downloads, incomplete files in musica/slskd/incompletos, and the
+  shared library in musica/biblioteca. The drive needs a "musica" folder at its
+  root; the app creates the subfolders by itself.
+
+
+  Soulseek needs port 50300/TCP reachable from the internet: forward it on your
+  router to the Umbrel's IP address. Sign in to slskd with the user "admin" and
+  the password shown by Umbrel, then set your Soulseek account in the slskd
+  options. Use the app together with the "Lidarr (HD externo)" app of this store.
+
+
+  Soularr: the app ships a ready config.ini (app-data/florencio-store-slskd/data/
+  soularr/config.ini) with the right addresses and folders. Soularr does nothing
+  until you paste the two API keys in it (Lidarr's and the slskd key you create)
+  and restart the app. The Soularr page (port 8265) has NO login: keep it on your
+  local network only.
+
+
+  Security: this app skips the Umbrel login, so slskd is protected only by its
+  own login (never the default slskd/slskd, which is replaced here). Sharing your
+  library on Soulseek is your responsibility.
+developer: slskd
+website: https://github.com/slskd/slskd
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/slskd/slskd
+support: https://github.com/slskd/slskd/issues
+port: 8810
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: "admin"
+defaultPassword: "$APP_PASSWORD"
+deterministicPassword: true

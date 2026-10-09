@@ -1,0 +1,41 @@
+manifestVersion: 1
+id: florencio-store-navidrome
+category: media
+name: Navidrome (HD externo)
+version: "0.64.2"
+tagline: Your music streaming server, reading the library from your external drive
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-navidrome/icon.png
+description: >-
+  Navidrome is a self-hosted music streaming server compatible with the
+  Subsonic API, so it works with dozens of apps (Symfonium, DSub, Feishin,
+  Substreamer and more) as well as its own web player. It reads the library
+  from the "musica/biblioteca" folder of your external drive (read-only), and
+  rescans it every 15 minutes.
+
+
+  This is a separate app from the official Navidrome in the Umbrel App Store:
+  that one reads Downloads/music on the system disk, this one reads your
+  external drive. It uses another port, so both can be installed at the same
+  time, but only one is needed.
+
+
+  The external drive needs a "musica" folder at its root. The app creates the
+  subfolders (biblioteca, playlists, slskd) by itself. On the first access you
+  create the admin account: do that before exposing the app to the internet.
+
+
+  Security: this app skips the Umbrel login (Subsonic apps cannot use it), so
+  the only protection is Navidrome's own login. Use a strong password.
+developer: Navidrome
+website: https://www.navidrome.org
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/navidrome/navidrome
+support: https://github.com/navidrome/navidrome/issues
+port: 8808
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-navidrome_server_1
+      APP_PORT: 4533
+      # O Navidrome tem login próprio e os apps Subsonic (DSub, Symfonium, Feishin...)
+      # não passam pelo login do Umbrel. Veja o README sobre a segurança disso.
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    image: deluan/navidrome:0.64.2@sha256:38dc2727bfcfd5ede290f8ada114fc90368146f265ae4701ddddbcbe2a44ee52
+    user: "1000:1000"
+    restart: on-failure
+    environment:
+      TZ: America/Sao_Paulo
+      ND_DATAFOLDER: /data
+      ND_MUSICFOLDER: /music
+      # "." = as playlists .m3u ficam dentro da própria biblioteca
+      ND_PLAYLISTSPATH: "."
+      # Procura músicas novas a cada 15 minutos
+      ND_SCANSCHEDULE: 15m
+      # Permite ao admin editar os perfis de transcodificação pela interface
+      ND_ENABLETRANSCODINGCONFIG: "true"
+    volumes:
+      # Banco e cache: disco do sistema, nunca no HD
+      - ${APP_DATA_DIR}/data:/data
+      # Biblioteca no HD externo, somente leitura. create_host_path: false faz o
+      # app falhar (em vez de criar a pasta no disco do sistema) se o HD sumir.
+      - type: bind
+        source: ${FLORENCIO_MUSICA_DIR}/biblioteca
+        target: /music
+        read_only: true
+        bind:
+          create_host_path: false

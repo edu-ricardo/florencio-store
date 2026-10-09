@@ -1,0 +1,71 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-slskd_slskd_1
+      APP_PORT: 5030
+      # O slskd tem login próprio (usuário e senha definidos abaixo, nunca o padrão
+      # slskd/slskd). Veja o README sobre a segurança disso.
+      PROXY_AUTH_ADD: "false"
+
+  # slskd primeiro: é a imagem que dá o número de versão do app
+  slskd:
+    image: slskd/slskd:0.26.0@sha256:ecd4026d4f8fb504e2cc55323efa2c1f5b56d20d3686b018249cc36b48ea17a6
+    user: "1000:1000"
+    restart: on-failure
+    ports:
+      # HTTPS do slskd (a página normal passa pelo app_proxy, na 5030)
+      - "5031:5031"
+      # Soulseek: precisa estar acessível de fora (redirecione no roteador)
+      - "50300:50300"
+    environment:
+      TZ: America/Sao_Paulo
+      # Permite editar a configuração (slskd.yml) pela interface web
+      SLSKD_REMOTE_CONFIGURATION: "true"
+      SLSKD_DOWNLOADS_DIR: /musica/slskd/downloads
+      SLSKD_INCOMPLETE_DIR: /musica/slskd/incompletos
+      SLSKD_SHARED_DIR: /musica/biblioteca
+      SLSKD_SLSK_LISTEN_PORT: "50300"
+      # Login da interface: usuário "admin" e a senha que o Umbrel mostra ao abrir o app
+      SLSKD_USERNAME: admin
+      SLSKD_PASSWORD: ${APP_PASSWORD}
+      # Chave que assina as sessões: fixa, para não deslogar a cada reinício
+      SLSKD_JWT_KEY: ${APP_SEED}
+    volumes:
+      # Configuração (slskd.yml) e banco: disco do sistema, nunca no HD
+      - ${APP_DATA_DIR}/data/slskd:/app
+      # <HD>/musica inteiro como /musica (downloads, incompletos e a biblioteca
+      # compartilhada). create_host_path: false faz o app falhar (em vez de criar a
+      # pasta no disco do sistema) se o HD sumir.
+      - type: bind
+        source: ${FLORENCIO_MUSICA_DIR}
+        target: /musica
+        bind:
+          create_host_path: false
+
+  # Pega os álbuns que faltam no Lidarr, procura no slskd e manda o Lidarr importar
+  soularr:
+    image: mrusse08/soularr:v1.2.2@sha256:c4f97924fabfce4e0de539d821ea7d20519b95c4815a707bacfc9d7212597f20
+    user: "1000:1000"
+    hostname: soularr
+    restart: on-failure
+    depends_on:
+      - slskd
+    ports:
+      # Interface web do Soularr: SEM login e sem app_proxy. Só rede local.
+      - "8265:8265"
+    environment:
+      TZ: America/Sao_Paulo
+      SCRIPT_INTERVAL: 300
+      WEBUI_ENABLED: "true"
+    volumes:
+      # config.ini e logs do Soularr: disco do sistema, nunca no HD
+      - ${APP_DATA_DIR}/data/soularr:/data
+      # Mesma pasta de downloads do slskd, como o Soularr a enxerga (/downloads)
+      - type: bind
+        source: ${FLORENCIO_MUSICA_DIR}/slskd/downloads
+        target: /downloads
+        bind:
+          create_host_path: false

@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-lidarr_server_1
+      APP_PORT: 8686
+      # O Lidarr tem login próprio (forçado abaixo) e o Prowlarr/Soularr falam com
+      # ele pela API. Veja o README sobre a segurança disso.
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    image: linuxserver/lidarr:3.1.0@sha256:67887807b13ae025c0fe979da298347c8609969087ab064c81d8e9acc1e06bbf
+    restart: on-failure
+    # Imagem linuxserver: não usa "user:" (o s6-overlay precisa começar como root e
+    # troca para PUID/PGID, como o Lidarr oficial do Umbrel). Só /config é
+    # "chownado"; o HD (/musica) não é tocado.
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Sao_Paulo
+      # Um Lidarr novo vem SEM autenticação. Aqui o login é obrigatório sempre,
+      # inclusive para quem chega pela rede interna ou pelo túnel.
+      LIDARR__AUTH__METHOD: Forms
+      LIDARR__AUTH__REQUIRED: Enabled
+    volumes:
+      # Configuração e banco: disco do sistema, nunca no HD
+      - ${APP_DATA_DIR}/data/config:/config
+      # <HD>/musica inteiro como /musica: o root folder fica em /musica/biblioteca e
+      # os downloads do slskd em /musica/slskd/downloads, no MESMO volume, então a
+      # importação move os arquivos em vez de copiar. create_host_path: false faz o
+      # app falhar (em vez de criar a pasta no disco do sistema) se o HD sumir.
+      - type: bind
+        source: ${FLORENCIO_MUSICA_DIR}
+        target: /musica
+        bind:
+          create_host_path: false
+      # Downloads do Umbrel (Transmission): mesmo caminho /downloads que o
+      # Transmission informa, para o Lidarr achar os arquivos sem mapeamento de pasta
+      - ${UMBREL_ROOT}/data/storage/downloads:/downloads
