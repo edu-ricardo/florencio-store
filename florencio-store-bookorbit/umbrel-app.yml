@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-bookorbit
 category: media
 name: BookOrbit
-version: "3.2.0"
+version: "3.3.0"
 tagline: Your self-hosted library and reading space
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-bookorbit/icon.png
 description: >-

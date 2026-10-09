@@ -91,7 +91,7 @@ services:
       start_period: 10s
 
   temporal:
-    image: temporalio/auto-setup:1.28.4@sha256:d4cdc015d667ab5ccc3c6d1221a8792f4603c62378313db9391e47f0cb367305
+    image: temporalio/auto-setup:1.29.7@sha256:f14912b699cf73015ad5c4fc18d522d4b014db90e794039214dfb7c022c2644f
     restart: on-failure
     depends_on:
       temporal-postgres:
