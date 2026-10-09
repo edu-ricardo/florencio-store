@@ -38,4 +38,6 @@ unset florencio_candidate florencio_sub
 # slskd e Soularr rodam como 1000:1000 e gravam em app-data (disco do sistema).
 # O config.ini do Soularr é copiado na instalação, possivelmente como root, e o
 # Soularr precisa poder editá-lo pela interface web. Sem -R de propósito.
-chown 1000:1000 "${EXPORTS_APP_DIR}/data/slskd" "${EXPORTS_APP_DIR}/data/soularr" "${EXPORTS_APP_DIR}/data/soularr/config.ini" 2>/dev/null || true
+florencio_app_dir="${EXPORTS_APP_DIR:-${UMBREL_ROOT}/app-data/florencio-store-slskd}"
+chown 1000:1000 "${florencio_app_dir}/data/slskd" "${florencio_app_dir}/data/soularr" "${florencio_app_dir}/data/soularr/config.ini" 2>/dev/null || true
+unset florencio_app_dir
