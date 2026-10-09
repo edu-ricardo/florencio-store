@@ -46,6 +46,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 
 O workflow [`check-app-updates.yml`](.github/workflows/check-app-updates.yml) roda nos dias 1 e 15 de cada mês (e manualmente em **Actions → Verificar atualizações dos apps → Run workflow**). Ele usa [`scripts/check_updates.py`](scripts/check_updates.py) para procurar versões novas de cada imagem, com o mesmo formato de tag da atual, e abre (ou atualiza) um Pull Request no branch `auto/app-updates` com a imagem, o digest e a versão do app já trocados. O Umbrel só oferece a atualização depois do merge.
 
-- Tags sem número de versão (`nightly`, `pg18`) não são verificadas.
+- Tags sem número de versão (`latest`, `nightly`, `pg18`) entram no PR quando sai uma build nova (o digest muda).
+- Em bancos de dados (Postgres, pgvector, CouchDB, MariaDB, MySQL, Mongo, Redis, Valkey) uma versão principal nova só é avisada no PR, nunca aplicada: ela costuma exigir migração dos dados.
 - Quando sai uma versão nova do openGym, a imagem `coach` é compilada antes do PR.
 - Para o workflow conseguir abrir o PR, ative em **Settings → Actions → General → Workflow permissions** a opção **Allow GitHub Actions to create and approve pull requests**. Sem ela, ele abre uma issue com o link do branch.

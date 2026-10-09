@@ -5,7 +5,8 @@ Para cada `image: repo:tag@sha256:...` dos docker-compose.yml, lista as tags do
 registro e procura a maior versão com o mesmo formato da atual (mesmo prefixo,
 mesmo sufixo e mesma quantidade de números: `v0.147.0-noble-nvidia` só é
 comparada com `vX.Y.Z-noble-nvidia`). Tags sem número de versão (`latest`,
-`nightly`, `pg18`) são ignoradas.
+`nightly`, `pg18`) são atualizadas quando o digest publicado muda. Em bancos de
+dados, uma versão principal nova só é avisada, nunca aplicada.
 
 Uso:
   check_updates.py plan            # JSON com as atualizações encontradas
@@ -18,6 +19,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -27,6 +29,11 @@ ROOT = Path(__file__).resolve().parent.parent
 OWN_BUILDS = {
     "ghcr.io/edu-ricardo/opengym-api-coach": "ghcr.io/duartesantos8/opengym-api",
 }
+
+# Bancos de dados: uma versão principal nova costuma exigir migração dos dados,
+# então ela só é avisada no PR, nunca aplicada automaticamente.
+DATABASES = {"postgres", "pgvector/pgvector", "couchdb", "mariadb", "mysql", "mongo",
+             "redis", "valkey/valkey", "bitnami/postgresql", "bitnami/redis"}
 
 IMAGE_LINE = re.compile(r"^(\s*image:\s*)(\S+)\s*$", re.M)
 VERSION_NUMBER = re.compile(r"\d+(?:\.\d+)+")
@@ -118,6 +125,14 @@ def newest_tag(repo, tag):
     return best
 
 
+def is_database(repo):
+    return repo.removeprefix("docker.io/").removeprefix("library/") in DATABASES
+
+
+def major(tag):
+    return VERSION_NUMBER.search(tag).group(0).split(".")[0]
+
+
 def read_field(manifest_text, field):
     m = re.search(rf'^{field}:\s*"?([^"\n]*)"?\s*$', manifest_text, re.M)
     return m.group(1).strip() if m else ""
@@ -136,26 +151,34 @@ def plan():
             "version": read_field(manifest_text, "version"),
             "repo": read_field(manifest_text, "repo"),
             "updates": [],
+            "held": [],
             "skipped": [],
         }
         for _, ref in IMAGE_LINE.findall(compose.read_text(encoding="utf-8")):
             parsed = split_image(ref)
             if not parsed:
                 continue
-            repo, tag, _ = parsed
+            repo, tag, pinned = parsed
+            update = {"repo": repo, "old_ref": ref, "old_tag": tag, "own_build": repo in OWN_BUILDS}
             try:
-                new = newest_tag(repo, tag)
+                if tag_pattern(tag):
+                    new = newest_tag(repo, tag)
+                    if new and is_database(repo) and major(new) != major(tag):
+                        app["held"].append(f"{repo}: `{tag}` → `{new}`")
+                        new = None
+                    if new:
+                        app["updates"].append({**update, "new_tag": new})
+                    elif not pinned:
+                        # Sem digest: fixa a build atual da mesma tag
+                        app["updates"].append({**update, "new_tag": tag, "rolling": True})
+                else:
+                    # Tag sem número (latest, nightly, pg18): nova build = digest diferente
+                    current = digest_of(repo, tag)
+                    if current != pinned:
+                        app["updates"].append({**update, "new_tag": tag, "rolling": True, "new_digest": current})
             except (urllib.error.URLError, KeyError, ValueError) as e:
                 app["skipped"].append(f"{repo}:{tag} (erro: {e})")
-                continue
-            if new is None and not tag_pattern(tag):
-                app["skipped"].append(f"{repo}:{tag} (tag sem número de versão)")
-            if new:
-                app["updates"].append({
-                    "repo": repo, "old_ref": ref, "old_tag": tag, "new_tag": new,
-                    "own_build": repo in OWN_BUILDS,
-                })
-        if app["updates"] or app["skipped"]:
+        if app["updates"] or app["held"] or app["skipped"]:
             apps.append(app)
     return apps
 
@@ -163,7 +186,12 @@ def plan():
 def new_app_version(app):
     """Troca o número da versão do app pelo da imagem principal (a que tem o mesmo número)."""
     version = app["version"]
+    if any(u.get("rolling") for u in app["updates"]) and re.fullmatch(r"\d{4}\.\d{2}\.\d{2}", version):
+        # App versionado pela data da build (imagem só com "latest")
+        return date.today().strftime("%Y.%m.%d")
     for u in app["updates"]:
+        if u.get("rolling"):
+            continue
         old_number = VERSION_NUMBER.search(u["old_tag"]).group(0)
         new_number = VERSION_NUMBER.search(u["new_tag"]).group(0)
         if old_number in version:
@@ -177,12 +205,17 @@ def apply(apps, body_path):
     changed = False
     for app in apps:
         if not app["updates"]:
+            if app["held"]:
+                lines.append(f'### {app["name"]}  `{app["version"]}`')
+                lines += [f"- 🛑 {h}: versão principal nova de banco de dados, não aplicada. "
+                          "Atualize à mão depois de ler as notas de migração." for h in app["held"]]
+                lines.append("")
             continue
         folder = ROOT / app["dir"]
         compose = folder / "docker-compose.yml"
         text = compose.read_text(encoding="utf-8")
         for u in app["updates"]:
-            digest = digest_of(u["repo"], u["new_tag"])
+            digest = u.get("new_digest") or digest_of(u["repo"], u["new_tag"])
             text = text.replace(u["old_ref"], f'{u["repo"]}:{u["new_tag"]}@{digest}')
         compose.write_text(text, encoding="utf-8", newline="\n")
 
@@ -197,17 +230,22 @@ def apply(apps, body_path):
         lines.append(f'### {app["name"]}  `{app["version"]}` → `{version or app["version"]}`')
         for u in app["updates"]:
             note = " (compilada por esta loja)" if u["own_build"] else ""
-            lines.append(f'- `{u["repo"]}`: `{u["old_tag"]}` → `{u["new_tag"]}`{note}')
+            if u.get("rolling"):
+                lines.append(f'- `{u["repo"]}`: `{u["old_tag"]}` (build nova da mesma tag)')
+            else:
+                lines.append(f'- `{u["repo"]}`: `{u["old_tag"]}` → `{u["new_tag"]}`{note}')
+        lines += [f"- 🛑 {h}: versão principal nova de banco de dados, não aplicada. "
+                  "Atualize à mão depois de ler as notas de migração." for h in app["held"]]
         if not version:
-            lines.append("- ⚠️ Só imagens auxiliares mudaram: a versão do app não foi alterada, então o "
-                         "Umbrel só entrega isso junto com a próxima atualização da imagem principal.")
+            lines.append("- ⚠️ A versão do app não mudou (só imagens auxiliares ou uma build nova da mesma "
+                         "tag), então o Umbrel só entrega isso junto com a próxima atualização do app.")
         if app["repo"]:
             lines.append(f'- Notas de versão: {app["repo"].rstrip("/")}/releases')
         lines.append("")
 
     skipped = [(a["name"], s) for a in apps for s in a["skipped"]]
     if skipped:
-        lines += ["<details><summary>Imagens não verificadas</summary>", ""]
+        lines += ["<details><summary>Imagens que não puderam ser verificadas</summary>", ""]
         lines += [f"- {name}: `{s}`" for name, s in skipped]
         lines += ["", "</details>", ""]
     lines += ["Revise as notas de versão antes do merge: o Umbrel oferece a atualização assim que "
