@@ -35,6 +35,10 @@ OWN_BUILDS = {
 DATABASES = {"postgres", "pgvector/pgvector", "couchdb", "mariadb", "mysql", "mongo",
              "redis", "valkey/valkey", "bitnami/postgresql", "bitnami/redis"}
 
+# Teto de versão principal por imagem. linuxserver/lidarr tem uma tag solta "8.1.2135"
+# (nov/2021) que parece a mais nova, mas é um resto antigo: o Lidarr atual é 3.x.
+MAX_MAJOR = {"linuxserver/lidarr": 3}
+
 IMAGE_LINE = re.compile(r"^(\s*image:\s*)(\S+)\s*$", re.M)
 VERSION_NUMBER = re.compile(r"\d+(?:\.\d+)+")
 INDEX_TYPES = ", ".join([
@@ -120,8 +124,13 @@ def newest_tag(repo, tag):
     best, best_version = None, as_tuple(current)
     for candidate in list_tags(OWN_BUILDS.get(repo, repo)):
         m = regex.match(candidate)
-        if m and as_tuple(m.group(1)) > best_version:
-            best, best_version = candidate, as_tuple(m.group(1))
+        if not m:
+            continue
+        found = as_tuple(m.group(1))
+        if repo in MAX_MAJOR and found[0] > MAX_MAJOR[repo]:
+            continue
+        if found > best_version:
+            best, best_version = candidate, found
     return best
 
 
