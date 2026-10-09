@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-filebrowser-quantum
 category: files
 name: FileBrowser Quantum
-version: "2.0.0"
+version: "2.0.0-r1"
 tagline: Fast web file manager with sharing, previews and multiple users
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-filebrowser-quantum/icon.png
 description: >-
@@ -29,7 +29,8 @@ repo: https://github.com/gtsteffaniak/filebrowser
 support: https://github.com/gtsteffaniak/filebrowser/issues
 port: 8807
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Fixes the startup error "unknown field adminUsername" in the app configuration.
 dependencies: []
 path: ""
 defaultUsername: "admin"

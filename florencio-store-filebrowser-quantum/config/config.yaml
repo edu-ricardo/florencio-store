@@ -16,13 +16,14 @@ server:
     - path: "/srv"
       name: "Umbrel"
 auth:
+  # Usuário admin criado na primeira vez. A senha vem da variável
+  # FILEBROWSER_ADMIN_PASSWORD (a senha que o Umbrel mostra ao abrir o app).
+  # Na versão 2.0.0 esses campos ficam aqui, e não dentro de "methods.password".
+  adminUsername: "admin"
   methods:
     password:
       enabled: true
       minLength: 8
       signup: false
-      # Usuário admin criado na primeira vez. A senha vem da variável
-      # FILEBROWSER_ADMIN_PASSWORD (a senha que o Umbrel mostra ao abrir o app).
-      adminUsername: "admin"
     passkey:
       enabled: false
