@@ -1,0 +1,37 @@
+manifestVersion: 1
+id: florencio-store-filebrowser-quantum
+category: files
+name: FileBrowser Quantum
+version: "2.0.0"
+tagline: Fast web file manager with sharing, previews and multiple users
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-filebrowser-quantum/icon.png
+description: >-
+  FileBrowser Quantum is a fast, modern web file manager. Browse, upload,
+  download, rename and edit files, preview images, videos, audio and PDFs,
+  search, share links with expiry and password, manage multiple users with
+  per-folder permissions, and use WebDAV. It indexes your files so listing and
+  search stay quick on large libraries.
+
+
+  It shows the Umbrel Files folders (Downloads, Documents...). Sign in with the
+  user "admin" and the password shown by Umbrel. The password is reset to that
+  value every time the app restarts, so create another admin user inside the app
+  if you want a password of your own.
+
+
+  Settings live in app-data/florencio-store-filebrowser-quantum/config/config.yaml.
+  This is version 2, a major release: it is not compatible with the 1.x config format.
+developer: gtsteffaniak
+website: https://filebrowserquantum.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/gtsteffaniak/filebrowser
+support: https://github.com/gtsteffaniak/filebrowser/issues
+port: 8807
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: "admin"
+defaultPassword: "$APP_PASSWORD"
+deterministicPassword: true

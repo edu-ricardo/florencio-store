@@ -1,0 +1,28 @@
+# Configuração do FileBrowser Quantum no Umbrel.
+# Arquivo: /home/umbrel/umbrel/app-data/florencio-store-filebrowser-quantum/config/config.yaml
+# Depois de editar, reinicie o app pelo Umbrel.
+# Documentação: https://filebrowserquantum.com/en/docs/
+http:
+  port: 80
+  baseURL: "/"
+  # Atrás do proxy do Umbrel: usa o endereço real do cliente nos cookies, links e logs
+  trustProxyHeaders: true
+server:
+  logging:
+    - levels: "info|error|warning"
+      apiFilter: "disabled"
+  sources:
+    # Arquivos do Umbrel (o app Files): Downloads, Documents, etc.
+    - path: "/srv"
+      name: "Umbrel"
+auth:
+  methods:
+    password:
+      enabled: true
+      minLength: 8
+      signup: false
+      # Usuário admin criado na primeira vez. A senha vem da variável
+      # FILEBROWSER_ADMIN_PASSWORD (a senha que o Umbrel mostra ao abrir o app).
+      adminUsername: "admin"
+    passkey:
+      enabled: false

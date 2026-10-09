@@ -35,6 +35,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Filestash** | 8803 | Gerenciador de arquivos web para os arquivos do Umbrel e SFTP, S3, WebDAV, SMB, Drive... Senha de admin em `/admin`; arquivos do Umbrel pelo backend *Local* em `/umbrel`. |
 | **Postiz** | 8805 | Agendador de posts para várias redes sociais. Crie a conta no primeiro acesso e depois use `DISABLE_REGISTRATION=true`. Endereço e chaves das redes em `app-data/florencio-store-postiz/data/postiz.env`; o login só funciona pelo endereço escrito lá (padrão `http://umbrel.local:8805`). Para conectar as redes é preciso HTTPS público (DockFlare → `florencio-store-postiz_web_1:5000`). Usa ~1,5 GB de RAM. |
 | **Lingarr** | 8806 | Tradução automática de legendas de filmes e séries (Radarr/Sonarr). Use IA ou Google/Bing para pt-BR (o DeepL não tem pt-BR). |
+| **FileBrowser Quantum** | 8807 | Gerenciador de arquivos web rápido, com compartilhamento, prévias e vários usuários. Mostra as pastas do app Files. Login `admin` + senha do Umbrel. |
 
 ## Regras para adicionar novos apps
 
