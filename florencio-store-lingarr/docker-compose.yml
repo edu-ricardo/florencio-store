@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-lingarr_server_1
+      APP_PORT: 9876
+
+  server:
+    image: ghcr.io/lingarr-translate/lingarr:1.4.0@sha256:8f392cf1efe718e0fcbc735d6d82df0b0bf86594bf64998aad85e8f306263774
+    restart: on-failure
+    # A imagem roda como root; com o usuário do Umbrel as legendas gravadas ao lado
+    # dos vídeos ficam com o mesmo dono dos arquivos do app Files
+    user: "1000:1000"
+    environment:
+      ASPNETCORE_URLS: http://+:9876
+      HOME: /tmp
+      TZ: America/Sao_Paulo
+      # SQLite: sem precisar de um banco MySQL/PostgreSQL separado
+      DB_CONNECTION: sqlite
+      SQLITE_DB_PATH: local.db
+      DB_HANGFIRE_SQLITE_PATH: /app/config/Hangfire.db
+      TELEMETRY_ENABLED: "false"
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/app/config
+      # Mesmo caminho /downloads do Radarr e do Sonarr do Umbrel, para os caminhos
+      # dos filmes e séries que eles informam baterem com os daqui
+      - ${UMBREL_ROOT}/data/storage/downloads:/downloads

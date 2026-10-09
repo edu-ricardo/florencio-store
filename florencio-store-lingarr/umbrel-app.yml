@@ -1,0 +1,37 @@
+manifestVersion: 1
+id: florencio-store-lingarr
+category: media
+name: Lingarr
+version: "1.4.0"
+tagline: Translate subtitles automatically for your movies and shows
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lingarr/icon.png
+description: >-
+  Lingarr automatically translates subtitle files to the languages you want,
+  using LibreTranslate, DeepL (no pt-BR), Google, Bing, Microsoft, Yandex or AI
+  providers (OpenAI, Anthropic, Gemini, DeepSeek, Mistral, xAI, and Ollama or
+  any OpenAI-compatible model/router). It reads your library from Radarr and
+  Sonarr and writes the translated subtitle next to each video.
+
+
+  Setup on Umbrel (Settings page):
+
+  - Radarr: http://radarr_server_1:7878 and Sonarr: http://sonarr_server_1:8989,
+  with the API key from each one (Settings > General).
+
+  - Choose the translation service and the source and target languages.
+
+  Media is read from the Umbrel Downloads folder under /downloads, the same
+  path Radarr and Sonarr use.
+developer: Lingarr
+website: https://github.com/lingarr-translate/lingarr
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/lingarr-translate/lingarr
+support: https://github.com/lingarr-translate/lingarr/issues
+port: 8806
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
