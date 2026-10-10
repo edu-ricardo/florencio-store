@@ -53,7 +53,7 @@ Os três apps usam o mesmo volume do HD externo, para o Lidarr importar **movend
     └── incompletos/
 ```
 
-- **Só é preciso criar a pasta `musica` na raiz do HD** (app Files > External). O `exports.sh` de cada app procura o HD que a tem (o umbrelOS monta os HDs em `/home/umbrel/umbrel/external/<nome do HD>`) e cria as subpastas. Se o HD estiver desconectado, os apps **não sobem** de propósito, em vez de gravar no disco do sistema.
+- **Não é preciso criar nada à mão com um único HD:** o `exports.sh` de cada app usa o HD que já tem uma pasta `musica` na raiz (o umbrelOS monta os HDs em `/home/umbrel/umbrel/external/<nome do HD>`) ou, se nenhum tem e há exatamente um HD montado, cria a `musica` nele, e cria as subpastas. Com **dois ou mais HDs**, crie a pasta `musica` (app Files > External) no HD certo. Se o HD estiver desconectado, os apps **não sobem** de propósito, em vez de gravar no disco do sistema.
 - Configuração e bancos ficam em `app-data/<app>/data` (disco do sistema), nunca no HD.
 - Os três têm o login do Umbrel **desligado** (`PROXY_AUTH_ADD: "false"`) para funcionarem com apps Subsonic e com a API entre eles; a proteção é o login de cada app. **Crie as contas de administrador antes de publicar qualquer um pelo túnel.** A interface do Soularr (porta 8265) não tem login: só rede local.
 - Hostnames internos (para o túnel, o Prowlarr etc.): `florencio-store-navidrome_server_1:4533`, `florencio-store-lidarr_server_1:8686`, `florencio-store-slskd_slskd_1:5030`, `florencio-store-slskd_soularr_1:8265`. Prowlarr e Transmission (oficiais): `prowlarr_server_1:9696` e `transmission_server_1:9091`.

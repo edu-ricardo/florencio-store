@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-lidarr
 category: media
 name: Lidarr (HD externo)
-version: "3.1.0"
+version: "3.1.0-r1"
 tagline: Music collection manager with the library on your external drive
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lidarr/icon.png
 description: >-
@@ -21,7 +21,7 @@ description: >-
 
 
   After installing: Settings > Media Management > Root Folders > add
-  /musica/biblioteca. The external drive needs a "musica" folder at its root.
+  /musica/biblioteca. The app finds your external drive by itself: it uses the drive that has a "musica" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first).
 
 
   Security: this app skips the Umbrel login (Prowlarr and Soularr use the API),
@@ -36,7 +36,8 @@ repo: https://github.com/Lidarr/Lidarr
 support: https://github.com/Lidarr/Lidarr/issues
 port: 8809
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Creates the "musica" folder by itself when exactly one external drive is connected.
 dependencies: []
 path: ""
 defaultUsername: ""

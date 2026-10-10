@@ -22,7 +22,7 @@ A porta 8809 é só a da página do Umbrel (diferente da 8686 do Lidarr oficial,
 
 Biblioteca e downloads ficam no **mesmo volume**, então a importação **move** os arquivos em vez de copiar. No exFAT/NTFS não existe hardlink; não precisa dele para isso.
 
-O `exports.sh` procura o HD que tem uma pasta `musica` na raiz e cria as subpastas. Sem o HD, o app **não sobe** (de propósito), em vez de gravar música no disco do sistema.
+O `exports.sh` usa o HD que tem uma pasta `musica` na raiz. **Se nenhum tem e há exatamente um HD montado, ele cria a `musica` nesse HD**; com dois ou mais HDs, não adivinha: crie a pasta `musica` no HD certo. Cria também as subpastas. Sem o HD, o app **não sobe** (de propósito), em vez de gravar música no disco do sistema.
 
 ## Configurar depois de instalar
 

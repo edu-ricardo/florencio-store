@@ -23,7 +23,7 @@ Versões fixas: **slskd 0.26.0** (`slskd/slskd`) e **Soularr v1.2.2** (`mrusse08
 | `<HD>/musica/slskd/incompletos` | `SLSKD_INCOMPLETE_DIR=/musica/slskd/incompletos` | — |
 | `<HD>/musica/biblioteca` | `SLSKD_SHARED_DIR=/musica/biblioteca` (compartilhada no Soulseek) | — |
 
-A configuração do slskd (`slskd.yml`) e a do Soularr (`config.ini`) ficam no **disco do sistema**, em `app-data/florencio-store-slskd/data/slskd` e `.../data/soularr`. O `exports.sh` procura o HD que tem uma pasta `musica` na raiz e cria as subpastas; sem o HD o app **não sobe** (de propósito), em vez de baixar músicas para o disco do sistema.
+A configuração do slskd (`slskd.yml`) e a do Soularr (`config.ini`) ficam no **disco do sistema**, em `app-data/florencio-store-slskd/data/slskd` e `.../data/soularr`. O `exports.sh` usa o HD que tem uma pasta `musica` na raiz. **Se nenhum tem e há exatamente um HD montado, ele cria a `musica` nesse HD**; com dois ou mais HDs, não adivinha: crie a pasta `musica` no HD certo. Cria também as subpastas. Sem o HD o app **não sobe** (de propósito), em vez de baixar músicas para o disco do sistema.
 
 ## 1. Abrir a porta no roteador (obrigatório para o Soulseek)
 

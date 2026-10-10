@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-slskd
 category: media
 name: slskd + Soularr
-version: "0.26.0"
+version: "0.26.0-r1"
 tagline: Soulseek client with Soularr, which fills your Lidarr wishlist automatically
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-slskd/icon.svg
 description: >-
@@ -14,8 +14,7 @@ description: >-
 
   Everything lives on your external drive in the "musica" folder: downloads in
   musica/slskd/downloads, incomplete files in musica/slskd/incompletos, and the
-  shared library in musica/biblioteca. The drive needs a "musica" folder at its
-  root; the app creates the subfolders by itself.
+  shared library in musica/biblioteca. The app finds your external drive by itself: it uses the drive that has a "musica" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first). It also creates the subfolders.
 
 
   Soulseek needs port 50300/TCP reachable from the internet: forward it on your
@@ -42,7 +41,8 @@ repo: https://github.com/slskd/slskd
 support: https://github.com/slskd/slskd/issues
 port: 8810
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Creates the "musica" folder by itself when exactly one external drive is connected.
 dependencies: []
 path: ""
 defaultUsername: "admin"

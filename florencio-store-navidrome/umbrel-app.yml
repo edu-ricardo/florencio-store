@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-navidrome
 category: media
 name: Navidrome (HD externo)
-version: "0.64.2"
+version: "0.64.2-r1"
 tagline: Your music streaming server, reading the library from your external drive
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-navidrome/icon.png
 description: >-
@@ -19,9 +19,9 @@ description: >-
   time, but only one is needed.
 
 
-  The external drive needs a "musica" folder at its root. The app creates the
-  subfolders (biblioteca, playlists, slskd) by itself. On the first access you
-  create the admin account: do that before exposing the app to the internet.
+  The app finds your external drive by itself: it uses the drive that has a "musica" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first). It also creates the subfolders (biblioteca,
+  playlists, slskd). On the first access you create the admin account: do that
+  before exposing the app to the internet.
 
 
   Security: this app skips the Umbrel login (Subsonic apps cannot use it), so
@@ -34,7 +34,8 @@ repo: https://github.com/navidrome/navidrome
 support: https://github.com/navidrome/navidrome/issues
 port: 8808
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Creates the "musica" folder by itself when exactly one external drive is connected.
 dependencies: []
 path: ""
 defaultUsername: ""

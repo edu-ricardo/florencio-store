@@ -20,7 +20,7 @@ A porta 8808 é só a da página do Umbrel. Ela é diferente da 4533 do app ofic
 | `<HD>/musica/biblioteca` | `/music` | somente leitura |
 | *(disco do sistema)* `app-data/florencio-store-navidrome/data` | `/data` | banco, cache e capas |
 
-O `exports.sh` procura o HD que tem uma pasta `musica` na raiz (o umbrelOS monta cada HD em `/home/umbrel/umbrel/external/<nome do HD>`) e cria as subpastas que faltarem. Se o HD estiver desconectado, o app **não sobe** (de propósito), em vez de criar uma biblioteca vazia no disco do sistema.
+O `exports.sh` usa o HD que tem uma pasta `musica` na raiz (o umbrelOS monta cada HD em `/home/umbrel/umbrel/external/<nome do HD>`). **Se nenhum tem e há exatamente um HD montado, ele cria a `musica` nesse HD**; com dois ou mais HDs, não adivinha: crie a pasta `musica` no HD certo. Cria também as subpastas que faltarem. Se o HD estiver desconectado, o app **não sobe** (de propósito), em vez de criar uma biblioteca vazia no disco do sistema.
 
 Configuração aplicada: `ND_SCANSCHEDULE=15m`, `ND_ENABLETRANSCODINGCONFIG=true`, `ND_PLAYLISTSPATH=.`.
 
