@@ -1,0 +1,45 @@
+manifestVersion: 1
+id: florencio-store-pinepods
+category: media
+name: PinePods
+version: "0.9.0"
+tagline: Self-hosted podcast manager with mobile apps and multi-user support
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-pinepods/icon.png
+description: >-
+  PinePods is a self-hosted podcast manager. Search and subscribe to podcasts,
+  play them in the browser, download episodes to the server, keep your progress
+  in sync across devices (it includes a gPodder-compatible API), and use the
+  native mobile apps. It supports multiple users, chapters and transcripts,
+  smart playlists, search across Podcast Index, iTunes and YouTube, and sign-in
+  with OIDC/SSO and two-factor authentication.
+
+
+  First access: PinePods asks you to create the first admin account. Do it right
+  away, before exposing the app to the internet: whoever opens it first becomes
+  the admin. The interface is set to Brazilian Portuguese by default for new
+  users.
+
+
+  Downloaded episodes go to the Downloads/pinepods folder of the Umbrel Files
+  app. Podcast search uses the project's public search service.
+
+
+  Security: this app skips the Umbrel login, because the mobile apps and the
+  gPodder sync talk straight to the server. The only protection is PinePods' own
+  login: use a strong password.
+developer: Collin Pendleton
+website: https://www.pinepods.online
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/madeofpendletonwool/PinePods
+support: https://github.com/madeofpendletonwool/PinePods/issues
+port: 8812
+gallery:
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-pinepods/1.jpg
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-pinepods/2.jpg
+  - https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-pinepods/3.jpg
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

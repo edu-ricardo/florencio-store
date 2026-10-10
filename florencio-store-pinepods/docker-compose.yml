@@ -1,0 +1,68 @@
+version: "3.7"
+
+# Nomes completos de container (florencio-store-pinepods_<serviço>_1): a rede do
+# Umbrel é compartilhada entre apps e nomes curtos como "db" existem em vários.
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-pinepods_server_1
+      APP_PORT: 8040
+      # O PinePods tem login próprio e os apps de celular e o gPodder falam direto
+      # com o servidor. Veja a descrição do app sobre a segurança disso.
+      PROXY_AUTH_ADD: "false"
+
+  db:
+    image: postgres:18.6@sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336
+    restart: on-failure
+    environment:
+      POSTGRES_DB: pinepods_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${APP_SEED}
+      PGDATA: /var/lib/pgdata/pgdata
+    volumes:
+      - ${APP_DATA_DIR}/data/postgres:/var/lib/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pinepods_database"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  valkey:
+    image: valkey/valkey:8.1.10-alpine@sha256:081c2f5cb575efc901aa80ff9cdbd1ec6a301682fd35e1ebb4b0990a4a4a8507
+    restart: on-failure
+
+  server:
+    image: madeofpendletonwool/pinepods:0.9.0@sha256:ebc258bb0c62cdb69e5fb726b247c885dac19b50d06fed68fa8d37197b88ace4
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+      valkey:
+        condition: service_started
+    environment:
+      # Busca de podcasts e de pessoas (serviços do próprio projeto)
+      SEARCH_API_URL: "https://search.pinepods.online/api/search"
+      PEOPLE_API_URL: "https://people.pinepods.online"
+      # Endereço do servidor usado nos links que o app gera
+      HOSTNAME: "http://${DEVICE_DOMAIN_NAME}:8812"
+      DB_TYPE: postgresql
+      DB_HOST: florencio-store-pinepods_db_1
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: ${APP_SEED}
+      DB_NAME: pinepods_database
+      VALKEY_HOST: florencio-store-pinepods_valkey_1
+      VALKEY_PORT: 6379
+      DEBUG_MODE: "false"
+      # O contêiner começa como root e troca para este usuário (o do Umbrel)
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Sao_Paulo
+      DEFAULT_LANGUAGE: pt-BR
+    volumes:
+      # Episódios baixados no servidor: pasta Downloads/pinepods do app Files
+      - ${UMBREL_ROOT}/data/storage/downloads/pinepods:/opt/pinepods/downloads
+      # Backups gerados pelo app: disco do sistema
+      - ${APP_DATA_DIR}/data/backups:/opt/pinepods/backups
