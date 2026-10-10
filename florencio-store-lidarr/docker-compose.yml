@@ -27,7 +27,7 @@ services:
     volumes:
       # Configuração e banco: disco do sistema, nunca no HD
       - ${APP_DATA_DIR}/data/config:/config
-      # <HD>/musica inteiro como /musica: o root folder fica em /musica/biblioteca e
+      # <HD>/music inteiro como /musica: o root folder fica em /musica/biblioteca e
       # os downloads do slskd em /musica/slskd/downloads, no MESMO volume, então a
       # importação move os arquivos em vez de copiar. create_host_path: false faz o
       # app falhar (em vez de criar a pasta no disco do sistema) se o HD sumir.

@@ -2,14 +2,14 @@ manifestVersion: 1
 id: florencio-store-navidrome
 category: media
 name: Navidrome (HD externo)
-version: "0.64.2-r1"
+version: "0.64.2-r2"
 tagline: Your music streaming server, reading the library from your external drive
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-navidrome/icon.png
 description: >-
   Navidrome is a self-hosted music streaming server compatible with the
   Subsonic API, so it works with dozens of apps (Symfonium, DSub, Feishin,
   Substreamer and more) as well as its own web player. It reads the library
-  from the "musica/biblioteca" folder of your external drive (read-only), and
+  from the "music/biblioteca" folder of your external drive (read-only), and
   rescans it every 15 minutes.
 
 
@@ -19,7 +19,7 @@ description: >-
   time, but only one is needed.
 
 
-  The app finds your external drive by itself: it uses the drive that has a "musica" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first). It also creates the subfolders (biblioteca,
+  The app finds your external drive by itself: it uses the drive that has a "music" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first). It also creates the subfolders (biblioteca,
   playlists, slskd). On the first access you create the admin account: do that
   before exposing the app to the internet.
 
@@ -35,7 +35,7 @@ support: https://github.com/navidrome/navidrome/issues
 port: 8808
 gallery: []
 releaseNotes: >-
-  Creates the "musica" folder by itself when exactly one external drive is connected.
+  The drive folder is now "music" (it was "musica"). Inside the containers the paths are still /musica.
 dependencies: []
 path: ""
 defaultUsername: ""

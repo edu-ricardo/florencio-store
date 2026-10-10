@@ -2,12 +2,12 @@ manifestVersion: 1
 id: florencio-store-lidarr
 category: media
 name: Lidarr (HD externo)
-version: "3.1.0-r1"
+version: "3.1.0-r2"
 tagline: Music collection manager with the library on your external drive
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lidarr/icon.png
 description: >-
   Lidarr monitors your favorite artists, finds new albums, and organizes your
-  music library. This build mounts the "musica" folder of your external drive
+  music library. This build mounts the "music" folder of your external drive
   at /musica, so the library (/musica/biblioteca) and the Soulseek downloads
   (/musica/slskd/downloads) live on the same volume and imports are moved
   instead of copied.
@@ -21,7 +21,7 @@ description: >-
 
 
   After installing: Settings > Media Management > Root Folders > add
-  /musica/biblioteca. The app finds your external drive by itself: it uses the drive that has a "musica" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first).
+  /musica/biblioteca. The app finds your external drive by itself: it uses the drive that has a "music" folder at its root, or creates that folder when only one drive is connected (with two or more drives, create the folder on the right one first).
 
 
   Security: this app skips the Umbrel login (Prowlarr and Soularr use the API),
@@ -37,7 +37,7 @@ support: https://github.com/Lidarr/Lidarr/issues
 port: 8809
 gallery: []
 releaseNotes: >-
-  Creates the "musica" folder by itself when exactly one external drive is connected.
+  The drive folder is now "music" (it was "musica"). Inside the containers the paths are still /musica.
 dependencies: []
 path: ""
 defaultUsername: ""

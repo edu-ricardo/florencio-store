@@ -36,7 +36,7 @@ services:
     volumes:
       # Configuração (slskd.yml) e banco: disco do sistema, nunca no HD
       - ${APP_DATA_DIR}/data/slskd:/app
-      # <HD>/musica inteiro como /musica (downloads, incompletos e a biblioteca
+      # <HD>/music inteiro como /musica (downloads, incompletos e a biblioteca
       # compartilhada). create_host_path: false faz o app falhar (em vez de criar a
       # pasta no disco do sistema) se o HD sumir.
       - type: bind

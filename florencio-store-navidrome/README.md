@@ -17,14 +17,14 @@ A porta 8808 é só a da página do Umbrel. Ela é diferente da 4533 do app ofic
 
 | No HD | No container | Acesso |
 | --- | --- | --- |
-| `<HD>/musica/biblioteca` | `/music` | somente leitura |
+| `<HD>/music/biblioteca` | `/music` | somente leitura |
 | *(disco do sistema)* `app-data/florencio-store-navidrome/data` | `/data` | banco, cache e capas |
 
-O `exports.sh` usa o HD que tem uma pasta `musica` na raiz (o umbrelOS monta cada HD em `/home/umbrel/umbrel/external/<nome do HD>`). **Se nenhum tem e há exatamente um HD montado, ele cria a `musica` nesse HD**; com dois ou mais HDs, não adivinha: crie a pasta `musica` no HD certo. Cria também as subpastas que faltarem. Se o HD estiver desconectado, o app **não sobe** (de propósito), em vez de criar uma biblioteca vazia no disco do sistema.
+O `exports.sh` usa o HD que tem uma pasta `music` na raiz (o umbrelOS monta cada HD em `/home/umbrel/umbrel/external/<nome do HD>`). **Se nenhum tem e há exatamente um HD montado, ele cria a `music` nesse HD**; com dois ou mais HDs, não adivinha: crie a pasta `music` no HD certo. Cria também as subpastas que faltarem. Se o HD estiver desconectado, o app **não sobe** (de propósito), em vez de criar uma biblioteca vazia no disco do sistema.
 
 Configuração aplicada: `ND_SCANSCHEDULE=15m`, `ND_ENABLETRANSCODINGCONFIG=true`, `ND_PLAYLISTSPATH=.`.
 
-> **Playlists:** com `ND_PLAYLISTSPATH=.` o Navidrome procura arquivos `.m3u` dentro da própria `biblioteca`. A pasta `<HD>/musica/playlists` **não é lida** por este app.
+> **Playlists:** com `ND_PLAYLISTSPATH=.` o Navidrome procura arquivos `.m3u` dentro da própria `biblioteca`. A pasta `<HD>/music/playlists` **não é lida** por este app.
 
 ## Segurança: login do Umbrel desligado
 
