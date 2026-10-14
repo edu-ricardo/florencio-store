@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-llama-cpp_server_1
+      APP_PORT: 8080
+
+  server:
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda12-b11610@sha256:b0baccbe2e00b5d74e63f85f9f023c93d61d0f329475269e1e7002e87eb875ea
+    restart: on-failure
+    stop_grace_period: 1m
+    environment:
+      LLAMA_ARG_HOST: 0.0.0.0
+      LLAMA_ARG_PORT: 8080
+      # Modo roteador: serve todos os .gguf da pasta de modelos e carrega sob demanda
+      LLAMA_ARG_MODELS_DIR: /models
+      # GTX 1650 (4 GB): um modelo por vez, tudo na GPU, contexto moderado
+      LLAMA_ARG_MODELS_MAX: 1
+      LLAMA_ARG_N_GPU_LAYERS: 999
+      LLAMA_ARG_CTX_SIZE: 8192
+    volumes:
+      # Coloque os arquivos .gguf em Downloads/llama.cpp (app Files)
+      - ${UMBREL_ROOT}/data/storage/downloads/llama.cpp:/models

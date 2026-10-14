@@ -40,6 +40,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Lidarr (HD externo)** | 8809 | Gerenciador de coleção de músicas com a biblioteca no HD. Interno: `florencio-store-lidarr_server_1:8686`. Veja [`README`](florencio-store-lidarr/README.md). |
 | **slskd + Soularr** | 8810 | Cliente Soulseek e o Soularr, que liga o slskd ao Lidarr. Interno: `florencio-store-slskd_slskd_1:5030`. Precisa abrir a porta 50300/TCP no roteador. Veja [`README`](florencio-store-slskd/README.md). |
 | **PinePods** | 8812 | Gerenciador de podcasts com apps de celular, sincronização gPodder e vários usuários. Cria o primeiro administrador no primeiro acesso. Episódios baixados em `Downloads/pinepods`. |
+| **llama.cpp** | 8813 | Servidor de modelos GGUF com interface de chat e API compatível com OpenAI, usando a GPU NVIDIA (imagem CUDA). Modelos em Downloads/llama.cpp. |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 

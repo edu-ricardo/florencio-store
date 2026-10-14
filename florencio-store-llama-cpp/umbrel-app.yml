@@ -1,0 +1,39 @@
+manifestVersion: 1.1
+id: florencio-store-llama-cpp
+category: ai
+name: llama.cpp
+version: "b11610"
+tagline: Run GGUF language models on your NVIDIA GPU with an OpenAI-compatible API
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-llama-cpp/icon.png
+description: >-
+  llama.cpp's llama-server runs GGUF language models locally, with a built-in
+  chat web interface and an OpenAI-compatible API. This build uses the CUDA
+  image and the GPU permission, so it uses the NVIDIA GPU of your Umbrel the
+  same way the Ollama app does.
+
+
+  Models: copy .gguf files into the Downloads/llama.cpp folder of the Umbrel
+  Files app (the folder is created on first start). The server lists every
+  model in that folder and loads the one you pick, one at a time (set for a
+  4 GB GPU like the GTX 1650: prefer models of about 3 GB or less, such as a
+  Q4 quantization of a 3B-4B model). Download the .gguf from Hugging Face.
+
+
+  Other apps (Open WebUI, n8n...) reach the API at
+  http://florencio-store-llama-cpp_server_1:8080/v1. The Umbrel login protects
+  the web interface.
+developer: ggml-org
+website: https://github.com/ggml-org/llama.cpp
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/ggml-org/llama.cpp
+support: https://github.com/ggml-org/llama.cpp/issues
+permissions:
+  - GPU
+port: 8813
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
