@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-slskd
 category: media
 name: slskd + Soularr
-version: "0.26.0-r2"
+version: "0.26.1"
 tagline: Soulseek client with Soularr, which fills your Lidarr wishlist automatically
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-slskd/icon.svg
 description: >-

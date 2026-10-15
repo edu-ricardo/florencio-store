@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-obsidian-livesync
 category: files
 name: Obsidian LiveSync
-version: "3.5.2"
+version: "3.5.3"
 tagline: Self-hosted sync server (CouchDB) for the Obsidian LiveSync plugin
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-obsidian-livesync/icon.svg
 description: >-

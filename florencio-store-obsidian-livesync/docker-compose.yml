@@ -4,7 +4,7 @@ version: "3.7"
 # do próprio CouchDB (Basic auth + CORS), que o login do Umbrel bloquearia.
 services:
   couchdb:
-    image: couchdb:3.5.2@sha256:8cf5f8442585c346d2717ff0ad95605731d2f19f67b8367840baa8d3b24ebc31
+    image: couchdb:3.5.3@sha256:3611ce43bd32fe2368997fd41ec6e7270ec8d84aa5fc13c9828e5b15fd6bafe8
     restart: on-failure
     ports:
       - 5984:5984
