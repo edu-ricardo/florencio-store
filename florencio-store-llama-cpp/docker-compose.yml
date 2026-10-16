@@ -16,6 +16,10 @@ services:
     restart: on-failure
     stop_grace_period: 1m
     environment:
+      # Sem isso o nvidia-container-runtime só libera "compute,utility"
+      # (o padrão): dá para CUDA, mas não inclui as bibliotecas de Vulkan, e
+      # o modelo acaba carregando na CPU mesmo com a GPU presente.
+      NVIDIA_DRIVER_CAPABILITIES: all
       LLAMA_ARG_HOST: 0.0.0.0
       LLAMA_ARG_PORT: 8080
       # Modo roteador: serve todos os .gguf da pasta de modelos e carrega sob demanda

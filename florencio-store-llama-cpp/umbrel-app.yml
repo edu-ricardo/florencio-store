@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-llama-cpp
 category: ai
 name: llama.cpp
-version: "b11610-r1"
+version: "b11610-r2"
 tagline: Run GGUF language models on your GPU with an OpenAI-compatible API
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-llama-cpp/icon.png
 description: >-
@@ -35,8 +35,9 @@ permissions:
 port: 8813
 gallery: []
 releaseNotes: >-
-  Switched to the Vulkan image: the CUDA image failed to install on drivers
-  older than the one CUDA 12.8 requires. Reinstall the app to pick this up.
+  Fixed the GPU not being used: the Vulkan libraries were not being passed
+  into the container (only the CUDA/utility ones were). Reinstall the app to
+  pick this up.
 dependencies: []
 path: ""
 defaultUsername: ""
