@@ -1,0 +1,43 @@
+manifestVersion: 1.1
+id: florencio-store-beszel
+category: networking
+name: Beszel
+version: "0.21.0"
+tagline: Lightweight server and Docker container monitoring
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-beszel/icon.svg
+description: >-
+  Beszel is a lightweight monitoring hub: CPU, memory, disk and Docker
+  container usage history, with configurable alerts (email, webhook,
+  Discord...) and multi-user support. It is a much lighter alternative to the
+  Prometheus + Grafana combo in this store, with a single dashboard and no
+  separate configuration files.
+
+
+  This app bundles the hub (the dashboard) and an agent (the collector) that
+  already monitors this Umbrel through the Docker socket (read-only). After
+  installing, open the hub, create the admin account, go to "Add system" and
+  paste the key and the token it generates into the "key" and "token" files
+  at app-data/florencio-store-beszel/data/agent-auth/ (over SSH, or any file
+  manager that reaches the Umbrel's filesystem), then restart the app.
+  Without that step the agent stays disconnected and the dashboard shows no
+  system. These are files, not docker-compose variables, so they survive app
+  updates.
+
+
+  This build does not use host network mode, so it does not show the Umbrel's
+  own network interface throughput; CPU, memory, disk and container stats work
+  normally. You can add more agents on other machines later, pointing each one
+  at this hub.
+developer: henrygd
+website: https://beszel.dev
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/henrygd/beszel
+support: https://github.com/henrygd/beszel/issues
+port: 8814
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

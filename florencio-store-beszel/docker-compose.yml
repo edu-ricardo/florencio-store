@@ -1,0 +1,38 @@
+version: "3.7"
+
+# Hub (painel) + Agent (coletor), no mesmo app. O agent lê o docker.sock
+# (somente leitura) para ver os containers e usa a rede do Umbrel para falar
+# com o hub pelo nome do container, por isso NÃO usa network_mode: host. Ele
+# não mostra o tráfego das interfaces de rede do próprio servidor (isso só dá
+# com rede do host); CPU, RAM, disco e containers funcionam normalmente.
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-beszel_hub_1
+      APP_PORT: 8090
+
+  hub:
+    image: henrygd/beszel:0.21.0@sha256:6b39a8b64f9b15d00a25e7683e31a93c46161182a54f62713525107064e10599
+    restart: on-failure
+    environment:
+      # Endereço usado nos links que o hub gera (notificações, etc.)
+      APP_URL: "http://${DEVICE_DOMAIN_NAME}:8814"
+    volumes:
+      - ${APP_DATA_DIR}/data/hub:/beszel_data
+
+  agent:
+    image: henrygd/beszel-agent:0.21.0@sha256:f27b1aa2c68404bc5b9e1a2ab36653bd9b4ee14f6299862f09cd5051a4134767
+    restart: on-failure
+    environment:
+      HUB_URL: "http://florencio-store-beszel_hub_1:8090"
+      # Lidos de arquivo (não de variável): editar o arquivo sobrevive a
+      # atualizações do app, editar a variável aqui não sobreviveria.
+      KEY_FILE: /run/secrets/beszel-key
+      TOKEN_FILE: /run/secrets/beszel-token
+    volumes:
+      - ${APP_DATA_DIR}/data/agent:/var/lib/beszel-agent
+      # Cole a chave pública e o token gerados em "Adicionar sistema" no hub
+      - ${APP_DATA_DIR}/data/agent-auth/key:/run/secrets/beszel-key:ro
+      - ${APP_DATA_DIR}/data/agent-auth/token:/run/secrets/beszel-token:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
