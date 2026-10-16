@@ -8,7 +8,11 @@ services:
       APP_PORT: 8080
 
   server:
-    image: ghcr.io/ggml-org/llama.cpp:server-cuda12-b11610@sha256:b0baccbe2e00b5d74e63f85f9f023c93d61d0f329475269e1e7002e87eb875ea
+    # Variante Vulkan, não CUDA: a imagem CUDA exige driver NVIDIA >= 570
+    # (CUDA 12.8); pela rede de muitos Umbrels ter driver mais antigo, o
+    # Vulkan usa o driver que já existir (mesmo dispositivo /dev/dri da
+    # permissão GPU), sem essa exigência de versão.
+    image: ghcr.io/ggml-org/llama.cpp:server-vulkan-b11610@sha256:d64043576ad8fb29170563c769a997dbc1b9928f0d4a127fb9e4a9706ccb475b
     restart: on-failure
     stop_grace_period: 1m
     environment:

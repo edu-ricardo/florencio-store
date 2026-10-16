@@ -2,14 +2,16 @@ manifestVersion: 1.1
 id: florencio-store-llama-cpp
 category: ai
 name: llama.cpp
-version: "b11610"
-tagline: Run GGUF language models on your NVIDIA GPU with an OpenAI-compatible API
+version: "b11610-r1"
+tagline: Run GGUF language models on your GPU with an OpenAI-compatible API
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-llama-cpp/icon.png
 description: >-
   llama.cpp's llama-server runs GGUF language models locally, with a built-in
-  chat web interface and an OpenAI-compatible API. This build uses the CUDA
-  image and the GPU permission, so it uses the NVIDIA GPU of your Umbrel the
-  same way the Ollama app does.
+  chat web interface and an OpenAI-compatible API. This build uses the Vulkan
+  image and the GPU permission, so it uses the GPU of your Umbrel (NVIDIA,
+  AMD or Intel) the same way the Ollama app does. The CUDA image would need a
+  newer NVIDIA driver (12.8+) than most Umbrels have; Vulkan uses whatever
+  driver is already installed.
 
 
   Models: copy .gguf files into the Downloads/llama.cpp folder of the Umbrel
@@ -32,7 +34,9 @@ permissions:
   - GPU
 port: 8813
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Switched to the Vulkan image: the CUDA image failed to install on drivers
+  older than the one CUDA 12.8 requires. Reinstall the app to pick this up.
 dependencies: []
 path: ""
 defaultUsername: ""
