@@ -1,0 +1,35 @@
+version: "3.7"
+
+# Imagem "solo": um container só, com SQLite embutido (sem Postgres/Redis
+# separados). Suficiente para uso de uma pessoa só; a imagem "manyfold" (com
+# Postgres + Redis) é para multiusuário e federação, fora do escopo aqui.
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-manyfold_server_1
+      APP_PORT: 3214
+
+  server:
+    image: manyfold3d/manyfold-solo:latest@sha256:772bcb18f0cb69d4fd0630d4676516f34fb37e42c3ac9d65eea5f173728e818e
+    restart: on-failure
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETUID
+      - SETGID
+    environment:
+      SECRET_KEY_BASE: ${APP_SEED}
+      PUID: 1000
+      PGID: 1000
+      # Sem MULTIUSER: um usuário só, sem tela de login própria. A proteção é
+      # o login do Umbrel (app_proxy, acima), que fica ligado por padrão.
+    volumes:
+      # Banco (SQLite) e configuração
+      - ${APP_DATA_DIR}/data/config:/config
+      # Seus modelos 3D (.stl, .3mf, .gcode...)
+      - ${UMBREL_ROOT}/data/storage/downloads/manyfold:/models

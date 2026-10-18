@@ -1,0 +1,36 @@
+manifestVersion: 1.1
+id: florencio-store-manyfold
+category: media
+name: Manyfold
+version: "0.151.0"
+tagline: Organize, browse and tidy your 3D print files
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-manyfold/icon.svg
+description: >-
+  Manyfold is a library for your 3D printing files (STL, 3MF, OBJ, G-code...).
+  Browse your collection in full interactive 3D, tag and organize models by
+  creator and collection, spot duplicates and problem files, and have
+  Manyfold automatically rename and reorganize files on disk based on your
+  own rules.
+
+
+  This is the "solo" build: a single container with a built-in database, for
+  one person's collection (no accounts, no federation). Point it at a folder
+  with your existing files, or drop new ones into Downloads/manyfold in the
+  Umbrel Files app, then use "Scan library" inside Manyfold to import them.
+
+
+  Security: this app keeps the Umbrel login (no separate account system of
+  its own).
+developer: Manyfold
+website: https://manyfold.app
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/manyfold3d/manyfold
+support: https://github.com/manyfold3d/manyfold/issues
+port: 8815
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

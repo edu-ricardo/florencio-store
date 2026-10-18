@@ -42,6 +42,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **PinePods** | 8812 | Gerenciador de podcasts com apps de celular, sincronização gPodder e vários usuários. Cria o primeiro administrador no primeiro acesso. Episódios baixados em `Downloads/pinepods`. |
 | **llama.cpp** | 8813 | Servidor de modelos GGUF com interface de chat e API compatível com OpenAI, usando a GPU pela imagem Vulkan (não exige driver NVIDIA novo como a imagem CUDA). Modelos em Downloads/llama.cpp. |
 | **Beszel** | 8814 | Monitoramento leve (CPU, RAM, disco, containers), alternativa mais simples ao combo Prometheus/Grafana. Após instalar, cole a chave e o token (gerados em "Adicionar sistema" no hub) em `data/agent-auth/key` e `data/agent-auth/token` e reinicie o app. |
+| **Manyfold** | 8815 | Biblioteca de arquivos de impressão 3D (STL, 3MF, G-code...): visualização em 3D, tags, detecção de duplicados e reorganização automática. Build "solo" (um usuário, banco embutido). Modelos em Downloads/manyfold. |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 
