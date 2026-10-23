@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-luanti
 category: social
 name: Luanti
-version: "latest"
+version: "latest-r1"
 tagline: Open-source voxel game engine (formerly Minetest), host your own world
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-luanti/icon.png
 description: >-
@@ -35,7 +35,10 @@ repo: https://github.com/luanti-org/luanti
 support: https://github.com/luanti-org/luanti/issues
 port: 30000
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Fixed "Cannot create user data directory" on startup: the container now
+  runs as root so it can write to the app's data folders. Reinstall the app
+  to pick this up.
 dependencies: []
 path: ""
 defaultUsername: ""

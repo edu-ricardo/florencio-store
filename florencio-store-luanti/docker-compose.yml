@@ -6,6 +6,10 @@ services:
   server:
     image: ghcr.io/luanti-org/luanti:latest@sha256:db682caec367977ac2661c81e3cdbd1f1dbbae596f6fa7d791c0031107d59947
     restart: on-failure
+    # A imagem roda como o usuário "minetest" (uid 30000) por padrão, mas as
+    # pastas abaixo pertencem ao usuário do Umbrel, não a esse uid: sem isso
+    # dava "Cannot create user data directory" (sem permissão de escrita).
+    user: "0:0"
     ports:
       - 30000:30000/udp
     volumes:
