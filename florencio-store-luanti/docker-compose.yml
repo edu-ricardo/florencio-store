@@ -10,6 +10,12 @@ services:
     # pastas abaixo pertencem ao usuário do Umbrel, não a esse uid: sem isso
     # dava "Cannot create user data directory" (sem permissão de escrita).
     user: "0:0"
+    environment:
+      # Sem isso, rodando como root (uid 0) o Luanti procura o jogo em
+      # /root/.minetest (o HOME de root), não na pasta montada abaixo, e dá
+      # "Game not found" mesmo com o jogo no lugar certo. Isso fixa a pasta
+      # de usuário independente de qual uid estiver rodando o processo.
+      LUANTI_USER_PATH: /var/lib/minetest/.minetest
     # `default_game` no minetest.conf não basta nessa versão: o binário exige
     # o --gameid explícito, senão sai com "you need to select a game".
     # Precisa bater com o id do jogo em data/world/.minetest/games/.

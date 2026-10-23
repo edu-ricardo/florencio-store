@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-luanti
 category: social
 name: Luanti
-version: "latest-r2"
+version: "latest-r3"
 tagline: Open-source voxel game engine (formerly Minetest), host your own world
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-luanti/icon.png
 description: >-
@@ -36,10 +36,10 @@ support: https://github.com/luanti-org/luanti/issues
 port: 30000
 gallery: []
 releaseNotes: >-
-  Fixed the server exiting with "you need to select a game": it now starts
-  with --gameid minetest explicitly (the config file setting alone wasn't
-  enough). Reinstall the app to pick this up; you still need to install a
-  game first, see this app's description.
+  Fixed "Game not found" even with the game correctly installed: running as
+  root (needed to write to the data folders) changed which user-data path
+  the engine looks in; LUANTI_USER_PATH now pins it explicitly. Reinstall
+  the app to pick this up.
 dependencies: []
 path: ""
 defaultUsername: ""
