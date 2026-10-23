@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-luanti
 category: social
 name: Luanti
-version: "latest-r1"
+version: "latest-r2"
 tagline: Open-source voxel game engine (formerly Minetest), host your own world
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-luanti/icon.png
 description: >-
@@ -20,9 +20,9 @@ description: >-
   original Minecraft-like game:
   `git clone --depth 1 https://github.com/luanti-org/minetest_game.git games/minetest`
   run from inside that data/world/.minetest folder. Then restart the app. The
-  included config already points at this game (default_game = minetest); if
-  you install a different game, edit
-  app-data/florencio-store-luanti/data/conf/minetest.conf to match its id.
+  server is started with --gameid minetest; if you install a different game,
+  edit florencio-store-luanti/docker-compose.yml to match its id (the
+  default_game line in minetest.conf alone is not enough).
 
 
   Your client version must be compatible with the server's. Edit
@@ -36,9 +36,10 @@ support: https://github.com/luanti-org/luanti/issues
 port: 30000
 gallery: []
 releaseNotes: >-
-  Fixed "Cannot create user data directory" on startup: the container now
-  runs as root so it can write to the app's data folders. Reinstall the app
-  to pick this up.
+  Fixed the server exiting with "you need to select a game": it now starts
+  with --gameid minetest explicitly (the config file setting alone wasn't
+  enough). Reinstall the app to pick this up; you still need to install a
+  game first, see this app's description.
 dependencies: []
 path: ""
 defaultUsername: ""

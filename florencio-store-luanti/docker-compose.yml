@@ -10,6 +10,10 @@ services:
     # pastas abaixo pertencem ao usuário do Umbrel, não a esse uid: sem isso
     # dava "Cannot create user data directory" (sem permissão de escrita).
     user: "0:0"
+    # `default_game` no minetest.conf não basta nessa versão: o binário exige
+    # o --gameid explícito, senão sai com "you need to select a game".
+    # Precisa bater com o id do jogo em data/world/.minetest/games/.
+    command: ["--config", "/etc/minetest/minetest.conf", "--gameid", "minetest"]
     ports:
       - 30000:30000/udp
     volumes:
