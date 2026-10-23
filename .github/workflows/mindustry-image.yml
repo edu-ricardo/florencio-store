@@ -1,0 +1,59 @@
+# Compila o servidor dedicado do Mindustry (baixa o .jar oficial da versão
+# pedida) sobre um JRE atual, porque as imagens comunitárias existentes têm
+# JRE 11 ou 8 fixo e o Mindustry atual exige Java 17+.
+# Resultado: ghcr.io/edu-ricardo/mindustry-server:<versão>
+name: Mindustry server image
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versão do Mindustry (tag sem o v)"
+        required: true
+        default: "159.7"
+  workflow_call:
+    inputs:
+      version:
+        description: "Versão do Mindustry (tag sem o v)"
+        required: true
+        type: string
+
+env:
+  DEFAULT_VERSION: "159.7"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Resolve version
+        id: v
+        run: echo "version=${{ inputs.version || env.DEFAULT_VERSION }}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./docker/mindustry.Dockerfile
+          build-args: VERSION=${{ steps.v.outputs.version }}
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ghcr.io/edu-ricardo/mindustry-server:${{ steps.v.outputs.version }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/Anuken/Mindustry
+            org.opencontainers.image.description=Mindustry dedicated server v${{ steps.v.outputs.version }} on a current JRE
+            org.opencontainers.image.licenses=GPL-3.0
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
