@@ -84,4 +84,5 @@ O workflow [`check-app-updates.yml`](.github/workflows/check-app-updates.yml) ro
 - Em bancos de dados (Postgres, pgvector, CouchDB, MariaDB, MySQL, Mongo, Redis, Valkey) uma versão principal nova só é avisada no PR, nunca aplicada: ela costuma exigir migração dos dados.
 - Quando sai uma versão nova do openGym, a imagem `coach` é compilada antes do PR.
 - O A Dark Room não tem imagem oficial nem checagem automática: para uma versão nova, rode manualmente **Actions → A Dark Room image → Run workflow** com a tag nova e depois atualize a referência em `florencio-store-adarkroom/docker-compose.yml`.
+- O Mindustry usa uma imagem compilada por este repositório, porque as comunitárias têm JRE desatualizado (JRE 11 ou 8; o Mindustry atual exige Java 17+). Para uma versão nova, rode **Actions → Mindustry server image → Run workflow** com a versão nova e atualize `florencio-store-mindustry/docker-compose.yml`.
 - Para o workflow conseguir abrir o PR, ative em **Settings → Actions → General → Workflow permissions** a opção **Allow GitHub Actions to create and approve pull requests**. Sem ela, ele abre uma issue com o link do branch.

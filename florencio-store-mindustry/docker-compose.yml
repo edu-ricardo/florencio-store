@@ -5,7 +5,10 @@ version: "3.7"
 # direto, em TCP e UDP (o Mindustry precisa dos dois na mesma porta).
 services:
   server:
-    image: anderpuqing/mindustry:v159.7@sha256:5ec1f2a9fd5bba397be456b7d0569086c160687805ec50283887ce4ea0c1a1d0
+    # Imagem compilada por este repositório (não a anderpuqing/mindustry):
+    # ela embute um JRE 11 fixo e o Mindustry atual exige Java 17+, dá
+    # UnsupportedClassVersionError. Veja .github/workflows/mindustry-image.yml.
+    image: ghcr.io/edu-ricardo/mindustry-server:159.7@sha256:ae87955fc2846937620fb1a7ea861d264c31d6fe59cf4c20f8aea03b055a4315
     restart: on-failure
     # Mantém o console aberto para o "docker attach" funcionar
     stdin_open: true

@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-mindustry
 category: social
 name: Mindustry
-version: "159.7"
+version: "159.7-r1"
 tagline: Factory-building tower defense game, dedicated server
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-mindustry/icon.png
 description: >-
@@ -32,7 +32,10 @@ repo: https://github.com/Anuken/Mindustry
 support: https://github.com/Anuken/Mindustry/issues
 port: 6567
 gallery: []
-releaseNotes: ""
+releaseNotes: >-
+  Fixed a crash on startup (UnsupportedClassVersionError): switched to an
+  image built by this store with a current Java runtime. Reinstall the app
+  to pick this up.
 dependencies: []
 path: ""
 defaultUsername: ""
