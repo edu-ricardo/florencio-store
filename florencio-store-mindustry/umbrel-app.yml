@@ -1,0 +1,39 @@
+manifestVersion: 1.1
+id: florencio-store-mindustry
+category: social
+name: Mindustry
+version: "159.7"
+tagline: Factory-building tower defense game, dedicated server
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-mindustry/icon.png
+description: >-
+  Mindustry is a factory-building game with tower-defense elements: automate
+  resource production, build defenses, and fight (or play together, in
+  co-op or PvP). This app runs the dedicated multiplayer server; connect
+  with the Mindustry client (Windows, Mac, Linux, Android, iOS) using "Join
+  game" with your Umbrel's address, port 6567.
+
+
+  Required step after installing: this server has no web panel, so you start
+  the game once from a terminal. Over SSH, run `docker attach
+  florencio-store-mindustry_server_1`, then type `host` and press Enter to
+  start a game on the default map. To make it start automatically from then
+  on (so you don't need to repeat this after every restart), type `config
+  startCommands host` instead of `host` the first time. Detach from the
+  console without stopping the server with Ctrl+P, Ctrl+Q.
+
+
+  Game saves and settings are in the app's config folder, kept across
+  updates. The server version must be compatible with your client's.
+developer: Anuken
+website: https://mindustrygame.github.io
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Anuken/Mindustry
+support: https://github.com/Anuken/Mindustry/issues
+port: 6567
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

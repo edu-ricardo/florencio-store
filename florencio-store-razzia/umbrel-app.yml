@@ -1,0 +1,39 @@
+manifestVersion: 1.1
+id: florencio-store-razzia
+category: social
+name: Razzia
+version: "4.0.1"
+tagline: Self-hosted quiz game for parties, a Kahoot! alternative
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-razzia/icon.svg
+description: >-
+  Razzia is a quiz game for small in-person or online events: you (the
+  manager) open a password-protected page, create a room from a quiz, and
+  share the room code. Players join from their own phone's browser, no app
+  and no account needed, using the code.
+
+
+  Quizzes are JSON files; a few examples are included. Add or edit yours in
+  app-data/florencio-store-razzia/data/config/quizzes (over SSH, or any file
+  manager that reaches the Umbrel's filesystem) — see the project's
+  documentation for the format.
+
+
+  Security: this app skips the Umbrel login on purpose, so players can join
+  without any account. The manager page (/manager) is protected by its own
+  password instead: use the Umbrel-generated one shown on this app's page,
+  or set your own in the "server" service's MANAGER_PASSWORD, in this app's
+  docker-compose.yml.
+developer: Ralex91
+website: https://github.com/Ralex91/Razzia
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Ralex91/Razzia
+support: https://github.com/Ralex91/Razzia/issues
+port: 8816
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: "$APP_PASSWORD"
+deterministicPassword: true

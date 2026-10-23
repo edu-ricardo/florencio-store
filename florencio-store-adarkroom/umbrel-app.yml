@@ -1,0 +1,29 @@
+manifestVersion: 1.1
+id: florencio-store-adarkroom
+category: social
+name: A Dark Room
+version: "1.4"
+tagline: Minimalist text adventure, build a fire and see what happens
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-adarkroom/icon.png
+description: >-
+  A Dark Room is a free, minimalist text adventure: it starts with just a
+  fire in the dark and grows from there. No account, no setup, just open it
+  and play; progress is saved in your browser.
+
+
+  This is a static site (no server-side logic, no database), built by this
+  store's own GitHub Action from the game's official source code, since the
+  project doesn't publish a Docker image.
+developer: Doublespeak Games
+website: https://adarkroom.doublespeakgames.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/doublespeakgames/adarkroom
+support: https://github.com/doublespeakgames/adarkroom/issues
+port: 8817
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

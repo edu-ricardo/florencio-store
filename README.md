@@ -43,6 +43,10 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **llama.cpp** | 8813 | Servidor de modelos GGUF com interface de chat e API compatível com OpenAI, usando a GPU pela imagem Vulkan (não exige driver NVIDIA novo como a imagem CUDA). Modelos em Downloads/llama.cpp. |
 | **Beszel** | 8814 | Monitoramento leve (CPU, RAM, disco, containers), alternativa mais simples ao combo Prometheus/Grafana. Após instalar, cole a chave e o token (gerados em "Adicionar sistema" no hub) em `data/agent-auth/key` e `data/agent-auth/token` e reinicie o app. |
 | **Manyfold** | 8815 | Biblioteca de arquivos de impressão 3D (STL, 3MF, G-code...): visualização em 3D, tags, detecção de duplicados e reorganização automática. Build "solo" (um usuário, banco embutido). Modelos em Downloads/manyfold. |
+| **Luanti** | 30000 (UDP) | Servidor dedicado do Luanti (ex-Minetest), motor de jogo voxel moldável. Sem painel; conecte com o cliente Luanti. Precisa de um jogo instalado à mão (veja a descrição do app). |
+| **Mindustry** | 6567 | Servidor dedicado de Mindustry (fábrica + tower defense). Sem painel; primeiro início é por `docker attach` via SSH (veja a descrição do app). |
+| **Razzia** | 8816 | Jogo de quiz para eventos (tipo Kahoot!), sem conta para quem participa. Quizzes em JSON, editáveis em data/config/quizzes. Login do Umbrel desligado; a página do apresentador tem senha própria. |
+| **A Dark Room** | 8817 | Aventura em texto minimalista, um jogador, progresso salvo no navegador. Site estático, sem login nem conta. |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 
@@ -79,4 +83,5 @@ O workflow [`check-app-updates.yml`](.github/workflows/check-app-updates.yml) ro
 - Tags sem número de versão (`latest`, `nightly`, `pg18`) entram no PR quando sai uma build nova (o digest muda).
 - Em bancos de dados (Postgres, pgvector, CouchDB, MariaDB, MySQL, Mongo, Redis, Valkey) uma versão principal nova só é avisada no PR, nunca aplicada: ela costuma exigir migração dos dados.
 - Quando sai uma versão nova do openGym, a imagem `coach` é compilada antes do PR.
+- O A Dark Room não tem imagem oficial nem checagem automática: para uma versão nova, rode manualmente **Actions → A Dark Room image → Run workflow** com a tag nova e depois atualize a referência em `florencio-store-adarkroom/docker-compose.yml`.
 - Para o workflow conseguir abrir o PR, ative em **Settings → Actions → General → Workflow permissions** a opção **Allow GitHub Actions to create and approve pull requests**. Sem ela, ele abre uma issue com o link do branch.

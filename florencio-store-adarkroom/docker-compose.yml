@@ -1,0 +1,17 @@
+version: "3.7"
+
+# Site estático: imagem compilada por este repositório (não existe imagem
+# oficial), veja .github/workflows/adarkroom-image.yml.
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-adarkroom_server_1
+      APP_PORT: 80
+      # Nada para proteger: é um jogo de um jogador só, sem conta, com o
+      # progresso salvo no navegador de quem joga.
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    image: ghcr.io/edu-ricardo/adarkroom:1.4@sha256:514cf6de484645a28ea82935ef2ab0556ac25ebeb09ddfc34c3029a5b7f80f42
+    restart: on-failure

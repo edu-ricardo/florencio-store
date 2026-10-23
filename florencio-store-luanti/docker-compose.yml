@@ -1,0 +1,17 @@
+version: "3.7"
+
+# Sem painel web: é só o protocolo do jogo (UDP), então não tem app_proxy. A
+# porta é publicada direto, igual o umami faz com a sua porta HTTP.
+services:
+  server:
+    image: ghcr.io/luanti-org/luanti:latest@sha256:db682caec367977ac2661c81e3cdbd1f1dbbae596f6fa7d791c0031107d59947
+    restart: on-failure
+    ports:
+      - 30000:30000/udp
+    volumes:
+      # Pasta do usuário do jogo: mundos em .minetest/worlds e, se você
+      # colocar, jogos em .minetest/games (veja o umbrel-app.yml: a imagem
+      # não traz nenhum jogo, então essa pasta começa vazia).
+      - ${APP_DATA_DIR}/data/world:/var/lib/minetest
+      # Configuração geral (minetest.conf)
+      - ${APP_DATA_DIR}/data/conf:/etc/minetest

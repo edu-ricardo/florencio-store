@@ -1,0 +1,17 @@
+version: "3.7"
+
+# Sem painel web: o console do servidor é por "docker attach" (veja o
+# umbrel-app.yml). Por isso não tem app_proxy; a porta do jogo é publicada
+# direto, em TCP e UDP (o Mindustry precisa dos dois na mesma porta).
+services:
+  server:
+    image: anderpuqing/mindustry:v159.7@sha256:5ec1f2a9fd5bba397be456b7d0569086c160687805ec50283887ce4ea0c1a1d0
+    restart: on-failure
+    # Mantém o console aberto para o "docker attach" funcionar
+    stdin_open: true
+    tty: true
+    ports:
+      - 6567:6567/tcp
+      - 6567:6567/udp
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/mindustry/config

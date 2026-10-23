@@ -1,0 +1,42 @@
+manifestVersion: 1.1
+id: florencio-store-luanti
+category: social
+name: Luanti
+version: "latest"
+tagline: Open-source voxel game engine (formerly Minetest), host your own world
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-luanti/icon.png
+description: >-
+  Luanti (formerly Minetest) is an open-source voxel game engine: a
+  Minecraft-like sandbox, but moddable and able to run many different games,
+  not just one. This app runs the dedicated server only; you connect with the
+  Luanti client (Windows, Mac, Linux, Android) on your own computer or phone,
+  pointed at your Umbrel's address, port 30000.
+
+
+  Required step after installing: since version 5.8, Luanti ships with no
+  game at all, so the server has nothing to run until you add one. Put a game
+  into app-data/florencio-store-luanti/data/world/.minetest/games/ (over SSH,
+  or any file manager that reaches the Umbrel's filesystem), for example the
+  original Minecraft-like game:
+  `git clone --depth 1 https://github.com/luanti-org/minetest_game.git games/minetest`
+  run from inside that data/world/.minetest folder. Then restart the app. The
+  included config already points at this game (default_game = minetest); if
+  you install a different game, edit
+  app-data/florencio-store-luanti/data/conf/minetest.conf to match its id.
+
+
+  Your client version must be compatible with the server's. Edit
+  data/conf/minetest.conf for server name, max players, creative mode, etc.
+developer: Luanti contributors
+website: https://www.luanti.org
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/luanti-org/luanti
+support: https://github.com/luanti-org/luanti/issues
+port: 30000
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
