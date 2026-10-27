@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-prometheus
 category: networking
 name: Prometheus
-version: "3.15.0"
+version: "3.15.1"
 tagline: Metrics database and data source for Grafana
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-prometheus/icon.png
 description: >-

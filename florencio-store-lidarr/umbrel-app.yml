@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-lidarr
 category: media
 name: Lidarr (HD externo)
-version: "3.1.0-r2"
+version: "3.1.6"
 tagline: Music collection manager with the library on your external drive
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lidarr/icon.png
 description: >-

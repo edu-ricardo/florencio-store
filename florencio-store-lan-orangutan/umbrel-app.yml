@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-lan-orangutan
 category: networking
 name: LAN Orangutan
-version: "3.3.8"
+version: "3.4.2"
 tagline: Lightweight network discovery for your homelab
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lan-orangutan/icon.svg
 description: >-

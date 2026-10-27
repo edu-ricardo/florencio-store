@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-beszel
 category: networking
 name: Beszel
-version: "0.21.0"
+version: "0.21.1"
 tagline: Lightweight server and Docker container monitoring
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-beszel/icon.svg
 description: >-

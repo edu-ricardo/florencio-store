@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-postiz
 category: social
 name: Postiz
-version: "2.25.1"
+version: "2.25.3"
 tagline: Schedule posts on all your social networks in one place
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-postiz/icon.svg
 description: >-

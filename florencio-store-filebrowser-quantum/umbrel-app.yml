@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-filebrowser-quantum
 category: files
 name: FileBrowser Quantum
-version: "2.0.1"
+version: "2.0.2"
 tagline: Fast web file manager with sharing, previews and multiple users
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-filebrowser-quantum/icon.png
 description: >-

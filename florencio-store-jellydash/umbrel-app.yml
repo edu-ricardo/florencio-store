@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-jellydash
 category: media
 name: Jellydash
-version: "1.15.1"
+version: "1.15.3"
 tagline: Tautulli-style monitoring dashboard for Jellyfin
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-jellydash/icon.png
 description: >-

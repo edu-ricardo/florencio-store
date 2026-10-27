@@ -11,7 +11,7 @@ services:
       APP_PORT: 3214
 
   server:
-    image: manyfold3d/manyfold-solo:latest@sha256:772bcb18f0cb69d4fd0630d4676516f34fb37e42c3ac9d65eea5f173728e818e
+    image: manyfold3d/manyfold-solo:latest@sha256:161109b917a158b5efd8478a437e9900db7bdc57235c167aa70d5ad69425fc31
     restart: on-failure
     security_opt:
       - no-new-privileges:true

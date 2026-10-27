@@ -11,7 +11,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   web:
-    image: ghcr.io/gitroomhq/postiz-app:v2.25.1@sha256:d2b37802e96757729fdea2d3d71287f841c2b619faa1cb4c21dac07df657fde1
+    image: ghcr.io/gitroomhq/postiz-app:v2.25.3@sha256:1e376ff2cb781022d528f171719cf174cf693a985a30cb40eefb13eae3ddda13
     restart: on-failure
     depends_on:
       postgres:
@@ -44,7 +44,7 @@ services:
   postgres:
     # Tag só com a versão principal: o verificador de atualizações não a troca
     # (Postgres 18 não abre o banco do 17 sem migração)
-    image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
+    image: postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b
     restart: on-failure
     environment:
       POSTGRES_USER: postiz
@@ -76,7 +76,7 @@ services:
   # visibilidade (sem o Elasticsearch do compose oficial, que pede ~1 GB de RAM)
   temporal-postgres:
     # Versão principal fixa, pelo mesmo motivo do banco do Postiz
-    image: postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d
+    image: postgres:16@sha256:9e2cf6287f25c3151f4c9421ccce2b17f3e60061c111a29165e0d2cdd9ff0a97
     restart: on-failure
     environment:
       POSTGRES_USER: temporal

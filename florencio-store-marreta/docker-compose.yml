@@ -16,7 +16,7 @@ services:
       - ${APP_DATA_DIR}/data/storage:/storage
 
   web:
-    image: ghcr.io/manualdousuario/marreta:3.0.4@sha256:9bb6484bb8d84ad091f94472d26550e31cdcf6a8d57bd6a3ee77e51e8d65d0ea
+    image: ghcr.io/manualdousuario/marreta:3.0.5@sha256:30f2a34567b79b66da794b4b9423751bbbcd07ceff600d9f6a2d219e7e439362
     restart: on-failure
     depends_on:
       permissions:
@@ -42,5 +42,5 @@ services:
 
   # Navegador headless usado para abrir as páginas
   browser:
-    image: lightpanda/browser:nightly@sha256:1c60cb1380e80de316ed2b28f6cee5753f4c999af45d16c14d310d53545c38ec
+    image: lightpanda/browser:nightly@sha256:5e5c49bc657f3460f2b86c8f2bc9dcc1025b910f6f65bcce69a80c395cc1b659
     restart: on-failure
