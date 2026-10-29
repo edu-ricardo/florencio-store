@@ -1,0 +1,45 @@
+manifestVersion: 1.1
+id: florencio-store-planarally
+category: social
+name: PlanarAlly
+version: "2026.2.0"
+tagline: Virtual tabletop for D&D and other TTRPGs, with dynamic lighting
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-planarally/icon.svg
+description: >-
+  PlanarAlly is a virtual tabletop (VTT) for playing D&D and other tabletop
+  RPGs online: battlemaps with layers, dynamic lighting and shadows,
+  per-token player vision, an initiative tracker, and multiple floors (so you
+  can look down from a balcony onto a lower level). Works offline too, if
+  everyone connects to your Umbrel directly.
+
+
+  There is no pre-created admin account: on first access, register through
+  the normal sign-up screen like any other user. To get the extra admin
+  dashboard (manage users and campaigns), create a config.toml in this app's
+  data folder with your username:
+
+  ```
+  [general]
+  admin_user = "your-username"
+  ```
+
+  Sign-ups are open by default, so anyone who reaches the Umbrel login can
+  create a PlanarAlly account too; set allow_signups = false in the same
+  [general] section once your group has registered, if you want to close it.
+
+
+  Uploaded maps and tokens go in the "assets" folder, and uploaded mods in
+  "mods", both inside this app's data.
+developer: Kruptein
+website: https://planarally.io
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/Kruptein/PlanarAlly
+support: https://github.com/Kruptein/PlanarAlly/issues
+port: 8818
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

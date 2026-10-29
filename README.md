@@ -47,6 +47,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Mindustry** | 6567 | Servidor dedicado de Mindustry (fábrica + tower defense). Sem painel; primeiro início é por `docker attach` via SSH (veja a descrição do app). |
 | **Razzia** | 8816 | Jogo de quiz para eventos (tipo Kahoot!), sem conta para quem participa. Quizzes em JSON, editáveis em data/config/quizzes. Login do Umbrel desligado; a página do apresentador tem senha própria. |
 | **A Dark Room** | 8817 | Aventura em texto minimalista, um jogador, progresso salvo no navegador. Site estático, sem login nem conta. |
+| **PlanarAlly** | 8818 | Mesa virtual para D&D e outros RPGs de mesa: mapas em camadas, iluminação dinâmica, visão por token, rastreador de iniciativa. Sem admin pré-criado: registre pela tela de cadastro e defina `admin_user` em data/config.toml se quiser o painel de administração. |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 

@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-planarally_server_1
+      APP_PORT: 8000
+
+  server:
+    image: kruptein/planarally:v2026.2.0@sha256:468e83909b5507388542122aef24f28c2d81ae6510363ec6b701a09131988221
+    restart: on-failure
+    # A imagem roda como um usuário interno de uid fixo (9000). As pastas
+    # abaixo pertencem ao usuário do Umbrel, não a esse uid: sem isso o
+    # servidor não conseguiria escrever nelas (mesmo problema que já tive
+    # com o Luanti).
+    user: "0:0"
+    volumes:
+      # Configuração (opcional) e o arquivo de save (SQLite)
+      - ${APP_DATA_DIR}/data:/planarally/data
+      # Imagens/mapas enviados pelos jogadores
+      - ${APP_DATA_DIR}/data/assets:/planarally/static/assets
+      # Arquivos de mods enviados
+      - ${APP_DATA_DIR}/data/mods:/planarally/static/mods
