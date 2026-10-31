@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-lingarr
 category: media
 name: Lingarr
-version: "1.4.0"
+version: "1.4.1"
 tagline: Translate subtitles automatically for your movies and shows
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-lingarr/icon.png
 description: >-

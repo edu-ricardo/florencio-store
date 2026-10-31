@@ -8,7 +8,7 @@ services:
       APP_PORT: 8090
 
   server:
-    image: ispysoftware/agentdvr:8.1.1.0@sha256:2b4e4fa07cbd53716900455b442e1e5cbfccf60263ef4d5de12925ab546186c1
+    image: ispysoftware/agentdvr:8.1.9.0@sha256:bbff395fc3422ca526995eb0a2eb64aae85e111c17b6958d07d896e204c012ab
     restart: on-failure
     stop_grace_period: 1m
     environment:

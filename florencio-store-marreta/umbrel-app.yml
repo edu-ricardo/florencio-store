@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-marreta
 category: social
 name: Marreta
-version: "3.0.4-r1"
+version: "3.0.5"
 tagline: Remove paywalls and clutter from news articles
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-marreta/icon.svg
 description: >-

@@ -9,7 +9,7 @@ services:
 
   server:
     # O projeto só publica a tag "latest" (sem versões); o digest fixa a build usada
-    image: machines/filestash:latest@sha256:002fe7d88b997d4e936bb42d5aacef284a572fadcb284912be187a14e4e07911
+    image: machines/filestash:latest@sha256:35e7d17f8cb07e8ac7ca0daf85940b15047d35622761060318395091b48890b5
     restart: on-failure
     environment:
       # Usado nos links de compartilhamento
