@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-agent-dvr
 category: media
 name: Agent DVR
-version: "8.1.9.0-gpu"
+version: "8.2.1.0-gpu"
 tagline: Advanced video surveillance platform
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-agent-dvr/icon.png
 description: >-
