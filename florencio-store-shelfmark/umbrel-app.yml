@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-shelfmark
 category: media
 name: Shelfmark
-version: "1.5.1"
+version: "1.6.0"
 tagline: Search and download books and audiobooks from many sources at once
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-shelfmark/icon.png
 description: >-

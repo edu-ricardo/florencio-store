@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-razzia
 category: social
 name: Razzia
-version: "4.0.1"
+version: "4.0.2"
 tagline: Self-hosted quiz game for parties, a Kahoot! alternative
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-razzia/icon.svg
 description: >-
