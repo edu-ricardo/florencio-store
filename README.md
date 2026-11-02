@@ -48,6 +48,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **Razzia** | 8816 | Jogo de quiz para eventos (tipo Kahoot!), sem conta para quem participa. Quizzes em JSON, editáveis em data/config/quizzes. Login do Umbrel desligado; a página do apresentador tem senha própria. |
 | **A Dark Room** | 8817 | Aventura em texto minimalista, um jogador, progresso salvo no navegador. Site estático, sem login nem conta. |
 | **PlanarAlly** | 8818 | Mesa virtual para D&D e outros RPGs de mesa: mapas em camadas, iluminação dinâmica, visão por token, rastreador de iniciativa. Sem admin pré-criado: registre pela tela de cadastro e defina `admin_user` em data/config.toml se quiser o painel de administração. |
+| **Flopod** | 8811 | Servidor de podcasts da família (web/PWA e app Android; só x86). Primeiro uso: abra pela rede local, crie o admin em `/setup` e só depois exponha um domínio. Áudio em `app-data/florencio-store-flopod/media` (compose traz como trocar para o HD externo). |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 

@@ -1,0 +1,33 @@
+manifestVersion: 1
+id: florencio-store-flopod
+category: media
+name: Flopod
+version: "0.1.0"
+tagline: Seus podcasts, na web e no celular
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-flopod/icon.png
+description: >-
+  Servidor de podcasts da família. Ouça pela web (instalável como PWA) ou pelo app
+  Android, com progresso, fila e playlists sincronizados entre os aparelhos.
+
+
+  Arquiva os episódios no servidor, mostra estatísticas de escuta na tela Início e
+  permite convidar a família.
+
+
+  Primeiro uso: (1) instale e abra pela rede local; (2) acesse /setup e crie o primeiro
+  admin (a página some depois disso); (3) só depois exponha um domínio (Cloudflare Tunnel).
+  Imagem disponível só para x86 (amd64).
+developer: Eduardo
+website: https://github.com/edu-ricardo/flopod
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+submissionTermAcceptance: true
+repo: https://github.com/edu-ricardo/flopod
+support: https://github.com/edu-ricardo/flopod/issues
+port: 8811
+gallery: []
+releaseNotes: Primeira versão.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

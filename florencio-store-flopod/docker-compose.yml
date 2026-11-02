@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-flopod_server_1
+      APP_PORT: 8080
+      # O Flopod tem login próprio; o app Android e a API falam direto com o servidor
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    # Imagem publicada só para amd64 (x86). O pacote no GHCR precisa estar público.
+    image: ghcr.io/edu-ricardo/flopod-server:0.1.0@sha256:a95dc32fb709fbda8dae25e4a58b4414406a29d074eeb6b5e28101e092615be0
+    restart: on-failure
+    # A imagem roda como 10001; usa o usuário do Umbrel para gravar nas pastas do app
+    user: "1000:1000"
+    environment:
+      TZ: America/Sao_Paulo
+      FLOPOD_DATA_DIR: /data
+      FLOPOD_AUDIO_DIR: /media
+      FLOPOD_ADDR: ":8080"
+      # Fica atrás do proxy do Umbrel
+      FLOPOD_TRUST_PROXY_HEADERS: "true"
+      # Quando houver domínio público, descomente para os links de convite:
+      # FLOPOD_PUBLIC_URL: https://<domínio>
+    volumes:
+      # Banco SQLite, backups diários (/data/backups) e a trava flopod.lock
+      - ${APP_DATA_DIR}/data:/data
+      # Áudio arquivado. Para guardar no HD externo, troque a linha abaixo por:
+      #   - /media/<nome-do-hd>/flopod:/media
+      # (a pasta precisa existir e ser gravável pelo usuário 1000)
+      - ${APP_DATA_DIR}/media:/media
