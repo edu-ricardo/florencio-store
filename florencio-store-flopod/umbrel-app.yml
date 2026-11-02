@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-flopod
 category: media
 name: Flopod
-version: "0.1.0"
+version: "0.2.0"
 tagline: Seus podcasts, na web e no celular
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-flopod/icon.png
 description: >-

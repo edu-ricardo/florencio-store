@@ -11,7 +11,7 @@ services:
 
   server:
     # Imagem publicada só para amd64 (x86). O pacote no GHCR precisa estar público.
-    image: ghcr.io/edu-ricardo/flopod-server:0.1.0@sha256:a95dc32fb709fbda8dae25e4a58b4414406a29d074eeb6b5e28101e092615be0
+    image: ghcr.io/edu-ricardo/flopod-server:0.2.0@sha256:2a2f1aecb79b65dd50432b290c46be54731ade4093713f9ba0c06c2c3382605e
     restart: on-failure
     # A imagem roda como 10001; usa o usuário do Umbrel para gravar nas pastas do app
     user: "1000:1000"
