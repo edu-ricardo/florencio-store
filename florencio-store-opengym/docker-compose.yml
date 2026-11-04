@@ -31,7 +31,7 @@ services:
   api:
     # Alvo "coach" (Claude Agent SDK + Codex CLI), compilado do código oficial pelo
     # workflow .github/workflows/opengym-coach-image.yml deste repositório
-    image: ghcr.io/edu-ricardo/opengym-api-coach:1.4.3@sha256:2a792227e33902e4a67cb0e7f54d474f8cae7ea702070e3572133127468283bb
+    image: ghcr.io/edu-ricardo/opengym-api-coach:1.4.4@sha256:32291332f66037b5c7b2598fb7b18191c8bb5368c79a758b13284b8694dea8f3
     restart: on-failure
     # RP_ID / ORIGIN e opções ficam neste arquivo (editável pelo usuário)
     env_file:
@@ -50,7 +50,7 @@ services:
       - ${APP_DATA_DIR}/data/api:/data
 
   web:
-    image: ghcr.io/duartesantos8/opengym-web:1.4.3@sha256:e77ef879d10549acc88a888e0cd4d566592c5680bee6436b05071678fcf8b512
+    image: ghcr.io/duartesantos8/opengym-web:1.4.4@sha256:33575782762f6cc9181f5e33616d55bf718bcd56338b714f22cb5d01e1adc278
     restart: on-failure
     depends_on:
       media:
