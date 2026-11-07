@@ -49,6 +49,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **A Dark Room** | 8817 | Aventura em texto minimalista, um jogador, progresso salvo no navegador. Site estático, sem login nem conta. |
 | **PlanarAlly** | 8818 | Mesa virtual para D&D e outros RPGs de mesa: mapas em camadas, iluminação dinâmica, visão por token, rastreador de iniciativa. Sem admin pré-criado: registre pela tela de cadastro e defina `admin_user` em data/config.toml se quiser o painel de administração. |
 | **Flopod** | 8811 | Servidor de podcasts da família (web/PWA e app Android; só x86). Primeiro uso: abra pela rede local, crie o admin em `/setup` e só depois exponha um domínio. Áudio em `app-data/florencio-store-flopod/media` (compose traz como trocar para o HD externo). |
+| **ROMarr** | 6868 | O "\*arr" dos ROMs: busca pelo Prowlarr, baixa pelo qBittorrent, confere contra checksums No-Intro/Redump. Já aponta para o Prowlarr/qBittorrent oficiais do Umbrel (ajustável depois nas Configurações do próprio app). Biblioteca em Downloads/romarr-roms. Sem senha padrão: a primeira visita pede para criar uma. |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 

@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-romarr_server_1
+      APP_PORT: 6868
+
+  server:
+    image: ghcr.io/blizzhacker/romarr:1.8.0@sha256:19cbfad5189d630cc914eed1efb174dbd05c1888484b9ef6eb3698f71dc56458
+    restart: on-failure
+    environment:
+      PUID: 1000
+      PGID: 1000
+      UMASK: "002"
+      TZ: America/Sao_Paulo
+      # Sem senha: o primeiro acesso à interface pede para você definir uma.
+      # Biblioteca como pasta simples (sem exigir RomM/Gaseous/Retrom)
+      LIBRARY_KIND: folder
+      LIBRARY_PATH: /roms
+      # Supõe o Prowlarr e o qBittorrent oficiais do Umbrel instalados; ajuste
+      # em Settings (na interface) se você usa outros, ou não usa nenhum
+      # ainda. Só valem na primeira execução: depois disso, a interface manda.
+      PROWLARR_URL: "http://prowlarr_server_1:9696"
+      PROWLARR_API_KEY: ""
+      QBITTORRENT_URL: "http://qbittorrent_server_1:8080"
+      QBITTORRENT_USER: ""
+      QBITTORRENT_PASS: ""
+      LOG_LEVEL: INFO
+    volumes:
+      # Estado (romarr.json), plugins do ROM Hub
+      - ${APP_DATA_DIR}/data/config:/config
+      # Sua biblioteca de ROMs: crie em Downloads/romarr-roms (app Files)
+      - ${UMBREL_ROOT}/data/storage/downloads/romarr-roms:/roms
+      # Pasta de downloads concluídos: a mesma que o qBittorrent oficial do
+      # Umbrel usa, para o caminho bater com o que ele reporta pela API.
+      - ${UMBREL_ROOT}/data/storage/downloads:/downloads

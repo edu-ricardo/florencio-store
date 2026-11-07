@@ -1,0 +1,39 @@
+manifestVersion: 1.1
+id: florencio-store-romarr
+category: media
+name: ROMarr
+version: "1.8.0"
+tagline: The *arr for games — find, verify and organize your ROM library
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-romarr/icon.png
+description: >-
+  ROMarr works like Sonarr/Radarr, but for game ROMs: it searches releases
+  through Prowlarr, downloads them through qBittorrent (or SABnzbd/NZBGet),
+  and verifies the result against No-Intro/Redump checksums before filing it
+  into your library. It can also just verify and tidy a ROM collection you
+  already have, without downloading anything.
+
+
+  This build points at the official Prowlarr and qBittorrent apps from the
+  Umbrel App Store by their usual addresses; if you use different ones (or
+  none yet), change them in ROMarr's own Settings page after logging in —
+  only the very first start reads these from docker-compose.yml, every
+  change after that lives in ROMarr's own state file.
+
+
+  First access: no password is set, so the first visit to the app asks you
+  to create one. Your ROM library is the Downloads/romarr-roms folder in the
+  Umbrel Files app (set up for "folder" mode, so no RomM/Gaseous/Retrom
+  server is required).
+developer: BlizzHacker
+website: https://github.com/BlizzHacker/romarr
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/BlizzHacker/romarr
+support: https://github.com/BlizzHacker/romarr/issues
+port: 6868
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
