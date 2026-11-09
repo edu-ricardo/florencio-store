@@ -10,7 +10,7 @@ services:
       PROXY_AUTH_WHITELIST: "/api/*"
 
   server:
-    image: ghcr.io/listenarrs/listenarr:canary-1.5.12@sha256:8de93de2011b23af87a4161643a15f7cbeaad32c84cef0ec8bd393c058d62e86
+    image: ghcr.io/listenarrs/listenarr:canary-1.6.3@sha256:265d4fd8f8242079a6620257dda018d022f053fa7f1d512c5dcbc5c880c3e85d
     restart: on-failure
     environment:
       PUID: 1000

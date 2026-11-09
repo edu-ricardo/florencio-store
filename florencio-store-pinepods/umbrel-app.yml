@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-pinepods
 category: media
 name: PinePods
-version: "0.9.1"
+version: "0.9.2"
 tagline: Self-hosted podcast manager with mobile apps and multi-user support
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-pinepods/icon.png
 description: >-
