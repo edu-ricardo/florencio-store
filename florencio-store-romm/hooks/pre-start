@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_DIR="${APP_DATA_DIR:-$(readlink -f "$(dirname "${BASH_SOURCE[0]}")/..")}"
+ROOT_DIR="${UMBREL_ROOT:-$(readlink -f "${APP_DIR}/../..")}"
+CONFIG_DIR="${APP_DIR}/data/config"
+CONFIG_FILE="${CONFIG_DIR}/config.yml"
+OWNER="1000:1000"
+
+# Pasta padrão da biblioteca. Sem isto o Docker a criaria como root e o RomM não
+# conseguiria gravar nela. O umbrelOS move data/storage/downloads para home/Downloads.
+DEFAULT_LIBRARY="${ROOT_DIR}/home/Downloads/romm"
+if [[ ! -d "${DEFAULT_LIBRARY}" ]]; then
+  mkdir -p "${DEFAULT_LIBRARY}"
+  chown "${OWNER}" "${DEFAULT_LIBRARY}"
+fi
+
+# O hook não enxerga a pasta escolhida pelo usuário (ela só é montada no container),
+# então o layout é fixado no padrão do RomM em vez de detectado.
+if [[ ! -f "${CONFIG_FILE}" ]]; then
+  mkdir -p "${CONFIG_DIR}"
+  cat >"${CONFIG_FILE}" <<'EOF'
+exclude:
+  platforms: []
+  roms:
+    single_file:
+      extensions: []
+      names: []
+    multi_file:
+      names: []
+      parts:
+        names: []
+        extensions: []
+
+system:
+  platforms: {}
+  versions: {}
+
+filesystem:
+  structure:
+    default: roms/{platform}/{game}
+    firmware: bios/{platform}
+EOF
+  chown "${OWNER}" "${CONFIG_DIR}" "${CONFIG_FILE}"
+fi

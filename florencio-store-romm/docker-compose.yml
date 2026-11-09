@@ -1,0 +1,55 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-romm_server_1
+      APP_PORT: 8080
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    user: "1000:1000"
+    image: rommapp/romm:5.4.1@sha256:8677fb7b81b1d3db20b849e989a1dadc2a11159e51eb34a2acdcb01102274edf
+    volumes:
+      - ${APP_DATA_DIR}/data/resources:/romm/resources
+      - ${APP_DATA_DIR}/data/redis:/redis-data
+      # Só o padrão: a pasta escolhida na instalação (folderAccess no umbrel-app.yml)
+      # substitui este mount. Precisa ser uma pasta de usuário, e não APP_DATA_DIR,
+      # para o umbrelOS perguntar a pasta na tela de instalação.
+      - ${UMBREL_ROOT}/data/storage/downloads/romm:/romm/library
+      - ${APP_DATA_DIR}/data/assets:/romm/assets
+      - ${APP_DATA_DIR}/data/config:/romm/config
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=florencio-store-romm_db_1
+      - DB_NAME=romm
+      - DB_USER=romm-user
+      - DB_PASSWD=moneyprintergobrr
+      - ROMM_AUTH_SECRET_KEY=${APP_SEED}
+      # Chaves opcionais de metadados:
+      #- IGDB_CLIENT_ID= # https://api-docs.igdb.com/#account-creation
+      #- IGDB_CLIENT_SECRET=
+      #- MOBYGAMES_API_KEY= # https://www.mobygames.com/info/api/
+      #- STEAMGRIDDB_API_KEY= # https://github.com/rommapp/romm/wiki/Generate-API-Keys#steamgriddb
+
+  db:
+    user: "1000:1000"
+    image: mariadb:11.4.5@sha256:5dfb3093333fa0ea53194ddef0a2bfa21d3b1e1353bd228b22610cd6fc0c04da
+    restart: on-failure
+    environment:
+      - MARIADB_ROOT_PASSWORD=umbrel
+      - MARIADB_DATABASE=romm
+      - MARIADB_USER=romm-user
+      - MARIADB_PASSWORD=moneyprintergobrr
+    volumes:
+      - ${APP_DATA_DIR}/data/db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5

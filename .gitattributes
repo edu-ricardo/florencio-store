@@ -1,3 +1,5 @@
 # Scripts e modelos rodam no Linux do umbrelOS: sempre com final de linha LF
 *.sh text eol=lf
 *.template text eol=lf
+# Hooks do umbrelOS rodam direto no Linux, e sem extensão não caem na regra acima
+**/hooks/* text eol=lf

@@ -1,0 +1,48 @@
+manifestVersion: 1.1
+id: florencio-store-romm
+# O umbrelOS só pergunta a pasta na instalação porque o compose monta uma pasta de
+# usuário (Downloads/romm) no mesmo destino: ela vira o padrão sugerido na tela.
+folderAccess:
+  - id: rom-library
+    name: Biblioteca de ROMs
+    note: Escolha a pasta com as suas ROMs (Home, HD externo ou rede). No RomM ela aparece como /romm/library. Organize em roms/<plataforma>/<jogo> e bios/<plataforma>.
+    mounts:
+      - service: server
+        targetPath: /romm/library
+category: media
+name: RomM
+version: "5.4.1"
+tagline: Gerenciador de ROMs com a biblioteca na pasta que você escolher
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-romm/icon.svg
+description: >-
+  RomM (ROM Manager) escaneia, organiza e enriquece a sua coleção de jogos, com
+  interface web e suporte a jogar no navegador (EmulatorJS e RuffleRS).
+
+
+  Diferença para o app da loja oficial: a biblioteca não fica presa em app-data. O
+  umbrelOS pergunta a pasta na instalação, e dá para trocar depois nas configurações
+  do app, sem editar o compose.
+
+
+  Estrutura esperada na pasta escolhida: roms/<plataforma>/<jogo> e bios/<plataforma>,
+  por exemplo roms/snes/Chrono Trigger.sfc. Se a sua coleção usa <plataforma>/roms/<jogo>,
+  altere filesystem.structure em app-data/florencio-store-romm/data/config/config.yml.
+
+
+  Crie a conta de administrador no primeiro acesso. As capas e os metadados exigem
+  chaves de API (IGDB, MobyGames, SteamGridDB), informadas no compose.
+developer: rommapp
+website: https://github.com/rommapp/romm
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/rommapp/romm
+support: https://github.com/rommapp/romm/issues
+port: 8819
+gallery: []
+releaseNotes: Primeira versão na loja, com a pasta da biblioteca escolhida na instalação.
+dependencies: []
+permissions:
+  - STORAGE_DOWNLOADS
+path: ""
+defaultUsername: ""
+defaultPassword: ""
