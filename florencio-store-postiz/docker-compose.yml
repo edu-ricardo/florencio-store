@@ -44,7 +44,7 @@ services:
   postgres:
     # Tag só com a versão principal: o verificador de atualizações não a troca
     # (Postgres 18 não abre o banco do 17 sem migração)
-    image: postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b
+    image: postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
     restart: on-failure
     environment:
       POSTGRES_USER: postiz
@@ -76,7 +76,7 @@ services:
   # visibilidade (sem o Elasticsearch do compose oficial, que pede ~1 GB de RAM)
   temporal-postgres:
     # Versão principal fixa, pelo mesmo motivo do banco do Postiz
-    image: postgres:16@sha256:5db6dac2ef5dcff512f4f00a009c3c332b9f2f28f24277175bf3e4a3d02ef83a
+    image: postgres:16@sha256:f9a7b9ebf6f56201f949db745e47bc423c0f0f8294bafe991cc10bf74b029657
     restart: on-failure
     environment:
       POSTGRES_USER: temporal
