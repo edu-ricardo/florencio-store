@@ -1,0 +1,39 @@
+manifestVersion: 1
+id: florencio-store-mylar3
+category: media
+name: Mylar3
+version: "0.11.0"
+tagline: Automated comic book downloader — the *arr for comics
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-mylar3/icon.png
+description: >-
+  Mylar3 watches the comic series you follow, grabs new issues through
+  torrent or usenet (Prowlarr, qBittorrent, Transmission, SABnzbd, NZBGet)
+  and files them into your library with proper names and metadata
+  (ComicVine). It works like Sonarr, but for CBR/CBZ comics.
+
+
+  Suggested comic location: /downloads/comics (the Downloads/comics folder in
+  the Umbrel Files app). Kavita sees the same folder, so it can read what
+  Mylar3 downloads. Download clients from the Umbrel App Store also save to
+  /downloads, so no path mapping is needed.
+
+
+  After installing: get a free ComicVine API key (comicvine.gamespot.com/api)
+  and paste it in Settings > Web Interface. In Prowlarr add it as a "Mylar"
+  application (URL: http://florencio-store-mylar3_server_1:8090, API key from
+  Settings > Web Interface > API). The /api path skips the Umbrel login so
+  Prowlarr can reach it; set a Mylar3 username/password in Settings > Web
+  Interface before exposing the app to the internet.
+developer: mylar3
+website: https://mylarcomics.com
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/mylar3/mylar3
+support: https://github.com/mylar3/mylar3/issues
+port: 8820
+gallery: []
+releaseNotes: ""
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
