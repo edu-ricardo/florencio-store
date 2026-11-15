@@ -10,7 +10,7 @@ services:
       PROXY_AUTH_WHITELIST: "/api,/api/*"
 
   server:
-    image: linuxserver/mylar3:0.11.0@sha256:08db04be13a3536a18aae2d1b455b805dbc3ec26323cc0c78d3c132596efe5ef
+    image: linuxserver/mylar3:2021.12.13@sha256:64f398b4f1b9be85195ae792ca2e5fe05802352f8ea81f8ab5fa1ff725ca902a
     restart: on-failure
     # Imagem linuxserver: sem "user:" (o s6-overlay começa como root e troca
     # para PUID/PGID).

@@ -42,5 +42,5 @@ services:
 
   # Navegador headless usado para abrir as páginas
   browser:
-    image: lightpanda/browser:nightly@sha256:c96f73c530075f79a2221780aa27766c4919b02aefea3b992b496e689ac933ff
+    image: lightpanda/browser:nightly@sha256:2e5c026132d00c8ce12666846342439fcd46a26c054466cd887b50e942ac2df9
     restart: on-failure
