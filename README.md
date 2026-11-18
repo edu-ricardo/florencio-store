@@ -52,6 +52,7 @@ Loja de comunidade (Community App Store) para o umbrelOS.
 | **ROMarr** | 6868 | O "\*arr" dos ROMs: busca pelo Prowlarr, baixa pelo qBittorrent, confere contra checksums No-Intro/Redump. Já aponta para o Prowlarr/qBittorrent oficiais do Umbrel (ajustável depois nas Configurações do próprio app). Biblioteca em Downloads/romarr-roms. Sem senha padrão: a primeira visita pede para criar uma. |
 | **RomM** | 8819 | Gerenciador de ROMs com jogos no navegador. O umbrelOS pergunta a pasta da biblioteca na instalação (padrão `Downloads/romm`; dá para trocar nas configurações do app). Organize em `roms/<plataforma>/<jogo>` e `bios/<plataforma>`. |
 | **Mylar3** | 8820 | Downloader automático de quadrinhos (estilo Sonarr, CBR/CBZ). Pasta sugerida `/downloads/comics` (a mesma que o Kavita lê). Precisa de chave de API do ComicVine. No Prowlarr adicione como "Mylar" (`http://florencio-store-mylar3_server_1:8090`). |
+| **QuadrinhoTeca** | 8821 | Converte quadrinhos em PDF para CBZ (sem recomprimir as páginas) e mostra a biblioteca num catálogo por série. Cadastre as bibliotecas na própria app, em qualquer pasta dos HDs (`/external/<nome do HD>/...`) ou do Files (`/storage/...`). Usa o login do Umbrel. Banco, miniaturas e backups em `app-data/florencio-store-quadrinhoteca/data`. |
 
 ## Música no HD externo (Navidrome, Lidarr, slskd + Soularr)
 

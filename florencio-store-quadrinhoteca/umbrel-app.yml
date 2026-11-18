@@ -1,0 +1,43 @@
+manifestVersion: 1
+id: florencio-store-quadrinhoteca
+category: media
+name: QuadrinhoTeca
+version: "0.1.0"
+tagline: Converte quadrinhos em PDF para CBZ e organiza a biblioteca
+icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-quadrinhoteca/icon.png
+description: >-
+  A QuadrinhoTeca converte seus quadrinhos em PDF para CBZ (o formato que o
+  Kavita, o BookOrbit e os apps de leitura preferem) e mostra a biblioteca num
+  catálogo por série, com capas, filtros por editora, formato e status, e busca
+  sem acentos.
+
+
+  A conversão extrai as páginas do PDF sem recomprimir (qualidade original) e
+  grava o ComicInfo.xml. Pode ser automática para os PDFs novos de cada
+  biblioteca ou manual. O PDF original pode ser mantido, movido para uma pasta
+  de arquivo ou apagado depois de o CBZ ser validado.
+
+
+  Bibliotecas: cadastre na própria app qualquer pasta dos HDs externos
+  (/external/<nome do HD>/...) ou do armazenamento do Umbrel (/storage/...).
+  Um HD novo aparece sozinho em /external.
+
+
+  Também tem fila com modo turbo, tarefas para os erros de conversão, avisos
+  pelo ntfy e backup diário do banco (catálogo, fila e configurações; os
+  quadrinhos não entram no backup).
+developer: edu-ricardo
+website: https://github.com/edu-ricardo/selfconvertercomic
+submitter: edu-ricardo
+submission: https://github.com/edu-ricardo/florencio-store
+repo: https://github.com/edu-ricardo/selfconvertercomic
+support: https://github.com/edu-ricardo/selfconvertercomic/issues
+port: 8821
+gallery: []
+releaseNotes: >-
+  Primeira versão: conversão PDF → CBZ, bibliotecas com varredura automática,
+  catálogo por série, fila com modo turbo, tarefas, avisos pelo ntfy e backup.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
