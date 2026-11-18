@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      # Formato obrigatório: <app-id>_<nome-do-serviço>_1
+      APP_HOST: florencio-store-quadrinhoteca_web_1
+      APP_PORT: 8080
+      # Sem login próprio: a proteção é o login do Umbrel (padrão do app_proxy)
+
+  web:
+    # Compilada pelo workflow image.yml de edu-ricardo/selfconvertercomic
+    image: ghcr.io/edu-ricardo/quadrinhoteca:0.1.0@sha256:1487e5146f41cdbecbe46072c8c3d0d015851db679f6c00e572cae9d456918d4
+    user: "1000:1000"
+    restart: on-failure
+    environment:
+      TZ: America/Sao_Paulo
+      QT_DATA_DIR: /data
+      # Pastas que podem virar biblioteca (cadastradas na própria app)
+      QT_LIBRARY_ROOTS: /external,/storage
+    volumes:
+      # Banco, miniaturas e backups: disco do sistema, nunca no HD
+      - ${APP_DATA_DIR}/data:/data
+      # Todos os HDs externos (o umbrelOS monta cada um em external/<nome do HD>).
+      # create_host_path: false faz o app falhar em vez de criar a pasta no disco
+      # do sistema; um HD desconectado aparece na app como biblioteca indisponível.
+      - type: bind
+        source: ${UMBREL_ROOT}/external
+        target: /external
+        bind:
+          create_host_path: false
+      # Armazenamento do Umbrel (pastas do app Files: Downloads, Documents...)
+      - type: bind
+        source: ${UMBREL_ROOT}/data/storage
+        target: /storage
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 30s
