@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-quadrinhoteca
 category: media
 name: QuadrinhoTeca
-version: "0.1.0"
+version: "0.2.0"
 tagline: Converte quadrinhos em PDF para CBZ e organiza a biblioteca
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-quadrinhoteca/icon.png
 description: >-
@@ -23,9 +23,16 @@ description: >-
   Um HD novo aparece sozinho em /external.
 
 
-  Também tem fila com modo turbo, tarefas para os erros de conversão, avisos
-  pelo ntfy e backup diário do banco (catálogo, fila e configurações; os
-  quadrinhos não entram no backup).
+  Metadados: identifica série e número pelo nome e pelas pastas e busca a
+  edição no GCD (sem chave) e no ComicVine (chave gratuita). Com confiança alta
+  aplica sozinha e grava o ComicInfo.xml no CBZ; senão pede confirmação na tela
+  de Tarefas. Organização: renomeia e move para o padrão de pastas que você
+  escolher, com prévia, aprovação e desfazer. Mostra os duplicados (nunca
+  apaga nada).
+
+
+  Também tem fila com modo turbo, avisos pelo ntfy e backup diário do banco
+  (catálogo, fila e configurações; os quadrinhos não entram no backup).
 developer: edu-ricardo
 website: https://github.com/edu-ricardo/selfconvertercomic
 submitter: edu-ricardo
@@ -35,8 +42,12 @@ support: https://github.com/edu-ricardo/selfconvertercomic/issues
 port: 8821
 gallery: []
 releaseNotes: >-
-  Primeira versão: conversão PDF → CBZ, bibliotecas com varredura automática,
-  catálogo por série, fila com modo turbo, tarefas, avisos pelo ntfy e backup.
+  Metadados (GCD e ComicVine) com confirmação na tela de Tarefas e
+  ComicInfo.xml gravado no CBZ; organização de pastas e nomes com prévia e
+  desfazer; tela de duplicados; catálogo agrupado pela série identificada.
+  As edições que você já tem não são identificadas sozinhas: use
+  "Identificar metadados" em Bibliotecas. Pelo GCD sem chave a identificação é
+  lenta (poucos pedidos por hora); com a chave do ComicVine é bem mais rápida.
 dependencies: []
 path: ""
 defaultUsername: ""
