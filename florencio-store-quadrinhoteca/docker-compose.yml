@@ -10,7 +10,7 @@ services:
 
   web:
     # Compilada pelo workflow image.yml de edu-ricardo/selfconvertercomic
-    image: ghcr.io/edu-ricardo/quadrinhoteca:0.2.0@sha256:1add5884a266ceea88116c457d4e60fa775bb1e79dfe2210804376badae20f18
+    image: ghcr.io/edu-ricardo/quadrinhoteca:0.3.0@sha256:8264cc9a8d1c17dec146a236ddd2cfe2e875d365721cdc6301f622023bad1853
     user: "1000:1000"
     restart: on-failure
     environment:
