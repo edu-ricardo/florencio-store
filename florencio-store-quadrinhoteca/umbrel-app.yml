@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-quadrinhoteca
 category: media
 name: QuadrinhoTeca
-version: "0.3.0"
+version: "0.3.1"
 tagline: Converte quadrinhos em PDF para CBZ e organiza a biblioteca
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-quadrinhoteca/icon.png
 description: >-
@@ -42,10 +42,8 @@ support: https://github.com/edu-ricardo/selfconvertercomic/issues
 port: 8821
 gallery: []
 releaseNotes: >-
-  Duplicados: excluir em lote (PDFs que já têm CBZ, cópias de uma pasta ou
-  escolhidos um a um) para uma lixeira da app, com restaurar e esvaziar; nunca
-  exclui a última cópia. Metadados: preencher à mão, colar o link da edição no
-  ComicVine ou no GCD, e escolher o número quando a fonte só acha a série.
+  Encadernados e edições especiais (sem número): agora dá para confirmar a
+  série encontrada sem informar número; vale a edição única da série.
 dependencies: []
 path: ""
 defaultUsername: ""
