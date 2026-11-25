@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-scrypted
 category: automation
 name: Scrypted
-version: "0.147.0-nvidia"
+version: "0.148.0-nvidia"
 tagline: Camera hub for HomeKit, Google Home and Alexa with smart detection
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-scrypted/icon.png
 description: >-

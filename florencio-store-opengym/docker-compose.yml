@@ -11,7 +11,7 @@ services:
 
   # Baixa uma única vez as imagens/GIFs dos exercícios (~140 MB)
   media:
-    image: alpine/git:v2.54.0@sha256:ae0f6f4bce38d2b8c40becc0d6241a08d9f57186ea03029de2189a2b5e722d94
+    image: alpine/git:v2.54.1@sha256:2306e2b05ee0ef99f5d25b0779f645b24ae9f91ba187107503592fcdfe78da3a
     restart: "no"
     volumes:
       - ${APP_DATA_DIR}/data/media/img:/out/img
@@ -31,7 +31,7 @@ services:
   api:
     # Alvo "coach" (Claude Agent SDK + Codex CLI), compilado do código oficial pelo
     # workflow .github/workflows/opengym-coach-image.yml deste repositório
-    image: ghcr.io/edu-ricardo/opengym-api-coach:1.4.4@sha256:32291332f66037b5c7b2598fb7b18191c8bb5368c79a758b13284b8694dea8f3
+    image: ghcr.io/edu-ricardo/opengym-api-coach:1.4.5@sha256:7a3347150eb84aeb73c0a14af3fa36367d8269ddc964fe2c75fde713c74c6a8e
     restart: on-failure
     # RP_ID / ORIGIN e opções ficam neste arquivo (editável pelo usuário)
     env_file:
@@ -50,7 +50,7 @@ services:
       - ${APP_DATA_DIR}/data/api:/data
 
   web:
-    image: ghcr.io/duartesantos8/opengym-web:1.4.4@sha256:33575782762f6cc9181f5e33616d55bf718bcd56338b714f22cb5d01e1adc278
+    image: ghcr.io/duartesantos8/opengym-web:1.4.5@sha256:e621677554302a0e1745e3b8c90acddc7d7149e118c4d683d51c13aa88f47d27
     restart: on-failure
     depends_on:
       media:

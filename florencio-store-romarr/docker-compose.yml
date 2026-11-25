@@ -8,7 +8,7 @@ services:
       APP_PORT: 6868
 
   server:
-    image: ghcr.io/blizzhacker/romarr:1.8.0@sha256:19cbfad5189d630cc914eed1efb174dbd05c1888484b9ef6eb3698f71dc56458
+    image: ghcr.io/blizzhacker/romarr:1.10.0@sha256:f16e7fa86b43202ff0991e94100acee71719cccebeb39ccaaa48fd3f7d844727
     restart: on-failure
     environment:
       PUID: 1000

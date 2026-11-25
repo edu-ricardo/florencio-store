@@ -2,7 +2,7 @@ manifestVersion: 1
 id: florencio-store-mylar3
 category: media
 name: Mylar3
-version: "0.11.0"
+version: "2021.12.13"
 tagline: Automated comic book downloader — the *arr for comics
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-mylar3/icon.png
 description: >-

@@ -5,7 +5,7 @@ version: "3.7"
 services:
   server:
     # Variante NVIDIA (CUDA). A GPU é injetada pelo umbrelOS (permissions: GPU)
-    image: ghcr.io/koush/scrypted:v0.147.0-noble-nvidia@sha256:9ce2dcce0b0fd33e9d8363dd2f290c99402d28be8c7f41d309be8c0be69ee37b
+    image: ghcr.io/koush/scrypted:v0.148.0-noble-nvidia@sha256:05ae24e112ac83ddb336143507ad351bdfc536934931927c2fdec282095295f8
     restart: on-failure
     network_mode: host
     environment:
