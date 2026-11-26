@@ -11,7 +11,7 @@ services:
       PROXY_AUTH_ADD: "false"
 
   server:
-    image: ralex91/razzia:4.1.0@sha256:c7e63ded6bc4f6878bbfd5052a69663175f6ae32e663ac8168039d91094c2e4c
+    image: ralex91/razzia:4.1.1@sha256:cb00ddad694222e72d97bddfba3e165e405c75213710117f775120c8a4fb6c0c
     restart: on-failure
     environment:
       MANAGER_PASSWORD: ${APP_PASSWORD}

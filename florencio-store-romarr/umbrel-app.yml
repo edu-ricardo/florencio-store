@@ -2,7 +2,7 @@ manifestVersion: 1.1
 id: florencio-store-romarr
 category: media
 name: ROMarr
-version: "1.10.0"
+version: "1.13.2"
 tagline: The *arr for games — find, verify and organize your ROM library
 icon: https://raw.githubusercontent.com/edu-ricardo/florencio-store/main/florencio-store-romarr/icon.png
 description: >-

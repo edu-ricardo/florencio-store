@@ -8,7 +8,7 @@ services:
       APP_PORT: 80
 
   app:
-    image: ghcr.io/themartz90/jellydash:1.17.0@sha256:e98290054bb90bbfdd66fce263dbedfb05fe44cc3da8d38224faa83b270a16c0
+    image: ghcr.io/themartz90/jellydash:1.18.0@sha256:8e3fc8d6ef92adbdeedbd0f0ad390de7a6c0f322b65c83424d3761a69cb80559
     restart: on-failure
     # URL/token do Jellyfin e opções ficam neste arquivo (editável pelo usuário)
     env_file:
